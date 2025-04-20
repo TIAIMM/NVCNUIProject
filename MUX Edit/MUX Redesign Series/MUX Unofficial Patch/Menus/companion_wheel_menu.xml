@@ -1,0 +1,642 @@
+<!-- Companion wheel
+COPYRIGHT BY OBSIDIAN; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
+* Added keyboard shortcuts for all functions; button labels are placed into the slices using a high transparency and auto hiding when a slice is highlighted
+* Added xbox shortcuts for Talk and Inventory functions
+* Improved layout of xbox buttons, hiding them when necessary to make room for the context info
+* Slightly relocated the context info to prevent overlapping with the borders of the bottom slice
+* Formatted companion subtitles according to dialog subtitles
+* Replaced the text box of the Exit button with a clickable disk similar to the highlighted wheel slices
+* Added an X) shortcut to the Exit button and changed font to match with the rest of the companion wheel
+* Slightly improved alignment of the heading label and reduced its opacity to match it with the rest of the non-active wheel elements
+* Reduced the alpha of all controls to pronounce the information elements
+* Modified the background disc to adhere to the HUD color setting, and tweaked its dimensions to fit the menu overlay
+* Added the _VUI+ExtraContext text block to include extra context information by script
+* Remapped keys in separate Keybind prefabs
+-->
+<menu name="CompanionWheelMenu">
+	<class> &CompanionWheelMenu; </class>
+	<stackingtype> &no_click_past; </stackingtype>
+	<systemcolor> &hudmain; </systemcolor>
+	<menufade> 0.2 </menufade> <!--VUI+ safe speed -->
+	<!--VUI+ removed leftover controller bindings pointing to non-existing elements, these are handled by the engine -->
+	<xbuttony> <ref src="CWM_Button_Open_Inventory" trait="clicked"/> </xbuttony>
+	<xbuttonx> <ref src="CWM_Button_Talk_To" trait="clicked"/> </xbuttonx>
+	<include src="VUI+\Keybinds\CompanionWheel.xml" />
+
+	<rect name="NOGLOW_BRANCH">
+		<id> &noglow_branch; </id>
+		<systemcolor> <copy src="io" trait="systemcolor" /> </systemcolor>
+
+		<hotrect name="CWM_MainRect">
+			<locus> 1 </locus>
+			<id> &generic; </id>
+			<target> 1 </target>
+			<wheelable> 1 </wheelable>
+			<depth> 3 </depth>
+			<x>
+				<copy src="screen" trait="width"/>
+				<sub src="me" trait="width"/>
+				<div> 2 </div>
+			</x>
+			<y>
+				<copy src="screen" trait="height"/>
+				<sub src="me" trait="height"/>
+				<div> 2 </div>
+				<sub> 55 </sub> <!-- Making room for the subtitle -->
+			</y>
+			<width> 760 </width>
+			<height> 760 </height>
+			<_VUI+Slice>
+				<copy src="child(CWM_Button_Back_Up)" trait="alpha" /> <gt> 150 </gt>
+				<add> <copy> 2 </copy> <onlyif> <copy src="child(CWM_Button_Near_Far)" trait="alpha" /> <gt> 150 </gt> </onlyif> </add>
+				<add> <copy> 3 </copy> <onlyif> <copy src="child(CWM_Button_Open_Inventory)" trait="alpha" /> <gt> 150 </gt> </onlyif> </add>
+				<add> <copy> 4 </copy> <onlyif> <copy src="child(CWM_Button_Ranged_Melee)" trait="alpha" /> <gt> 150 </gt> </onlyif> </add>
+				<add> <copy> 5 </copy> <onlyif> <copy src="child(CWM_Button_Aggressive_Passive)" trait="alpha" /> <gt> 150 </gt> </onlyif> </add>
+				<add> <copy> 6 </copy> <onlyif> <copy src="child(CWM_Button_Use_Stim)" trait="alpha" /> <gt> 150 </gt> </onlyif> </add>
+				<add> <copy> 7 </copy> <onlyif> <copy src="child(CWM_Button_Stay_Follow)" trait="alpha" /> <gt> 150 </gt> </onlyif> </add>
+				<add> <copy> 8 </copy> <onlyif> <copy src="child(CWM_Button_Talk_To)" trait="alpha" /> <gt> 150 </gt> </onlyif> </add>
+				<add> <copy> 9 </copy> <onlyif src="child(VUI+ExitBackground)" trait="visible" /> </add>
+			</_VUI+Slice>
+
+			<image name="CWM_Matte"> <!--VUI+ dark round background of the wheel -->
+				<filename> VUIE\Shared\hud_comp_bkg.dds </filename>
+				<!--VUI+ optimized width and dimensions to fit the menu overlay -->
+				<y> -15 </y>
+				<width>
+					<copy src="parent" trait="width" />
+					<add> 5 </add>
+				</width>
+				<height>
+					<copy src="parent" trait="height" />
+					<add> 30 </add>
+				</height>
+				<systemcolor>0</systemcolor>
+				<red>13</red>
+				<green>18</green>
+				<blue>19</blue>
+				<zoom> &scale; </zoom>
+				<alpha> 200 </alpha>
+				<depth> -2 </depth>
+			</image>
+
+			<!-- Menu overlay -->
+			<image name="CWM_Background">
+				<width> <copy src="parent" trait="width"/> </width>
+				<height> <copy src="parent" trait="height"/> </height>
+				<filename> Interface\companion_wheel\hud_comp_pie.dds </filename>
+				<zoom> &scale; </zoom>
+				<alpha> 180 </alpha>
+				<depth> -1 </depth>
+			</image>
+
+			<!--================= NON-RADIAL-BUTTON ELEMENTS ==============-->
+			<!-- "Companion Commands" label -->
+			<rect name="CWM_RadialLabel">
+			<include src="VUI+\outline_rect.xml"/>
+				<id> 8 </id>
+				<x>
+					<copy src="parent" trait="width"/>
+					<div> 2 </div>
+					<add> 2 </add> <!--VUI+ corrected centering -->
+				</x>
+				<y>
+					<copy> 130 </copy> <!--VUI+ don't overlap on the wheel -->
+					<sub src="parent" trait="y"/>
+				</y>
+				<brightness> 150 </brightness> <!--VUI+ match the brightness of the rest of the wheel (and it's a rather redundant element) -->
+				<font> 3 </font>
+				<string> &-sCWheelTitle; </string>
+				<depth> 4 </depth>
+				<justify> &center; </justify>
+				<wrapwidth> 250 </wrapwidth>
+				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
+				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+			</rect>
+
+			<!-- Action to select -->
+			<rect name="CWM_ButtonPreviewText">
+			<include src="VUI+\outline_rect.xml"/>
+				<id> 9 </id>
+				<x>
+					<copy src="parent" trait="width"/>
+					<div> 2 </div>
+					<add> 3 </add> <!--VUI+ correct centering -->
+				</x>
+				<y>
+					<copy> 205 </copy>
+					<sub src="parent" trait="y"/>
+				</y>
+				<font> 3 </font>
+				<justify> &center; </justify>
+				<wrapwidth> 190 </wrapwidth>
+				<depth> 3 </depth>
+				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
+				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+			</rect>
+
+			<rect name="VUI+BackShoo">
+			<include src="VUI+\outline_rect.xml"/>
+				<string> <copy src="io" trait="_CWM_Button_Back_Up" /> </string>
+				<font> 3 </font> 
+				<justify> &center; </justify> 
+				<alpha> 40 </alpha>
+				<visible>
+					<copy src="parent" trait="_VUI+Slice" /> <neq> 1 </neq>
+					<onlyifnot src="globals" trait="_Has360Controller"/>
+				</visible>
+				<x><copy src="sibling(CWM_Button_Back_Up)" trait="user6" /><add>200</add></x>
+				<y><copy src="sibling(CWM_Button_Back_Up)" trait="user7" /><sub>55</sub></y>
+				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
+				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+			</rect>
+			<rect name="VUI+Distance">
+			<include src="VUI+\outline_rect.xml"/>
+				<string> <copy src="io" trait="_CWM_Button_Near_Far" /> </string>
+				<font> 3 </font> 
+				<justify> &center; </justify> 
+				<alpha> 40 </alpha>
+				<visible>
+					<copy src="parent" trait="_VUI+Slice" /> <neq> 2 </neq>
+					<onlyifnot src="globals" trait="_Has360Controller"/>
+				</visible>
+				<x><copy src="sibling(CWM_Button_Near_Far)" trait="user6" /><add>230</add></x>
+				<y><copy src="sibling(CWM_Button_Near_Far)" trait="user7" /><sub>5</sub></y>
+				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
+				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+			</rect>
+
+			<rect name="VUI+Inventory">
+			<include src="VUI+\outline_rect.xml"/>
+				<string> <copy src="io" trait="_CWM_Button_Open_Inventory" /> </string>
+				<font> 3 </font> 
+				<justify> &center; </justify> 
+				<alpha> 40 </alpha>
+				<visible>
+					<copy src="parent" trait="_VUI+Slice" /> <neq> 3 </neq>
+					<onlyifnot src="globals" trait="_Has360Controller"/>
+				</visible>
+				<x><copy src="sibling(CWM_Button_Open_Inventory)" trait="user6" /><add>230</add></x>
+				<y><copy src="sibling(CWM_Button_Open_Inventory)" trait="user7" /><add>70</add></y>
+				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
+				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+			</rect>
+
+			<image name="VUI+InventoryXbox">
+				<filename> general_button_y.dds </filename>
+				<texatlas> Interface\InterfaceShared.tai </texatlas>
+				<width> 65 </width>
+				<height> 65 </height>
+				<zoom> &scale; </zoom>
+				<alpha> 40 </alpha>
+				<visible>
+					<copy src="parent" trait="_VUI+Slice" /> <neq> 3 </neq>
+					<onlyif src="globals" trait="_Has360Controller"/>
+				</visible>
+				<x><copy src="sibling(CWM_Button_Open_Inventory)" trait="user6" /><add>200</add></x>
+				<y><copy src="sibling(CWM_Button_Open_Inventory)" trait="user7" /><add>45</add></y>
+			</image>
+
+			<rect name="VUI+MeleeMissile">
+			<include src="VUI+\outline_rect.xml"/>
+				<string> <copy src="io" trait="_CWM_Button_Ranged_Melee" /> </string>
+				<font> 3 </font> <justify> &center; </justify> <alpha> 40 </alpha>
+				<visible>
+					<copy src="parent" trait="_VUI+Slice" /> <neq> 4 </neq>
+					<onlyifnot src="globals" trait="_Has360Controller"/>
+				</visible>
+				<x><copy src="sibling(CWM_Button_Ranged_Melee)" trait="user6" /><add>187</add></x>
+				<y><copy src="sibling(CWM_Button_Ranged_Melee)" trait="user7" /><add>138</add></y>
+				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
+				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+			</rect>
+
+			<rect name="VUI+Aggression">
+			<include src="VUI+\outline_rect.xml"/>
+				<string> <copy src="io" trait="_CWM_Button_Aggressive_Passive" /> </string>
+				<font> 3 </font> <justify> &center; </justify> <alpha> 40 </alpha>
+				<visible>
+					<copy src="parent" trait="_VUI+Slice" /> <neq> 5 </neq>
+					<onlyifnot src="globals" trait="_Has360Controller"/>
+				</visible>
+				<x><copy src="sibling(CWM_Button_Aggressive_Passive)" trait="user6" /><sub>10</sub></x>
+				<y><copy src="sibling(CWM_Button_Aggressive_Passive)" trait="user7" /><add>140</add></y>
+				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
+				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+			</rect>
+
+			<rect name="VUI+Stimpack">
+			<include src="VUI+\outline_rect.xml"/>
+				<string> <copy src="io" trait="_CWM_Button_Use_Stim" /> </string>
+				<font> 3 </font> <justify> &center; </justify> <alpha> 40 </alpha>
+				<visible>
+					<copy src="parent" trait="_VUI+Slice" /> <neq> 6 </neq>
+					<onlyifnot src="globals" trait="_Has360Controller"/>
+				</visible>
+				<x><copy src="sibling(CWM_Button_Use_Stim)" trait="user6" /><sub>45</sub></x>
+				<y><copy src="sibling(CWM_Button_Use_Stim)" trait="user7" /><add>70</add></y>
+				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
+				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+			</rect>
+
+			<rect name="VUI+Wait">
+			<include src="VUI+\outline_rect.xml"/>
+				<string> <copy src="io" trait="_CWM_Button_Stay_Follow" /> </string>
+				<font> 3 </font> <justify> &center; </justify> <alpha> 40 </alpha>
+				<visible>
+					<copy src="parent" trait="_VUI+Slice" /> <neq> 7 </neq>
+					<onlyifnot src="globals" trait="_Has360Controller"/>
+				</visible>
+				<x><copy src="sibling(CWM_Button_Stay_Follow)" trait="user6" /><sub>45</sub></x>
+				<y><copy src="sibling(CWM_Button_Stay_Follow)" trait="user7" /><sub>5</sub></y>
+				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
+				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+			</rect>
+
+			<rect name="VUI+Talk">
+			<include src="VUI+\outline_rect.xml"/>
+				<string> <copy src="io" trait="_CWM_Button_Talk_To" /> </string>
+				<font> 3 </font> <justify> &center; </justify> <alpha> 40 </alpha>
+				<visible>
+					<copy src="parent" trait="_VUI+Slice" /> <neq> 8 </neq>
+					<onlyifnot src="globals" trait="_Has360Controller"/>
+				</visible>
+				<x><copy src="sibling(CWM_Button_Talk_To)" trait="user6" /><sub>10</sub></x>
+				<y><copy src="sibling(CWM_Button_Talk_To)" trait="user7" /><sub>65</sub></y>
+				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
+				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+			</rect>
+
+			<image name="VUI+TalkXbox">
+				<filename> general_button_x.dds </filename>
+				<texatlas> Interface\InterfaceShared.tai </texatlas>
+				<width> 65 </width>
+				<height> 65 </height>
+				<zoom> &scale; </zoom>
+				<alpha> 40 </alpha>
+				<visible>
+					<copy src="parent" trait="_VUI+Slice" /> <neq> 8 </neq>
+					<onlyif src="globals" trait="_Has360Controller"/>
+				</visible>
+				<x><copy src="sibling(CWM_Button_Talk_To)" trait="user6" /><sub>40</sub></x>
+				<y><copy src="sibling(CWM_Button_Talk_To)" trait="user7" /><sub>87</sub></y>
+			</image>
+
+			<!-- The context label for current selected node -->
+			<rect name="CWM_ButtonContextText">
+			<include src="VUI+\outline_rect.xml"/>
+				<id> 10 </id>
+				<x>
+					<copy src="parent" trait="width"/>
+					<div> 2 </div>
+					<add> 3 </add> <!--VUI+ correct centering -->
+				</x>
+				<y>
+					<copy> 600 </copy> <!--VUI+ move the text a few pixels down to avoid overlapping with the borders of the slice -->
+					<sub src="parent" trait="y"/>
+				</y>
+				<font> 3 </font>
+				<justify> &center; </justify>
+				<wrapwidth> 190 </wrapwidth>
+				<!-- in scale of a 1536 screen -->
+				<string> </string>
+				<!-- Should be Set in code -->
+				<depth> 4 </depth>
+				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
+				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+			</rect>
+			
+			<rect name="_VUI+ExtraContext"> <!--VUI+ controlled by script -->
+			<include src="VUI+\outline_rect.xml"/>
+				<x> <copy src="sibling" trait="x" /> </x>
+				<y>
+					<copy src="sibling" trait="height" />
+					<onlyif> <copy src="sibling" trait="width" /> <gt> 15 </gt> </onlyif>
+					<add src="sibling" trait="y" />
+					<!--VUI+ First Aid NVSE compatibility -->
+					<onlyif> <copy src="sibling" trait="y" /> <gt> 0 </gt> </onlyif>
+					<add>
+						<copy src="sibling(CWM_FirstAidButtonContextText)" trait="height" />
+						<onlyif> <copy src="sibling(CWM_FirstAidButtonContextText)" trait="width" /> <gt> 15 </gt> </onlyif>
+						<add src="sibling(CWM_FirstAidButtonContextText)" trait="y" />
+						<onlyifnot> <copy src="sibling" trait="y" /> <gt> 0 </gt> </onlyifnot>
+					</add>
+				</y>
+				<font> <copy src="sibling" trait="font" /> </font>
+				<justify> <copy src="sibling" trait="justify" /> </justify>
+				<wrapwidth> <copy src="sibling" trait="wrapwidth" /> </wrapwidth>
+				<depth> <copy src="sibling" trait="depth" /> </depth>
+				<alpha> <copy src="sibling" trait="alpha" /> </alpha>
+				<brightness> <copy src="sibling" trait="brightness" /> </brightness>
+				<red> <copy src="sibling" trait="red" /> </red>
+				<green> <copy src="sibling" trait="green" /> </green>
+				<blue> <copy src="sibling" trait="blue" /> </blue>
+				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
+				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+			</rect>
+
+			<!-- Button: Exit -->
+			<hotrect name="CWM_Button_Exit">
+				<!--VUI+ the exit button is converted to a plain hotrect with dimensions large enough to be clickable from the entire area of the exit disk, and its strings are set in child text boxes -->
+				<id> 11 </id>
+				<x>
+					<copy> 767 </copy> <!--VUI+ takes into account the button label -->
+					<sub src="me" trait="width"/>
+					<div> 2 </div>
+				</x>
+				<y>
+					<copy> 757.5 </copy>
+					<sub src="me" trait="height"/>
+					<div> 2 </div>
+				</y>
+				<width> 110 </width>
+				<height> 110 </height>
+				<justify> &center; </justify>
+				<string> &-sExit; </string>
+				<font> 3 </font> <!--VUI+ use a small text label (like the rest of the fonts in the companion wheel) and a proper padding for it -->
+				<_line_alpha> 200 </_line_alpha> <!--VUI+ otherwise it's too bright for the looks of the companion wheel -->
+				<visible> <not src="globals" trait="_Has360Controller"/> </visible>
+				<depth> 3 </depth>
+				<locus> 1 </locus>
+
+				<rect name="exit">
+				<include src="VUI+\outline_rect.xml"/>
+					<string> <copy src="parent" trait="string" /> </string>
+					<font> <copy src="parent" trait="font" /> </font>
+					<alpha>
+						<copy src="globals" trait="_VUI+Highlighting" />
+						<onlyif src="parent" trait="mouseover" />
+						<add src="parent" trait="_line_alpha" />
+					</alpha>
+					<x>
+						<copy src="parent" trait="width" />
+						<sub>
+							<copy src="me" trait="width" />
+							<add> 12 </add>
+							<add src="sibling(button)" trait="width" />
+						</sub>
+						<div> 2 </div>
+					</x>
+					<y>
+						<copy src="parent" trait="height" />
+						<sub src="me" trait="height" />
+						<div> 2 </div>
+						<add>
+							<copy src="globals" trait="_VUI+FontY_" />
+							<copy src="me" trait="font" />
+						</add>
+						<add> 5 </add>
+					</y>
+					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
+					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+				</rect>
+
+				<rect name="button">
+				<include src="VUI+\outline_rect.xml"/>
+					<string> <copy src="io" trait="_CWM_Button_Exit" /> </string>
+					<font> <copy src="sibling" trait="font" /> </font>
+					<alpha> <copy src="sibling" trait="alpha" /> </alpha>
+					<y> <copy src="sibling" trait="y" /> </y>
+					<x>
+						<copy src="sibling" trait="x" />
+						<add src="sibling" trait="width" />
+						<add> 12 </add>
+					</x>
+					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
+					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+				</rect>
+			</hotrect>
+
+			<image name="VUI+ExitBackground">
+				<filename> Interface\VUI+\hud_comp_center.dds </filename>
+				<x>
+					<copy> 767.5 </copy>
+					<sub src="me" trait="width" />
+					<div> 2 </div>
+				</x>
+				<y>
+					<copy> 757.3 </copy>
+					<sub src="me" trait="height" />
+					<div> 2 </div>
+				</y>
+				<width> 119 </width>
+				<height> 119 </height>
+				<zoom> &scale; </zoom>
+				<alpha> 150 </alpha>
+				<depth> 1 </depth>
+				<visible> <copy src="sibling" trait="mouseover" /> </visible>
+			</image>
+
+			<!-- Console Button Callout: Exit -->
+			<hotrect name="CWM_Callout_Exit">
+				<include src="text_box.xml"/>
+				<id> 13 </id>
+				<justify> &center; </justify>
+				<string> &-sExit; </string>
+				<y>
+					<copy> 757.3 </copy>
+					<sub src="me" trait="height"/>
+					<div> 2 </div>
+				</y>
+				<x> 330 </x>
+				<_xbox_button> &xbuttonb; </_xbox_button>
+				<_button_placement> &right; </_button_placement>
+				<_PCButtonText></_PCButtonText>
+				<_line_alpha> 200 </_line_alpha>
+				<visible> <copy src="globals" trait="_Has360Controller"/> </visible>
+				<font>3</font>
+				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
+				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+				<height> 42 </height>
+				<_text_y_adjust> -1 </_text_y_adjust>
+				<depth> 4 </depth>
+			</hotrect>
+
+			<!-- Console Button Callout: Select -->
+			<hotrect name="CWM_Callout_Select">
+				<include src="text_box.xml"/>
+				<id> 14 </id>
+				<justify> &center; </justify>
+				<string> &-sSelect; </string>
+				<x> <copy> 735 </copy> <sub src="me" trait="width"/> <div> 2 </div> </x>
+				<y> 195 </y> <!--VUI+ move right under the action label to allow more space for the info slice; also signifies what action will be selected -->
+				<_xbox_button> &xbuttona; </_xbox_button>
+				<_button_placement> &right; </_button_placement>
+				<_PCButtonText></_PCButtonText>
+				<_line_alpha> 200 </_line_alpha>
+				<visible>
+					<copy src="globals" trait="_Has360Controller"/>
+					<and> <!--VUI+ only show when there is an action to be selected -->
+						<copy src="sibling(CWM_ButtonPreviewText)" trait="width" /> <gte> 15 </gte>
+					</and>
+				</visible>
+				<font>3</font>
+				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
+				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+				<depth> 4 </depth>
+			</hotrect>
+
+			<!-- Console Button Callout: Navigate -->
+			<hotrect name="CWM_Callout_Navigate">
+				<include src="text_box.xml"/>
+				<id> 15 </id>
+				<justify> &center; </justify>
+				<string> &-sNavigate; </string>
+				<x>
+					<copy src="parent" trait="width"/>
+					<sub src="me" trait="width"/>
+					<div> 2 </div>
+					<sub> 20 </sub>
+				</x>
+				<y> 570 </y>
+				<_xbox_button> &xbuttonl; </_xbox_button>
+				<_button_placement> &right; </_button_placement>
+				<_line_alpha> 200 </_line_alpha>
+				<visible>
+					<copy src="sibling(CWM_ButtonPreviewText)" trait="width" /> <lte> 15 </lte> <!--VUI+ hide the navigation button when the user has already started navigating -->
+					<and src="globals" trait="_Has360Controller"/>
+				</visible>
+				<font>3</font>
+				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
+				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+				<depth> 4 </depth>
+			</hotrect>
+
+			<!-- Text: Subtitle -->
+			<rect name="CWM_Subtitle"> <!--VUI+ subtitles should use text instead of rect/text_box -->
+			<include src="VUI+\outline_rect.xml"/>
+				<id> 12 </id>
+				<justify> &center; </justify>
+				<string> </string>
+				<font> 3 </font> <!--VUI+ font used for subtitles -->
+				<x> <copy src="parent" trait="width"/> <div> 2 </div> </x>
+				<y> 780 </y> <!--VUI+ just a bit lower to match other subtitles -->
+				<depth> 4 </depth>
+				<include src="VUI+\orphancontrol.xml"/>
+				<_VUI+MaxWrapwidth> 800 </_VUI+MaxWrapwidth>
+				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
+				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+			</rect>
+
+			<!--=================RADIAL SEGMENTS==============-->
+			<!-- Button: Agressive/Passive -->
+			<radial name="CWM_Button_Aggressive_Passive">
+				<id> 0 </id>
+				<filename> Interface\companion_wheel\hud_comp_slice1.dds </filename>
+				<include src="button_companion_wheel.xml"/>
+				<user2> 0.523598 </user2> <!-- The Minimum angle you must be to be in this slice of pie -->
+				<user3> 1.047196 </user3> <!-- The Maximum angle you must be to be in this slice of pie -->
+				<user6> 467 </user6> <!-- The x coordinate of the icon scaled to 780 circle width-->
+				<user7> 160 </user7> <!-- The 960 scaled y coordinate of the icon-->
+				<user8> Interface\companion_wheel\Comp_peaceful_off.dds </user8> <!-- the off icon filename-->
+				<user9> Interface\companion_wheel\Comp_peaceful_on.dds </user9> <!-- the on icon filename-->
+				<user12> Interface\companion_wheel\Comp_aggressive_off.dds </user12> <!-- the alt off icon filename-->
+				<user13> Interface\companion_wheel\Comp_aggressive_on.dds </user13> <!-- the alt on icon filename-->
+				<include src="icon_companion_wheel.xml"/>
+			</radial>
+
+			<!-- Button: Use Stim -->
+			<radial name="CWM_Button_Use_Stim">
+				<id> 1 </id>
+				<include src="button_companion_wheel.xml"/>
+				<filename> Interface\companion_wheel\hud_comp_slice2.dds </filename>
+				<user2> 1.047196 </user2>
+				<user3> 1.5707943 </user3>
+				<user6> 532 </user6>
+				<user7> 275 </user7>
+				<user8> Interface\companion_wheel\Comp_stimpack_off.dds </user8>
+				<user9> Interface\companion_wheel\Comp_stimpack_on.dds </user9>
+				<include src="icon_companion_wheel.xml"/>
+			</radial>
+
+			<!-- Button: Stay Follow -->
+			<radial name="CWM_Button_Stay_Follow">
+				<id> 2 </id>
+				<include src="button_companion_wheel.xml"/>
+				<filename> Interface\companion_wheel\hud_comp_slice3.dds </filename>
+				<user2> 1.5707943 </user2>
+				<user3> 2.094329 </user3>
+				<user6> 532 </user6>
+				<user7> 404 </user7>
+				<user8> Interface\companion_wheel\Comp_follow_off.dds </user8>
+				<user9> Interface\companion_wheel\Comp_follow_on.dds </user9>
+				<user12> Interface\companion_wheel\Comp_stay_off.dds </user12>
+				<user13> Interface\companion_wheel\Comp_stay_on.dds </user13>
+				<include src="icon_companion_wheel.xml"/>
+			</radial>
+
+			<!-- Button: Talk -->
+			<radial name="CWM_Button_Talk_To">
+				<id> 3 </id>
+				<include src="button_companion_wheel.xml"/>
+				<filename> Interface\companion_wheel\hud_comp_slice4.dds </filename>
+				<user2> 2.094329 </user2>
+				<user3> 2.61799 </user3>
+				<user6> 467 </user6>
+				<user7> 510 </user7>
+				<user8> Interface\companion_wheel\Comp_talk_off.dds </user8>
+				<user9> Interface\companion_wheel\Comp_talk_on.dds </user9>
+				<include src="icon_companion_wheel.xml"/>
+			</radial>
+
+			<!-- Button: Back Up -->
+			<radial name="CWM_Button_Back_Up">
+				<id> 4 </id>
+				<include src="button_companion_wheel.xml"/>
+				<filename> Interface\companion_wheel\hud_comp_slice5.dds </filename>
+				<user2> 3.665186 </user2>
+				<user3> 4.188784 </user3>
+				<user6> 112 </user6>
+				<user7> 500 </user7>
+				<user8> Interface\companion_wheel\Comp_stepback_off.dds </user8>
+				<user9> Interface\companion_wheel\Comp_stepback_on.dds </user9>
+				<include src="icon_companion_wheel.xml"/>
+			</radial>
+
+			<!-- Button: Near Far -->
+			<radial name="CWM_Button_Near_Far">
+				<id> 5 </id>
+				<include src="button_companion_wheel.xml"/>
+				<filename> Interface\companion_wheel\hud_comp_slice6.dds </filename>
+				<user2> 4.188784 </user2>
+				<user3> 4.7123823 </user3>
+				<user6> 52 </user6>
+				<user7> 404 </user7>
+				<user8> Interface\companion_wheel\Comp_stayclose_off.dds </user8>
+				<user9> Interface\companion_wheel\Comp_stayclose_on.dds </user9>
+				<user12> Interface\companion_wheel\Comp_stayfar_off.dds </user12>
+				<user13> Interface\companion_wheel\Comp_stayfar_on.dds </user13>
+				<include src="icon_companion_wheel.xml"/>
+			</radial>
+
+			<!-- Button: Open Inventory -->
+			<radial name="CWM_Button_Open_Inventory">
+				<id> 6 </id>
+				<include src="button_companion_wheel.xml"/>
+				<filename> Interface\companion_wheel\hud_comp_slice7.dds </filename>
+				<user2> 4.7123823 </user2>
+				<user3> 5.235980 </user3>
+				<user6> 52 </user6>
+				<user7> 275 </user7>
+				<user8> Interface\companion_wheel\Comp_inven_off.dds </user8>
+				<user9> Interface\companion_wheel\Comp_inven_on.dds </user9>
+				<include src="icon_companion_wheel.xml"/>
+			</radial>
+
+			<!-- Button: Ranged Melee Button -->
+			<radial name="CWM_Button_Ranged_Melee">
+				<id> 7 </id>
+				<include src="button_companion_wheel.xml"/>
+				<filename> Interface\companion_wheel\hud_comp_slice8.dds </filename>
+				<user2> 5.235980 </user2>
+				<user3> 5.759578 </user3>
+				<user6> 122 </user6>
+				<user7> 160 </user7>
+				<user8> Interface\companion_wheel\Comp_melee_off.dds </user8>
+				<user9> Interface\companion_wheel\Comp_melee_on.dds </user9>
+				<user12> Interface\companion_wheel\Comp_ranged_off.dds </user12>
+				<user13> Interface\companion_wheel\Comp_ranged_on.dds </user13>
+				<include src="icon_companion_wheel.xml"/>
+			</radial>
+		</hotrect>
+	</rect>
+</menu>
