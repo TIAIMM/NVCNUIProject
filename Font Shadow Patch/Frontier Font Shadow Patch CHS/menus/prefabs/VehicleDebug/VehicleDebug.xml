@@ -1,0 +1,533 @@
+<rect name="vehDebug">
+	<include src="VUI+\outline_rect.xml"/>
+<visible>0</visible>
+<depth> 99 </depth>
+<x> <copy>10</copy> </x>
+<y> <copy>2</copy>
+
+					<sub>
+						<copy src="io()" trait="_addToMult" /><mul><copy src="io()" trait="_vehMult" /><sub>41</sub></mul>
+						<onlyif>
+							<copy src="io()" trait="_vehMult" />
+							<gt>41</gt>
+						</onlyif>
+					</sub>
+
+</y>
+<string> <copy src="io()" trait="_vehDebug" /> </string>
+<justify>&left;</justify>
+<font> 18 </font>
+<alpha> 255 </alpha>
+<systemcolor> &true; </systemcolor>
+<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</rect>
+
+<image name="vehDebugBG">
+<visible> <copy src="sibling(vehDebug)" trait="visible" /> </visible>
+<filename> interface\faders\Black.dds </filename>
+<depth> 97 </depth>
+<width> <copy src="sibling(vehDebug)" trait="width" /> <add>24</add> </width>
+<height> <copy src="sibling(vehDebug)" trait="height" /> <add>24</add> </height>
+<zoom> &scale; </zoom>
+<x> <copy src="sibling(vehDebug)" trait="x" /> <sub>14</sub> </x>
+<y> <copy src="sibling(vehDebug)" trait="y" /> <sub>14</sub> </y>
+<alpha> 170 </alpha>
+<systemcolor> &nosystemcolor; </systemcolor>
+</image>
+
+<_addToY>3</_addToY>
+<_addToMult>23</_addToMult>
+
+<image name="vehDebugSelector">
+<visible> <copy src="sibling(vehDebug)" trait="visible" /> </visible>
+<filename> interface\faders\black.dds </filename>
+<depth> 98 </depth>
+<width> <copy src="sibling(vehDebug)" trait="width" /> <add>24</add> </width>
+<height> <copy src="io()" trait="_addToMult" /> </height>
+<zoom> &scale; </zoom>
+<x> <copy src="sibling(vehDebug)" trait="x" /> <sub>14</sub> </x>
+<y> <copy src="sibling(vehDebug)" trait="y" /> <sub src="io()" trait="_addToY" /> <add><copy src="io()" trait="_addToMult" /><mul src="io()" trait="_vehMult" /></add></y>
+<alpha> 255 </alpha>
+
+<systemcolor> &nosystemcolor; </systemcolor>
+</image>
+
+
+
+
+
+
+
+<image name="vehMountSCR">
+<visible>1</visible>
+<filename> interface\faders\Black.dds </filename>
+<depth> 99 </depth>
+<width> <copy src="screen()" trait="width"/><add>400</add> </width>
+<height> <copy src="screen()" trait="height"/> <add>400</add> </height>
+<zoom> &scale; </zoom>
+<x> <copy src="screen()" trait="width"/> <div> 2 </div><sub><copy src="me()" trait="width"/> <div>2</div></sub></x>
+<y> <copy src="screen()" trait="height"/> <div> 2 </div><sub><copy src="me()" trait="height"/> <div>2</div></sub></y>
+<alpha> 0 </alpha>
+<systemcolor> &nosystemcolor; </systemcolor>
+</image>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<_XXScreenWidth> <copy src="screen()" trait="width"/> <div> 2 </div></_XXScreenWidth>
+<_XXScreenHeight> <copy src="screen()" trait="height"/> <div> 2 </div></_XXScreenHeight>
+
+<_XXAngA>0</_XXAngA>
+<_XXAngB>0</_XXAngB>
+
+
+<image name="trigDebugBoxXX">
+<visible> 0</visible>
+<filename> interface\faders\black.dds </filename>
+<depth> 0 </depth>
+<width> 600 </width>
+<height> 600</height>
+<zoom> &scale; </zoom>
+<x> <copy src="io()" trait="_XXScreenWidth" /><sub><copy src="me()" trait="width"/> <div>2</div></sub><add src="io()" trait="_XXAngA" /> </x>
+<y> <copy src="io()" trait="_XXScreenHeight" /> <sub><copy src="me()" trait="height"/><div>2</div></sub><add src="io()" trait="_XXAngB" /> </y>
+<alpha> 135 </alpha>
+<systemcolor> &nosystemcolor; </systemcolor>
+</image>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<rect name="CircularBar">
+		<visible> <copy src="sibling(vehBKG)" trait="visible" /> </visible>
+		<locus> 1 </locus>
+		<_diameter> 60 </_diameter>
+		<_fill></_fill>
+		<_fillConv><copy src="me()" trait="_fill" /><mul>3.6</mul></_fillConv>
+		<_cutoffA>2</_cutoffA>
+		<_cutoffB>2</_cutoffB>
+		<x> <copy src="sibling(vehBKG)" trait="x" /> <add> <copy src="sibling(vehBKG)" trait="width" /> <sub src="me()" trait="_diameter"/> <div> 2 </div> </add> <add>0.5</add></x>
+		<y> <copy src="sibling(vehBKG)" trait="y" /> <add> <copy src="sibling(vehBKG)" trait="height" /> <sub src="me()" trait="_diameter"/> <div> 2 </div> </add> </y>
+
+
+		<image name="CircularBG">
+			<visible> <copy src="sibling(vehBKG)" trait="visible" /> </visible>
+			<filename> thefrontier\Interface\Driveables\circle.dds </filename>
+			<depth> 26 </depth>
+			<width><copy src="parent()" trait="_diameter" /></width>
+			<height><copy src="parent()" trait="_diameter" /></height>
+			<zoom> &scale; </zoom>
+			<systemcolor> 2 </systemcolor>
+			<alpha> 255 </alpha>
+		</image>
+
+		<rect name="CircularBarRectA">
+			<clipwindow> &true; </clipwindow>
+			<width><copy src="parent()" trait="_diameter" /></width>
+			<height><copy src="parent()" trait="_diameter" /><add>1</add></height>
+			<x> <copy>0</copy> <sub><copy src="me()" trait="width"/> <div> 2 </div></sub><sub><copy src="parent()" trait="_cutoffA" /><onlyif><copy src="parent()" trait="_fillConv" /><lte>0</lte></onlyif></sub></x>
+			<y> <copy>0</copy></y>
+
+			<image name="CircularBarSideA">
+				<clips>1</clips>
+				<filename> thefrontier\Interface\Driveables\HalfCircle.dds </filename>
+				<depth> 27 </depth>
+				<width><copy src="grandparent()" trait="_diameter" /></width>
+				<height><copy src="grandparent()" trait="_diameter" /></height>
+				<zoom> &scale; </zoom>
+				<x>0</x>
+				<y>0</y>
+				<systemcolor> 1 </systemcolor>
+				<alpha> 255 </alpha>
+				<_angle>
+					<copy>0</copy>
+					<add>
+						<copy src="grandparent()" trait="_fillConv" />
+						<onlyif>
+							<copy src="grandparent()" trait="_fillConv" />
+							<lt>180</lt>
+							<and>
+								<copy src="grandparent()" trait="_fillConv" />
+								<gte>0</gte>
+							</and>
+						</onlyif>
+					</add>
+					<add>
+						<copy>180</copy>	
+						<onlyif>
+							<copy src="grandparent()" trait="_fillConv" />
+							<gte>180</gte>
+						</onlyif>
+					</add>
+				</_angle>
+				<rotateaxisx> <copy src="me()" trait="width"/> <div> 2 </div> </rotateaxisx>
+				<rotateaxisy> <copy src="me()" trait="height"/> <div> 2 </div> </rotateaxisy>
+				<rotateangle> <copy> 360 </copy> <sub src="me()" trait="_Angle"/> <mul> 3.141592654 </mul> <div> 180 </div> </rotateangle>
+			</image>
+		</rect>
+
+		<rect name="CircularBarRectB">
+			<clipwindow> &true; </clipwindow>
+			<width><copy src="parent()" trait="_diameter" /></width>
+			<height><copy src="parent()" trait="_diameter" /><add>1</add></height>
+			<x> <copy>0</copy>	 <add><copy src="me()" trait="width"/> <div> 2 </div></add><add> <copy src="parent()" trait="_cutoffB" /> <onlyif><copy src="parent()" trait="_fillConv" /><lte>180</lte></onlyif></add></x>
+			<y> <copy>0</copy>	</y>
+
+			<image name="CircularBarSideB">
+				<clips>1</clips>
+				<filename> thefrontier\Interface\Driveables\HalfCircle.dds </filename>
+				<depth> 28 </depth>
+				<width><copy src="grandparent()" trait="_diameter" /></width>
+				<height><copy src="grandparent()" trait="_diameter" /></height>
+				<zoom> &scale; </zoom>
+				<x>-1</x>
+				<y>0</y>
+				<systemcolor> 1 </systemcolor>
+				<alpha> 255 </alpha>
+				<_angle>
+					<copy>-180</copy>
+					<add>
+						<copy src="grandparent()" trait="_fillConv" />
+						<onlyif>
+							<copy src="grandparent()" trait="_fillConv" />
+							<gte>180</gte>
+							<and>
+								<copy src="grandparent()" trait="_fillConv" />
+								<lt>360</lt>
+							</and>
+						</onlyif>
+					</add>
+					<add>
+						<copy>180</copy>	
+						<onlyif>
+							<copy src="grandparent()" trait="_fillConv" />
+							<gte>180</gte>
+						</onlyif>
+					</add>
+				</_angle>
+				<rotateaxisx> <copy src="me()" trait="width"/> <div> 2 </div> </rotateaxisx>
+				<rotateaxisy> <copy src="me()" trait="height"/> <div> 2 </div> </rotateaxisy>
+				<rotateangle> <copy> 360 </copy> <sub src="me()" trait="_Angle"/> <mul> 3.141592654 </mul> <div> 180 </div> </rotateangle>
+			</image>
+		</rect>
+	</rect>
+
+
+
+
+<image name="vehHealthBG">
+	<visible> <copy src="sibling(vehBKG)" trait="visible" /> </visible>
+	<filename> thefrontier\Interface\Driveables\healthB.dds </filename>
+	<depth> 10 </depth>
+	<width> 78</width>
+	<height> 198 </height>
+	<zoom> &scale; </zoom>
+	<x> <copy src="sibling(vehBKG)" trait="x" /> </x>
+	<y> <copy src="sibling(vehBKG)" trait="y" /> <add> <copy src="sibling(vehBKG)" trait="height" /> <sub src="me()" trait="height"/> <div> 2 </div> </add></y>
+	<systemcolor> 2 </systemcolor>
+	<alpha> 255 </alpha>
+</image>
+
+
+<image name="vehHealth">
+	<visible> <copy src="sibling(vehBKG)" trait="visible" /> </visible>
+	<filename> thefrontier\Interface\Driveables\healthB.dds </filename>
+	<depth> 11 </depth>
+	<width> 78</width>
+	<height> 198 </height>
+	<zoom>100</zoom>
+	<_crop><copy>1</copy><sub src="me()" trait="_fill"/> <mul>100</mul><mul><copy src="me()" trait="height"/><div>100</div> </mul></_crop>
+	<cropy><copy>0</copy><add src="me()" trait="_crop"/></cropy>
+	<x> <copy src="sibling(vehBKG)" trait="x" /> </x>
+	<y> <copy src="sibling(vehBKG)" trait="y" /> <add> <copy src="sibling(vehBKG)" trait="height" /> <sub src="me()" trait="height"/> <div> 2 </div> </add><add src="me()" trait="cropy"/> </y>
+	<systemcolor> 1 </systemcolor>
+	<alpha> 255 </alpha>
+</image>
+
+
+
+<rect name="trigDebug">
+	<include src="VUI+\outline_rect.xml"/>
+<visible>0</visible>
+<depth> 2 </depth>
+	<x> <copy src="sibling(vehBKG)" trait="x" /> </x>
+<y> <copy src="sibling(vehBKG)" trait="y" /><add src="sibling(vehBKG)" trait="height" /> <sub src="me()" trait="height"/><sub>20</sub></y>
+<string> <copy src="io()" trait="_trigDebug" /> </string>
+<justify>&right;</justify>
+<font> 7 </font>
+<alpha> 255 </alpha>
+<systemcolor> &true; </systemcolor>
+<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</rect>
+
+<image name="trigDebugBox">
+<visible> <copy src="sibling(trigDebug)" trait="visible" /> </visible>
+<filename> interface\faders\black.dds </filename>
+<depth> 0 </depth>
+<width> <copy src="sibling(trigDebug)" trait="width" /> <add>24</add> </width>
+<height> <copy src="sibling(trigDebug)" trait="height" /> <add>12</add> </height>
+<zoom> &scale; </zoom>
+<x><copy src="sibling(trigDebugBoxXX)" trait="x" /><add src="sibling(trigDebugBoxXX)" trait="width" /></x>
+<y> <copy src="sibling(trigDebugBoxXX)" trait="y" /></y>
+<alpha> 135 </alpha>
+<systemcolor> &nosystemcolor; </systemcolor>
+</image>
+
+
+<rect name="vehReticle">
+<visible> 0 </visible>
+
+<_VehRetCol>0</_VehRetCol>
+<_VehRetS>-11</_VehRetS>
+<_VehRetSize>-9</_VehRetSize>
+<_VehRetEx>0</_VehRetEx>
+
+
+<rect name="vehAmmo">
+	<include src="VUI+\outline_rect.xml"/>
+	<visible>1</visible>
+	<depth> 9 </depth>
+	<x><copy src="vehBKG" trait="X" /></x>
+	<y><copy src="vehBKG" trait="Y" /><add src="vehBKG" trait="height" /> <sub src="me()" trait="height"/><sub>20</sub></y>
+	<string> <copy src="io()" trait="_vehAmmo" /> </string>
+	<justify>&right;</justify>
+	<font> 7 </font>
+	<alpha> 255 </alpha>
+	<systemcolor> 1</systemcolor>
+<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</rect>
+
+
+
+	<image name="vhBottomLeft">
+	<visible> 1</visible>
+	<filename> thefrontier\Interface\Driveables\bottomLeft.dds </filename>
+	<depth> 9 </depth>
+	<width> <copy src="parent()" trait="_VehRetSize"/> </width>
+	<height> <copy src="me()" trait="width"/> </height>
+	<zoom> &scale; </zoom>
+	<x> <copy src="screen()" trait="width"/> <sub src="me()" trait="width"/> <div> 2 </div>  <sub src="parent()" trait="_VehRetS"/><sub src="parent()" trait="_VehRetEx"/> </x>
+	<y> <copy src="screen()" trait="height"/> <sub src="me()" trait="height"/> <div> 2 </div> <add src="parent()" trait="_VehRetS"/> <add src="parent()" trait="_VehRetEx"/></y>
+	<alpha> 255 </alpha>
+	<systemcolor> <copy src="parent()" trait="_VehRetCol"/> </systemcolor>
+	</image>
+
+	<image name="vhBottomRight">
+	<visible> 1</visible>
+	<filename> thefrontier\Interface\Driveables\bottomRight.dds </filename>
+	<depth> 9 </depth>
+	<width> <copy src="parent()" trait="_VehRetSize"/> </width>
+	<height> <copy src="me()" trait="width"/> </height>
+	<zoom> &scale; </zoom>
+	<x> <copy src="screen()" trait="width"/> <sub src="me()" trait="width"/> <div> 2 </div>  <add src="parent()" trait="_VehRetS"/><add src="parent()" trait="_VehRetEx"/> </x>
+	<y> <copy src="screen()" trait="height"/> <sub src="me()" trait="height"/> <div> 2 </div> <add src="parent()" trait="_VehRetS"/> <add src="parent()" trait="_VehRetEx"/></y>
+	<alpha> 255 </alpha>
+	<systemcolor> <copy src="parent()" trait="_VehRetCol"/> </systemcolor>
+	</image>
+
+	<image name="vhTopLeft">
+	<visible> 1</visible>
+	<filename> thefrontier\Interface\Driveables\topLeft.dds </filename>
+	<depth> 9 </depth>
+	<width> <copy src="parent()" trait="_VehRetSize"/> </width>
+	<height> <copy src="me()" trait="width"/> </height>
+	<zoom> &scale; </zoom>
+	<x> <copy src="screen()" trait="width"/> <sub src="me()" trait="width"/> <div> 2 </div> <sub src="parent()" trait="_VehRetS"/><sub src="parent()" trait="_VehRetEx"/> </x>
+	<y> <copy src="screen()" trait="height"/> <sub src="me()" trait="height"/> <div> 2 </div> <sub src="parent()" trait="_VehRetS"/><sub src="parent()" trait="_VehRetEx"/></y>
+	<alpha> 255 </alpha>
+	<systemcolor> <copy src="parent()" trait="_VehRetCol"/> </systemcolor>
+	</image>
+
+	<image name="vhTopRight">
+	<visible> 1</visible>
+	<filename> thefrontier\Interface\Driveables\topRight.dds </filename>
+	<depth> 9 </depth>
+	<width> <copy src="parent()" trait="_VehRetSize"/> </width>
+	<height> <copy src="me()" trait="width"/> </height>
+	<zoom> &scale; </zoom>
+	<x> <copy src="screen()" trait="width"/> <sub src="me()" trait="width"/> <div> 2 </div>  <add src="parent()" trait="_VehRetS"/><add src="parent()" trait="_VehRetEx"/> </x>
+	<y> <copy src="screen()" trait="height"/> <sub src="me()" trait="height"/> <div> 2 </div> <sub src="parent()" trait="_VehRetS"/><sub src="parent()" trait="_VehRetEx"/> </y>
+	<alpha> 255 </alpha>
+	<systemcolor> <copy src="parent()" trait="_VehRetCol"/> </systemcolor>
+	</image>
+	
+
+
+
+
+
+</rect>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<image name="vehBKG">
+	<visible> 0 </visible>
+	<filename> thefrontier\Interface\Driveables\hud_comp_bkg.dds </filename>
+	<depth> 8 </depth>
+	<width> 433.75 </width>
+	<height> 320 </height>
+	<zoom> &scale; </zoom>
+	<x> <copy src="screen()" trait="width"/> <sub src="me()" trait="width"/> <add> 54 </add> </x>
+	<y> <copy src="screen()" trait="height"/> <sub src="me()" trait="height"/> </y>
+	<systemcolor> 1 </systemcolor>
+	<alpha> 255 </alpha>
+</image>
+
+<image name="vehBKGAlt">
+	<visible> <copy src="sibling(vehBKG)" trait="visible" /> </visible>
+	<filename> thefrontier\Interface\Driveables\hud_comp_alt.dds </filename>
+	<depth> 9 </depth>
+	<width> 66.25</width>
+	<height> 118.75 </height>
+	<zoom> &scale; </zoom>
+	<x> <copy src="sibling(vehBKG)" trait="x" /><add> 292.4 </add> </x>
+	<y> <copy src="sibling(vehBKG)" trait="y" /><add> 46.3 </add> </y>
+	<systemcolor> 2 </systemcolor>
+	<alpha> 255 </alpha>
+</image>
+
+
+
+
+<image name="vehBFuel">
+	<visible> <copy src="sibling(vehBKG)" trait="visible" /> </visible>
+	<filename> thefrontier\Interface\Driveables\fuel.dds </filename>
+	<depth> 9 </depth>
+	<width> 85</width>
+	<height> 85 </height>
+	<zoom> &scale; </zoom>
+	<_offsetX></_offsetX>
+	<_offsetY></_offsetY>
+	<x> <copy src="sibling(vehBKG)" trait="x" /><add> 241 </add> <add src="me()" trait="_offsetX"/> </x>
+	<y> <copy src="sibling(vehBKG)" trait="y" /><add> 170 </add> <add src="me()" trait="_offsetY"/> </y>
+	<systemcolor> 1 </systemcolor>
+	<alpha> 255 </alpha>
+</image>
+
+<image name="vehBFuelHand">
+	<visible> <copy src="sibling(vehBKG)" trait="visible" /> </visible>
+	<filename> thefrontier\Interface\Driveables\fuelHand.dds </filename>
+	<depth> 10 </depth>
+	<width>2.5</width>
+	<height>40.625</height>
+	<_oof>13</_oof>
+	<zoom> &scale; </zoom>
+	<x> <copy src="sibling(vehBFuel)" trait="x" /> <add> <copy src="sibling(vehBFuel)" trait="width" /> <sub src="me()" trait="width"/> <div> 2 </div> </add> </x>
+	<y> <copy src="sibling(vehBFuel)" trait="y" /> <add> <copy src="sibling(vehBFuel)" trait="height" /> <sub src="me()" trait="height"/> <div> 2 </div> </add> <sub src="me()" trait="_oof"/></y>
+	<_angle>0</_angle>
+	<rotateaxisx> <copy src="me()" trait="width"/> <div> 2 </div> </rotateaxisx>
+	<rotateaxisy> <copy src="me()" trait="height"/> <div> 2 </div><add src="me()" trait="_oof"/> </rotateaxisy>
+	<systemcolor> 2 </systemcolor>
+	<rotateangle> <copy> 198 </copy> <add><copy src="me()" trait="_Angle"/> <mul>144</mul> </add> <mul> 3.141592654 </mul> <div> 180 </div> </rotateangle>
+</image>
+			
+
+<image name="vehBoost">
+	<visible> <copy src="sibling(vehBKG)" trait="visible" /> </visible>
+	<filename> thefrontier\Interface\Driveables\boost.dds </filename>
+	<depth> 9 </depth>
+	<width> 17.5</width>
+	<height> 21.25 </height>
+	<zoom> &scale; </zoom>
+	<x> <copy src="sibling(vehBKG)" trait="x" /> <add> <copy src="sibling(vehBKG)" trait="width" /> <sub src="me()" trait="width"/> <div> 2 </div> </add> </x>
+	<y> <copy src="sibling(vehBKG)" trait="y" /> <add> <copy src="sibling(vehBKG)" trait="height" /> <sub src="me()" trait="height"/> <div> 2 </div> </add> </y>
+	<systemcolor> 1 </systemcolor>
+	<alpha> 255 </alpha>
+</image>
+
+
+<image name="vehDialHand">
+	<visible> <copy src="sibling(vehBKG)" trait="visible" /> </visible>
+	<filename> thefrontier\Interface\Driveables\dialHand.dds </filename>
+	<depth> 10 </depth>
+	<width> <copy>18.125</copy> <add src="me()" trait="_aX" /> </width>
+	<height><copy>99.375</copy> <add src="me()" trait="_aY" /> </height>
+	<zoom> &scale; </zoom>
+	<_oof>70</_oof>
+	<x> <copy src="sibling(vehBKG)" trait="x" /> <add> <copy src="sibling(vehBKG)" trait="width" /> <sub src="me()" trait="width"/> <div> 2 </div> </add> </x>
+	<y> <copy src="sibling(vehBKG)" trait="y" /> <add> <copy src="sibling(vehBKG)" trait="height" /> <sub src="me()" trait="height"/> <div> 2 </div> </add> <sub src="me()" trait="_oof"/> </y>
+	<_angle>0</_angle>
+	<rotateaxisx> <copy src="me()" trait="width"/> <div> 2 </div> </rotateaxisx>
+	<rotateaxisy> <copy src="me()" trait="height"/> <div> 2 </div><add src="me()" trait="_oof"/> </rotateaxisy>
+	<rotateangle> <copy> 360 </copy> <sub src="me()" trait="_Angle"/> <mul> 3.141592654 </mul> <div> 180 </div> </rotateangle>
+	<systemcolor> 2 </systemcolor>
+</image>
+
+
+
+
+
+<rect name="vehDialSpeed">
+	<include src="VUI+\outline_rect.xml"/>
+	<visible> <copy src="sibling(vehBKG)" trait="visible" /> </visible>
+	<depth> 12 </depth>
+	<x> <copy src="sibling(vehBKG)" trait="x" /> <add> <copy src="sibling(vehBKG)" trait="width" /> <sub src="me()" trait="width"/> <div> 2 </div> </add> <sub> 6.6 </sub> </x>
+	<y> <copy src="sibling(vehBKG)" trait="y" /> <add> <copy src="sibling(vehBKG)" trait="height" /> <sub src="me()" trait="height"/> <div> 2 </div> </add> <add> 109.6 </add> </y>
+	<string> <copy src="io()" trait="_vehDialSpeed" /> </string>
+	<font> 8 </font>
+	<systemcolor> 1 </systemcolor>
+<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</rect>
+
+
+<rect name="vehDialGear">
+	<include src="VUI+\outline_rect.xml"/>
+	<visible> <copy src="sibling(vehBKG)" trait="visible" /> </visible>
+	<depth> 12 </depth>
+	<x> <copy src="sibling(vehBKG)" trait="x" /> <add> <copy src="sibling(vehBKG)" trait="width" /> <sub src="me()" trait="width"/> <div> 2 </div> </add> <add> 10 </add> </x>
+	<y> <copy src="sibling(vehBKG)" trait="y" /> <add> <copy src="sibling(vehBKG)" trait="height" /> <sub src="me()" trait="height"/> <div> 2 </div> </add> <add> 57.6 </add> </y>
+	<string> <copy src="io()" trait="_vehDialGear" /> </string>
+	<font> 7 </font>
+	<systemcolor> 1 </systemcolor>
+<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</rect>
+
+

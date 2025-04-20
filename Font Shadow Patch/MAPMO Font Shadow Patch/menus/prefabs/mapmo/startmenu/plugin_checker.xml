@@ -1,0 +1,187 @@
+<rect name="MAPMOChecker">
+  <_warning>0</_warning>
+  <_controllershow>0</_controllershow>
+  <_height><copy src="child(Icon)" trait="height"/></_height>
+  <locus>&true;</locus>
+  <visible><copy src="io" trait="_MAPMOShowPluginChecker"/></visible>
+  <y>
+    <copy src="screen" trait="height"/>
+    <sub src="child(Icon)" trait="height"/>
+    <sub>5</sub>
+  </y>
+  <image name="Icon">
+    <_type>0</_type>
+    <_icon_0>mapmo\checker_0.dds</_icon_0>
+    <_icon_1>mapmo\checker_mouseover_0.dds</_icon_1>
+    <_icon_2>mapmo\checker_2.dds</_icon_2>
+    <_icon_3>mapmo\checker_mouseover_2.dds</_icon_3>
+    <_icon_4>mapmo\checker_4.dds</_icon_4>
+    <_icon_5>mapmo\checker_mouseover_4.dds</_icon_5>
+    <alpha>255</alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <filename>
+      <copy src="me" trait="mouseover"/>
+      <add src="parent" trait="_controllershow"/>
+      <add src="me" trait="_type"/>
+      <copy src="me" trait="_icon_"/>
+    </filename>
+    <height>50</height>
+    <systemcolor>
+      <copy>0</copy>
+      <add><copy src="MAPMO" trait="systemcolor"/><onlyifnot src="parent" trait="_warning"/></add>
+      <add><copy>&hudalt;</copy><onlyif src="parent" trait="_warning"/></add>
+    </systemcolor>
+    <target>&true;</target>
+    <width><copy src="me" trait="height"/></width>
+    <zoom>&scale;</zoom>
+  </image>
+  <text name="FNVVersion">
+    <alpha><copy src="sibling(Icon)" trait="alpha"/></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <font>7</font>
+    <justify>&left;</justify>
+    <string><copy src="io" trait="_FNVVER"/></string>
+    <systemcolor><copy src="MAPMO" trait="systemcolor"/></systemcolor>
+    <visible>
+      <copy src="sibling(Icon)" trait="mouseover"/>
+      <add src="parent" trait="_controllershow"/>
+    </visible>
+    <x><copy src="sibling(Icon)" trait="width"/></x>
+    <y>
+      <copy src="sibling(Icon)" trait="height"/>
+      <sub>25</sub>
+    </y>
+    <zoom>75</zoom>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  <text name="NVSE">
+    <_warning>0</_warning>
+    <alpha><copy src="sibling(Icon)" trait="alpha"/><div>1.25</div></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <font><copy src="sibling(FNVVersion)" trait="font"/></font>
+    <justify><copy src="sibling(FNVVersion)" trait="justify"/></justify>
+    <string>- NVSE</string>
+    <systemcolor>
+      <copy>0</copy>
+      <add><copy src="MAPMO" trait="systemcolor"/><onlyifnot src="me" trait="_warning"/></add>
+      <add><copy>&hudalt;</copy><onlyif src="me" trait="_warning"/></add>
+    </systemcolor>
+    <visible><copy src="sibling(FNVVersion)" trait="visible"/></visible>
+    <x><copy src="sibling(FNVVersion)" trait="x"/><add src="sibling(FNVVersion)" trait="width"/></x>
+    <y><copy src="sibling(FNVVersion)" trait="y"/></y>
+    <zoom><copy src="sibling(FNVVersion)" trait="zoom"/></zoom>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  <text name="NVSEVersion">
+    <alpha><copy src="sibling(FNVVersion)" trait="alpha"/></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <font><copy src="sibling(FNVVersion)" trait="font"/></font>
+    <justify><copy src="sibling(FNVVersion)" trait="justify"/></justify>
+    <string><copy src="io" trait="_NVSEVER"/></string>
+    <systemcolor><copy src="sibling(NVSE)" trait="systemcolor"/></systemcolor>
+    <visible><copy src="sibling(FNVVersion)" trait="visible"/></visible>
+    <x><copy src="sibling(NVSE)" trait="x"/><add src="sibling(NVSE)" trait="width"/></x>
+    <y><copy src="sibling(FNVVersion)" trait="y"/></y>
+    <zoom><copy src="sibling(FNVVersion)" trait="zoom"/></zoom>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  <text name="NVHR">
+    <alpha><copy src="sibling(NVSE)" trait="alpha"/></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <font><copy src="sibling(FNVVersion)" trait="font"/></font>
+    <justify><copy src="sibling(FNVVersion)" trait="justify"/></justify>
+    <string>- NVHR</string>
+    <systemcolor><copy src="sibling(FNVVersion)" trait="systemcolor"/></systemcolor>
+    <visible><copy src="sibling(FNVVersion)" trait="visible"/><onlyif><copy src="io" trait="_NVHRVER"/><neq>0</neq></onlyif></visible>
+    <x><copy src="sibling(NVSEVersion)" trait="x"/><add src="sibling(NVSEVersion)" trait="width"/></x>
+    <y><copy src="sibling(FNVVersion)" trait="y"/></y>
+    <zoom><copy src="sibling(FNVVersion)" trait="zoom"/></zoom>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  <text name="NVHRVersion">
+    <alpha><copy src="sibling(FNVVersion)" trait="alpha"/></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <font><copy src="sibling(FNVVersion)" trait="font"/></font>
+    <justify><copy src="sibling(FNVVersion)" trait="justify"/></justify>
+    <string><copy src="io" trait="_NVHRVER"/></string>
+    <systemcolor><copy src="sibling(NVHR)" trait="systemcolor"/></systemcolor>
+    <visible><copy src="sibling(NVHR)" trait="visible"/></visible>
+    <x><copy src="sibling(NVHR)" trait="x"/><add src="sibling(NVHR)" trait="width"/></x>
+    <y><copy src="sibling(FNVVersion)" trait="y"/></y>
+    <zoom><copy src="sibling(FNVVersion)" trait="zoom"/></zoom>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  <rect name="AnhNVSE">
+    <_index>8</_index>
+    <_name>AnhNVSE</_name>
+    <_version><copy src="io" trait="_AnhNVSEVER"/></_version>
+    <_warning>0</_warning>
+    <include src="MAPMO\prefabs\plugin.xml"/>
+  </rect>
+  <rect name="JIPNVSEPlugin">
+    <_index>7</_index>
+    <_name>JIP LN NVSE</_name>
+    <_version><copy src="io" trait="_JIPNVSEPluginVER"/></_version>
+    <_warning>0</_warning>
+    <include src="MAPMO\prefabs\plugin.xml"/>
+  </rect>
+  <rect name="JohnnyGuitarNVSE">
+    <_index>6</_index>
+    <_name>JohnnyGuitar NVSE</_name>
+    <_version><copy src="io" trait="_JohnnyGuitarNVSEVER"/></_version>
+    <_warning>0</_warning>
+    <include src="MAPMO\prefabs\plugin.xml"/>
+  </rect>
+  <rect name="kNVSE">
+    <_index>5</_index>
+    <_name>kNVSE</_name>
+    <_version><copy src="io" trait="_kNVSEVER"/></_version>
+    <_warning>0</_warning>
+    <include src="MAPMO\prefabs\plugin.xml"/>
+  </rect>
+  <rect name="StewieTweaks">
+    <_index>4</_index>
+    <_name>lStewieAl's Tweaks</_name>
+    <_version><copy src="io" trait="_StewieTweaksVER"/></_version>
+    <_warning>0</_warning>
+    <include src="MAPMO\prefabs\plugin.xml"/>
+  </rect>
+  <rect name="ShowOffNVSE">
+    <_index>3</_index>
+    <_name>ShowOff xNVSE</_name>
+    <_version><copy src="io" trait="_ShowOffNVSEVER"/></_version>
+    <_warning>0</_warning>
+    <include src="MAPMO\prefabs\plugin.xml"/>
+  </rect>
+  <rect name="SUPNVSE">
+    <_index>2</_index>
+    <_name>SUP NVSE</_name>
+    <_version><copy src="io" trait="_SUPNVSEVER"/></_version>
+    <_warning>0</_warning>
+    <include src="MAPMO\prefabs\plugin.xml"/>
+  </rect>
+  <rect name="UIO">
+    <_index>1</_index>
+    <_name>User Interface Organizer</_name>
+    <_version><copy src="io" trait="_UIOVER"/></_version>
+    <_warning>0</_warning>
+    <include src="MAPMO\prefabs\plugin.xml"/>
+  </rect>
+  <rect name="yUI">
+    <_index>0</_index>
+    <_name>yUser Interface</_name>
+    <_version><copy src="io" trait="_yUIVER"/></_version>
+    <_warning>0</_warning>
+    <include src="MAPMO\prefabs\plugin.xml"/>
+  </rect>
+</rect>

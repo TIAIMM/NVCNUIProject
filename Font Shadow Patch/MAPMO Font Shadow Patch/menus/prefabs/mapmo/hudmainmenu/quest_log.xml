@@ -1,0 +1,99 @@
+<template name="QuestLogTemplate">
+  <rect name="QuestLog">
+    <_init>0</_init>
+    <depth>-100</depth>
+    <locus>&true;</locus>
+    <visible><copy src="io" trait="_MAPMOShowQuestHUD"/></visible>
+    <x><copy src="io" trait="_MAPMOQuestHUDXPos"/></x>
+    <y><copy src="io" trait="_MAPMOQuestHUDYPos"/></y>
+  </rect>
+</template>
+
+<template name="QuestTitleTemplate">
+  <rect name="QuestTitle">
+    <_active>0</_active>
+    <_complete>0</_complete>
+    <_inactive>0</_inactive>
+    <_icon_0>mapmo\quest.dds</_icon_0>
+    <_icon_1>mapmo\quest_active.dds</_icon_1>
+    <_YPos>0</_YPos>
+    <alpha>0</alpha>
+    <height><copy src="child(Text)" trait="height"/></height>
+    <locus>&true;</locus>
+    <systemcolor>&hudmain;</systemcolor>
+    <y>0</y>
+    <image name="Icon">
+      <alpha><copy src="parent" trait="alpha"/></alpha>
+      <brightness><copy src="me" trait="alpha"/></brightness>
+      <filename>
+        <copy src="parent" trait="_active"/>
+        <copy src="parent" trait="_icon_"/>
+      </filename>
+      <height><copy>0.5</copy><mult><copy src="io" trait="_MAPMOQuestHUDScale"/></mult></height>
+      <systemcolor>
+        <copy>0</copy>
+        <add><copy>1</copy><onlyifnot src="parent" trait="_complete"/></add>
+        <add><copy src="parent" trait="_complete"/><onlyif src="parent" trait="_complete"/></add>
+      </systemcolor>
+      <width><copy src="me" trait="height"/></width>
+      <zoom>&scale;</zoom>
+    </image>
+    <text name="Text">
+      <alpha><copy src="parent" trait="alpha"/></alpha>
+      <brightness><copy src="me" trait="alpha"/></brightness>
+      <font>8</font>
+      <justify><copy src="io" trait="_MAPMOQuestHUDAlign"/></justify>
+      <string>QUEST TITLE</string>
+      <systemcolor>
+        <copy>0</copy>
+        <add><copy>1</copy><onlyifnot src="parent" trait="_complete"/></add>
+        <add><copy src="parent" trait="_complete"/><onlyif src="parent" trait="_complete"/></add>
+      </systemcolor>
+      <x>
+        <copy>0</copy>
+        <add><copy src="io" trait="_MAPMOQuestHUDScale"/><mult>-0.125</mult><onlyif><copy src="io" trait="_MAPMOQuestHUDAlign"/><eq>4</eq></onlyif></add>
+        <add><copy src="io" trait="_MAPMOQuestHUDScale"/><mult>0.5</mult><onlyif><copy src="io" trait="_MAPMOQuestHUDAlign"/><eq>1</eq></onlyif></add>
+      </x>
+      <y><copy src="io" trait="_MAPMOQuestHUDScale"/><mult>0.15</mult></y>
+      <zoom><copy src="io" trait="_MAPMOQuestHUDScale"/><mult>0.75</mult></zoom>
+    <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  </rect>
+</template>
+
+<template name="QuestObjectiveTemplate">
+  <rect name="QuestObjective">
+    <_complete>0</_complete>
+    <_inactive>0</_inactive>
+    <_YPos>0</_YPos>
+    <alpha>0</alpha>
+    <locus>&true;</locus>
+    <height><copy src="child(Text)" trait="height"/></height>
+    <y>0</y>
+    <zoom><copy src="io" trait="_MAPMOQuestHUDScale"/></zoom>
+    <text name="Text">
+      <alpha><copy src="parent" trait="alpha"/><div>1.25</div></alpha>
+      <brightness><copy src="me" trait="alpha"/></brightness>
+      <font>7</font>
+      <justify><copy src="io" trait="_MAPMOQuestHUDAlign"/></justify>
+      <string>Objective text. Do some stuff.</string>
+      <systemcolor>
+        <copy>0</copy>
+        <add><copy src="io" trait="_MAPMOObjectiveHUDTextColor"/><onlyifnot src="parent" trait="_complete"/></add>
+        <add><copy src="parent" trait="_complete"/><onlyif src="parent" trait="_complete"/></add>
+      </systemcolor>
+      <wrapwidth><copy>5.12</copy><mult src="me" trait="zoom"/></wrapwidth>
+      <x>
+        <copy>0</copy>
+        <add><copy src="io" trait="_MAPMOQuestHUDScale"/><mult>-0.125</mult><onlyif><copy src="io" trait="_MAPMOQuestHUDAlign"/><eq>4</eq></onlyif></add>
+        <add><copy src="io" trait="_MAPMOQuestHUDScale"/><mult>0.5</mult><onlyif><copy src="io" trait="_MAPMOQuestHUDAlign"/><eq>1</eq></onlyif></add>
+      </x>
+      <zoom><copy src="io" trait="_MAPMOQuestHUDScale"/></zoom>
+    <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  </rect>
+</template>

@@ -1,0 +1,51 @@
+<rect name="XPMeter">
+  <_enabled>0</_enabled>
+  <alpha><copy src="XPMeter" trait="alpha"/></alpha>
+  <brightness><copy src="me" trait="alpha"/></brightness>
+  <locus>&true;</locus>
+  <systemcolor>&hudalt;</systemcolor>
+  <visible><copy src="me" trait="_enabled"/></visible>
+  <x><copy src="io" trait="_MAPMOHUDRadsCounterXPos"/></x>
+  <y><copy src="io" trait="_MAPMOHUDRadsCounterYPos"/></y>
+  <zoom><copy src="io" trait="_MAPMOHUDRadsCounterScale"/></zoom>
+  <text name="Value">
+    <alpha>
+      <copy src="parent" trait="alpha"/>
+      <max><copy>255</copy><onlyif src="io" trait="_MAPMOConfig"/></max>
+    </alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <font>8</font>
+    <justify>&right;</justify>
+    <string><copy src="radiation_text_value" trait="string"/></string>
+    <systemcolor><copy src="parent" trait="systemcolor"/></systemcolor>
+    <x>
+      <copy><copy src="sibling(Text)" trait="width"/><mult>-1.1</mult></copy>
+    </x>
+    <zoom><copy src="parent" trait="zoom"/></zoom>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  <text name="Text">
+    <alpha><copy src="sibling(Value)" trait="alpha"/></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <font>7</font>
+    <justify><copy src="sibling(Value)" trait="justify"/></justify>
+    <string>&sRadsPerSecond;</string>
+    <systemcolor><copy src="parent" trait="systemcolor"/></systemcolor>
+    <zoom><copy src="parent" trait="zoom"/></zoom>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  <image name="Icon">
+    <alpha><copy src="sibling(Value)" trait="alpha"/></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <filename>mapmo\rads_counter.dds</filename>
+    <height><copy>0.85</copy><mult src="parent" trait="zoom"/></height>
+    <systemcolor><copy src="parent" trait="systemcolor"/></systemcolor>
+    <width><copy src="me" trait="height"/></width>
+    <y><copy src="sibling(Text)" trait="y"/><sub><copy>0.2</copy><mult src="parent" trait="zoom"/></sub></y>
+    <zoom>&scale;</zoom>
+  </image>
+</rect>

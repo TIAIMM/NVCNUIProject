@@ -1,0 +1,64 @@
+<rect name="CompanionUI">
+  <locus>&true;</locus>
+  <visible><copy src="io" trait="_MAPMOShowCompanionUI"/></visible>
+  <x><copy src="io" trait="_MAPMOCompanionUIXPos"/></x>
+  <y><copy src="io" trait="_MAPMOCompanionUIYPos"/></y>
+</rect>
+<template name="CompanionTemplate">
+  <rect name="Companion">
+    <_id>0</_id>
+    <_scale><copy src="io" trait="_MAPMOCompanionUIScale"/></_scale>
+    <locus>&true;</locus>
+    <y><copy><copy>1.1</copy><mult src="me" trait="_scale"/></copy><mult src="me" trait="_id"/></y>
+    <image name="Interface">
+      <visible><copy src="parent" trait="visible"/></visible>
+      <filename>mapmo\companion.dds</filename>
+      <height><copy>1.28</copy><mult src="parent" trait="_scale"/></height>
+      <width><copy>2.56</copy><mult src="parent" trait="_scale"/></width>
+      <systemcolor>&hudmain;</systemcolor>
+      <zoom>&scale;</zoom>
+    </image>
+    <image name="Portrait">
+      <visible><copy src="parent" trait="visible"/></visible>
+      <_scale><copy>0.65</copy><mult src="parent" trait="_scale"/></_scale>
+      <depth><copy src="sibling(Interface)" trait="depth"/><add>1</add></depth>
+      <filename>mapmo\arcade.dds</filename>
+      <height><copy>1.60</copy><mult src="me" trait="_scale"/></height>
+      <systemcolor>&nosystemcolor;</systemcolor>
+      <width><copy>1.28</copy><mult src="me" trait="_scale"/></width>
+      <x><copy src="sibling(Interface)" trait="x"/><add><copy>0.42</copy><mult src="parent" trait="_scale"/></add></x>
+      <y><copy src="sibling(Interface)" trait="y"/><add><copy>0.005</copy><mult src="parent" trait="_scale"/></add></y>
+      <zoom>&scale;</zoom>
+    </image>
+    <image name="Gauge">
+      <_max_width><copy>0.85</copy><mult src="parent" trait="_scale"/></_max_width>
+      <_scale><copy>0.765</copy><mult src="parent" trait="_scale"/></_scale>
+      <visible><copy src="parent" trait="visible"/></visible>
+      <alpha>200</alpha>
+      <brightness><copy src="me" trait="alpha"/></brightness>
+      <depth><copy src="sibling(Portrait)" trait="depth"/></depth>
+      <filename>interface\hud\hud_tick_mark.dds</filename>
+      <height><copy>0.32</copy><mult src="me" trait="_scale"/></height>
+      <systemcolor>&hudmain;</systemcolor>
+      <tile>&true;</tile>
+      <width><copy>0.85</copy><mult src="parent" trait="_scale"/></width>
+      <x><copy>1.31</copy><mult src="parent" trait="_scale"/></x>
+      <y><copy>0.54</copy><mult src="parent" trait="_scale"/></y>
+      <zoom><copy src="me" trait="_scale"/></zoom>
+    </image>
+    <text name="Name">
+      <visible><copy src="parent" trait="visible"/></visible>
+      <depth><copy src="sibling(Portrait)" trait="depth"/></depth>
+      <font>7</font>
+      <justify>&left;</justify>
+      <string></string>
+      <systemcolor><copy src="sibling(Interface)" trait="systemcolor"/></systemcolor>
+      <x><copy src="sibling(Interface)" trait="x"/><add><copy>1.25</copy><mult src="parent" trait="_scale"/></add></x>
+      <y><copy src="sibling(Interface)" trait="y"/><add><copy>0.25</copy><mult src="parent" trait="_scale"/></add></y>
+      <zoom><copy>0.75</copy><mult src="parent" trait="_scale"/></zoom>
+    <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  </rect>
+</template>

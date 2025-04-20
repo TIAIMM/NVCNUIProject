@@ -1,0 +1,150 @@
+<_xHudVisible></_HudVisible>
+<_bTankUse></_HudVisible>
+<_AmmoVisible></_AmmoVisible>
+<_vhpPercent></vhpPercent>
+
+<rect name="xHealthRect">
+
+<image name="TFVHPG">
+<visible><copy src="io()" trait="_xHudVisible"/></visible>
+<filename>thefrontier\interface\hud\ui_veh_gauge.dds</filename>
+<depth> 2 </depth>
+<zoom> &scale; </zoom>
+<width>15</width>
+<height>293</height>
+
+<_cropy>
+	<copy src="me()" trait="height"/>
+	<sub>
+		<copy src="me()" trait="height"/>
+		<div>100</div>
+		<mul src="io()" trait="_vhpPercent"/>
+	</sub>
+</_cropy>
+
+<x>60</x>
+<y><copy>324</copy><add src="me()" trait="_cropy"/></y>
+
+<cropy><copy src="me()" trait="_cropy"/></cropy>
+
+<!-- colors. remove if not needed -->
+<red>
+<copy>0</copy>
+	<add>
+	<copy>255</copy>
+		<onlyif>
+			<copy src="io()" trait="_vhpPercent" />
+			<lte>67</lte>
+		</onlyif>
+	</add>
+</red>
+<green>
+<copy>0</copy>
+	<add>
+	<copy>127</copy>
+		<onlyif>
+			<copy src="io()" trait="_vhpPercent" />
+			<lte>67</lte>
+			<and>
+				<copy src="io()" trait="_vhpPercent" />
+				<gt>34</gt>
+			</and>
+		</onlyif>
+	</add>
+</green>
+<blue>0</blue>
+<!-- if colors removed - set systemcolor to true -->
+<systemcolor>
+    <copy> 0 </copy>
+    <add>
+        <copy> 1 </copy>
+        <onlyif>
+            <copy src="io()" trait="_vhpPercent"/>
+            <gt> 67 </gt>
+        </onlyif>
+    </add>
+</systemcolor>
+<alpha> 255 </alpha>
+</image>
+
+
+
+
+
+
+<!-- background -->
+<image name="TFVHPBG">
+<visible><copy src="io()" trait="_xHudVisible"/></visible>
+<filename>thefrontier\interface\hud\ui_veh_bg.dds</filename>
+<depth> 1 </depth>
+<width>128</width>
+<height>512</height>
+<zoom> &scale; </zoom>
+<x>40</x>
+<y>124</y>
+<systemcolor> &true; </systemcolor>
+<alpha> 255 </alpha>
+</image>
+
+</rect>
+
+ <image name="TankOverlay">
+        <visible>  <copy src="io()" trait="_bTankUse" /> </visible>
+        <filename>thefrontier\interface\hud\overlay.dds</filename>
+        <depth>0</depth>
+        <x> 0 </x>
+        <y> 0 </y>
+        <width><copy src="screen()" trait="width"/></width>
+        <height><copy src="screen()" trait="height"/></height>
+        <systemcolor> &nosystemcolor; </systemcolor>
+		    <zoom> &scale; </zoom>
+        <alpha></alpha>
+</image>
+
+
+<rect name="TestOutput">
+	<include src="VUI+\outline_rect.xml"/>
+	<visible>  <copy src="io()" trait="_xHudVisible" /> </visible>	
+	<depth> 12 </depth>
+	<x> 98 </x>
+	<y> 560 </y>
+	<string> <copy src="io()" trait="_TestText" /> </string>
+	<font> 6 </font>
+	<justify>&center;</justify>
+	<systemcolor>&hudmain;</systemcolor>
+	
+<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</rect>
+
+<rect name="VehicleAmmo">
+	<include src="VUI+\outline_rect.xml"/>
+	<visible>  <copy src="io()" trait="_xHudVisible" /> </visible>	
+	<depth> 12 </depth>
+	<x> 101 </x>
+	<y> 650 </y>
+	<string><copy src="io()" trait="_VehicleAmmoCount" /> </string>
+	<font> 6 </font>
+	<justify>&center;</justify>
+	<systemcolor>&hudmain;</systemcolor>
+	
+<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</rect>
+
+<rect name="VHPString">
+	<include src="VUI+\outline_rect.xml"/>
+	<visible>  <copy src="io()" trait="_xHudVisible" /> </visible>	
+	<depth> 11 </depth>
+	<x> 101 </x>
+	<y> 625 </y>
+	<string>VHP</string>
+	<font> 6 </font>
+	<justify>&center;</justify>
+	<systemcolor>&hudmain;</systemcolor>
+	
+<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</rect>
+
+

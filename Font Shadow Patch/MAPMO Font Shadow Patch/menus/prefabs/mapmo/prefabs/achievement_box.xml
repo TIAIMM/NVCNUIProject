@@ -1,0 +1,95 @@
+<_focus>
+  <copy>0</copy>
+  <add>
+    <copy>1</copy>
+    <onlyif><copy src="me" trait="_id_h"/><eq src="AchievementsLog" trait="_focus_h"/></onlyif>
+    <onlyif><copy src="me" trait="_id_v"/><eq src="AchievementsLog" trait="_focus_v"/></onlyif>
+    <onlyifnot src="me" trait="mouseover"/>
+  </add>
+  <add src="me" trait="mouseover"/>
+</_focus>
+<_unlocked>0</_unlocked>
+<_icon_0>mapmo\achievements\locked.dds</_icon_0>
+<height><copy src="child(IconBox)" trait="height"/></height>
+<locus>&true;</locus>
+<mouseoversound>UIMenuFocus</mouseoversound>
+<target>&true;</target>
+<width><copy src="child(IconBox)" trait="width"/></width>
+<x><copy src="parent" trait="_gap_h"/><add>64</add><mult src="me" trait="_id_h"/><sub>64</sub></x>
+<y><copy src="parent" trait="_gap_v"/><add>64</add><mult src="me" trait="_id_v"/><sub>64</sub></y>
+<image name="Icon">
+  <alpha>255</alpha>
+  <brightness>
+    <copy>0</copy>
+    <add><copy>127</copy><onlyifnot src="parent" trait="_unlocked"/><onlyifnot src="parent" trait="_focus"/></add>
+    <add><copy>255</copy><onlyif src="parent" trait="_unlocked"/><onlyifnot src="parent" trait="_focus"/></add>
+    <add><copy>295</copy><onlyif src="parent" trait="_focus"/></add>
+  </brightness>
+  <filename><copy src="parent" trait="_unlocked"/><copy src="parent" trait="_icon_"/></filename>
+  <height><copy src="sibling(IconBox)" trait="height"/><sub><copy src="globals" trait="_line_thickness"/><mult>2</mult></sub></height>
+  <systemcolor>
+    <copy>0</copy>
+    <add><copy src="MAPMO" trait="systemcolor"/><onlyifnot src="parent" trait="_unlocked"/></add>
+    <add><copy src="MAPMO" trait="systemcolor"/><onlyif src="parent" trait="_focus"/><onlyif src="parent" trait="_unlocked"/></add>
+  </systemcolor>
+  <width><copy src="me" trait="height"/></width>
+  <x><copy src="globals" trait="_line_thickness"/></x>
+  <y><copy src="globals" trait="_line_thickness"/></y>
+  <zoom>&scale;</zoom>
+</image>
+<hotrect name="IconBox">
+  <alpha><copy src="sibling(Icon)" trait="alpha"/></alpha>
+  <brightness><copy src="sibling(Icon)" trait="brightness"/></brightness>
+  <depth>-1</depth>
+  <height>64</height>
+  <systemcolor><copy src="MAPMO" trait="systemcolor"/></systemcolor>
+  <width><copy src="me" trait="height"/></width>
+</hotrect>
+<image name="IconB">
+  <filename><copy src="sibling(Icon)" trait="filename"/></filename>
+  <height><copy src="sibling(IconBoxB)" trait="height"/><sub><copy src="globals" trait="_line_thickness"/><mult>2</mult></sub></height>
+  <systemcolor><copy src="MAPMO" trait="systemcolor"/><onlyifnot src="parent" trait="_unlocked"/></systemcolor>
+  <visible><copy src="sibling(IconBoxB)" trait="visible"/></visible>
+  <width><copy src="me" trait="height"/></width>
+  <x><copy src="globals" trait="_line_thickness"/><add src="sibling(IconBoxB)" trait="x"/></x>
+  <y><copy><copy src="globals" trait="_line_thickness"/></copy><add src="sibling(IconBoxB)" trait="y"/></y>
+  <zoom><copy src="sibling(Icon)" trait="zoom"/></zoom>
+</image>
+<hotrect name="IconBoxB">
+  <alpha><copy src="sibling(IconBox)" trait="alpha"/></alpha>
+  <brightness><copy src="me" trait="alpha"/></brightness>
+  <depth><copy src="sibling(IconBox)" trait="depth"/></depth>
+  <height><copy src="sibling(IconBox)" trait="height"/><mult>2</mult></height>
+  <systemcolor><copy src="MAPMO" trait="systemcolor"/></systemcolor>
+  <visible><copy src="parent" trait="_focus"/></visible>
+  <width><copy src="me" trait="height"/></width>
+  <x><copy><copy>-64</copy><sub src="grandparent" trait="_gap_h"/></copy><mult><copy>-1</copy><add src="parent" trait="_id_h"/></mult></x>
+  <y><copy><copy>64</copy><add src="grandparent" trait="_gap_v"/></copy><mult><copy>8</copy><sub src="parent" trait="_id_v"/></mult></y>
+</hotrect>
+<text name="Title">
+  <alpha>255</alpha>
+  <brightness><copy src="me" trait="alpha"/></brightness>
+  <font>8</font>
+  <string><copy src="parent" trait="_title"/></string>
+  <systemcolor><copy src="MAPMO" trait="systemcolor"/></systemcolor>
+  <visible><copy src="sibling(IconBoxB)" trait="visible"/></visible>
+  <x><copy>15</copy><add src="sibling(IconBoxB)" trait="x"/><add src="sibling(IconBoxB)" trait="width"/></x>
+  <y><copy>10</copy><add src="sibling(IconBoxB)" trait="y"/></y>
+<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+<text name="Description">
+  <alpha><copy src="sibling(Title)" trait="alpha"/></alpha>
+  <brightness><copy src="me" trait="alpha"/></brightness>
+  <font>7</font>
+  <string><copy src="parent" trait="_description"/></string>
+  <systemcolor><copy src="MAPMO" trait="systemcolor"/></systemcolor>
+  <visible><copy src="sibling(IconBoxB)" trait="visible"/></visible>
+  <wrapwidth>750</wrapwidth>
+  <x><copy><copy src="globals" trait="_line_thickness"/></copy><add src="sibling(Title)" trait="x"/></x>
+  <y><copy>50</copy><add src="sibling(Title)" trait="y"/></y>
+<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>

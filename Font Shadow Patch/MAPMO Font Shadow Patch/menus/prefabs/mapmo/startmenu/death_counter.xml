@@ -1,0 +1,30 @@
+<rect name="DeathCounter">
+  <alpha><copy src="MAPMO" trait="alpha"/></alpha>
+  <locus>&true;</locus>
+  <visible><copy src="io" trait="_MAPMOShowDeathCounter"/></visible>
+  <x><copy src="io" trait="_MAPMODeathCounterXPos"/></x>
+  <y><copy src="io" trait="_MAPMODeathCounterYPos"/></y>
+  <image name="Icon">
+    <alpha><copy src="parent" trait="alpha"/></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <filename>mapmo\death.dds</filename>
+    <height><copy>0.63</copy><mult src="io" trait="_MAPMODeathCounterScale"/></height>
+    <systemcolor><copy src="MAPMO" trait="systemcolor"/></systemcolor>
+    <width><copy src="me" trait="height"/></width>
+    <zoom>&scale;</zoom>
+  </image>
+  <text name="Text">
+    <alpha><copy src="parent" trait="alpha"/></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <font>8</font>
+    <justify>&left;</justify>
+    <string><copy src="io" trait="_MAPMODeathCounterTotal"/></string>
+    <systemcolor><copy src="MAPMO" trait="systemcolor"/></systemcolor>
+    <x><copy src="sibling(Icon)" trait="width"/></x>
+    <y><copy>0.2</copy><mult src="me" trait="zoom"/></y>
+    <zoom><copy src="io" trait="_MAPMODeathCounterScale"/></zoom>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+</rect>

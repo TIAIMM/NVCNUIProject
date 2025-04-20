@@ -1,0 +1,96 @@
+<rect name="AchievementPopUp">
+  <_busy>0</_busy>
+  <_showhide>0</_showhide>
+  <depth>1000</depth>
+  <locus>&true;</locus>
+  <visible><copy src="io" trait="_MAPMOShowHUDAchievementsPopUp"/></visible>
+  <x><copy src="io" trait="_MAPMOHUDAchievementsPopUpXPos"/></x>
+  <y><copy src="io" trait="_MAPMOHUDAchievementsPopUpYPos"/></y>
+  <zoom><copy src="io" trait="_MAPMOHUDAchievementsPopUpScale"/></zoom>
+  <image name="Icon">
+    <alpha>0</alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <filename>mapmo\achievements/aintthatakickinthehead.dds</filename>
+    <height><copy>0.64</copy><mult src="parent" trait="zoom"/></height>
+    <systemcolor>0</systemcolor>
+    <width><copy src="me" trait="height"/></width>
+    <x><copy>0</copy><add><copy src="sibling(Unlocked)" trait="width"/><div>2</div></add><sub><copy src="me" trait="width"/><div>2</div></sub></x>
+    <y><copy>-2</copy><mult src="sibling(Unlocked)" trait="height"/></y>
+    <zoom>&scale;</zoom>
+  </image>
+  <image name="IconBox">
+    <alpha><copy src="sibling(Icon)" trait="alpha"/></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <depth>-10</depth>
+    <filename>interface\shared\solid.dds</filename>
+    <height>
+      <copy src="sibling(Icon)" trait="height"/>
+      <add><copy src="globals" trait="_line_thickness"/><mult>2</mult></add>
+    </height>
+    <texatlas>interface\interfaceshared.tai</texatlas>
+    <width><copy src="me" trait="height"/></width>
+    <x><copy src="sibling(Icon)" trait="x"/><sub src="globals" trait="_line_thickness"/></x>
+    <y><copy src="sibling(Icon)" trait="y"/><sub src="globals" trait="_line_thickness"/></y>
+    <zoom>&scale;</zoom>
+  </image>
+  <text name="Unlocked">
+    <alpha>0</alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <font>8</font>
+    <string>ACHIEVEMENT UNLOCKED!</string>
+    <systemcolor>&hudmain;</systemcolor>
+    <zoom><copy>0.64</copy><mult src="parent" trait="zoom"/></zoom>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  <image name="SeparatorLeft">
+    <alpha><copy src="sibling(Icon)" trait="alpha"/></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <filename>interface\shared\line\fade_right.dds</filename>
+    <height><copy>0.03</copy><mult src="parent" trait="zoom"/></height>
+    <texatlas><copy src="sibling(IconBox)" trait="texatlas"/></texatlas>
+    <width>0</width>
+    <x><copy src="sibling(Title)" trait="x"/><add><copy src="sibling(Title)" trait="width"/><div>2</div></add><sub src="me" trait="width"/></x>
+    <y><copy>0.6</copy><mult src="sibling(Unlocked)" trait="height"/></y>
+    <zoom><copy src="sibling(IconBox)" trait="zoom"/></zoom>
+  </image>
+  <image name="SeparatorRight">
+    <alpha><copy src="sibling(Icon)" trait="alpha"/></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <filename>interface\shared\line\fade_left.dds</filename>
+    <height><copy src="sibling(SeparatorLeft)" trait="height"/></height>
+    <texatlas><copy src="sibling(IconBox)" trait="texatlas"/></texatlas>
+    <width><copy src="sibling(SeparatorLeft)" trait="width"/></width>
+    <x><copy src="sibling(SeparatorLeft)" trait="x"/><add src="sibling(SeparatorLeft)" trait="width"/></x>
+    <y><copy src="sibling(SeparatorLeft)" trait="y"/></y>
+    <zoom><copy src="sibling(IconBox)" trait="zoom"/></zoom>
+  </image>
+  <text name="Title">
+    <alpha>0</alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <font>8</font>
+    <string>AIN'T THAT A KICK IN THE HEAD</string>
+    <systemcolor>&hudmain;</systemcolor>
+    <x><copy>0</copy><add><copy src="sibling(Unlocked)" trait="width"/><div>2</div></add><sub><copy src="me" trait="width"/><div>2</div></sub></x>
+    <y><copy>0.9</copy><mult src="sibling(Unlocked)" trait="height"/></y>
+    <zoom><copy src="sibling(Unlocked)" trait="zoom"/></zoom>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  <text name="Description">
+    <alpha>0</alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <depth>-10</depth>
+    <font>7</font>
+    <string>Complete Ain't That a Kick in the Head.</string>
+    <systemcolor>&hudmain;</systemcolor>
+    <x><copy>0</copy><add><copy src="sibling(Unlocked)" trait="width"/><div>2</div></add><sub><copy src="me" trait="width"/><div>2</div></sub></x>
+    <y><copy src="sibling(Title)" trait="y"/></y>
+    <zoom><copy src="sibling(Unlocked)" trait="zoom"/></zoom>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+</rect>

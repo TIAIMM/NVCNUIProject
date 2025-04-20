@@ -1,0 +1,82 @@
+<rect name="TFObT">
+	<include src="VUI+\outline_rect.xml"/>
+<visible>0</visible>
+<depth> 99 </depth>
+<x> 40 </x>
+<y> 
+<copy> 4 </copy>
+	<add src="io()" trait="_TFObTScroll" /> 
+</y>
+
+<string> <copy src="io()" trait="_TFObT" /> </string>
+<justify>&left;</justify>
+<font> 18 </font>
+<alpha> 255 </alpha>
+<systemcolor> &true; </systemcolor>
+<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</rect>
+
+<image name="TFObTBG">
+<visible>  <copy src="sibling(TFObT)" trait="visible" /> </visible>
+<filename> interface\faders\Black.dds </filename>
+<depth> 97 </depth>
+<width> <copy src="sibling(TFObT)" trait="width" /> <add>24</add> </width>
+<height> <copy src="sibling(TFObT)" trait="height" /> <add>24</add> </height>
+<zoom> &scale; </zoom>
+<x> <copy src="sibling(TFObT)" trait="x" /> <sub>14</sub> </x>
+<y> <copy src="sibling(TFObT)" trait="y" /> <sub>14</sub> </y>
+<alpha> 170 </alpha>
+<systemcolor> &nosystemcolor; </systemcolor>
+</image>
+
+
+<_addToMult>23</_addToMult>
+
+<image name="TFObTSelector">
+<visible>  <copy src="sibling(TFObT)" trait="visible" /> </visible>
+<filename> interface\faders\black.dds </filename>
+<depth> 98 </depth>
+<width> <copy src="sibling(TFObT)" trait="width" /> <add>24</add> </width>
+<height> <copy src="io()" trait="_addToMult" /> </height>
+<zoom> &scale; </zoom>
+<x> 26</x>
+<y> 0</y>
+<alpha> 255 </alpha>
+
+<systemcolor> &nosystemcolor; </systemcolor>
+</image>
+
+
+
+
+<rect name="TFObTInfo">
+	<include src="VUI+\outline_rect.xml"/>
+<visible>  <copy src="sibling(TFObT)" trait="visible" /> </visible>
+<depth> 2 </depth>
+<x><copy src="sibling(TFObTBG)" trait="x" /><add src="sibling(TFObTBG)" trait="width" /><add>14</add></x>
+<y> 4</y>
+<string> <copy src="io()" trait="_TFObTInfo" /> </string>
+<justify>&left;</justify>
+<font> 6 </font>
+<red>200</red>
+<green>200</green>
+<blue>200</blue>
+<alpha> 255 </alpha>
+<systemcolor> &false; </systemcolor>
+<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</rect>
+
+<image name="TFObTInfoBG">
+<visible>  <copy src="sibling(TFObT)" trait="visible" /> </visible>
+<filename> interface\faders\black.dds </filename>
+<depth> 0 </depth>
+<width> <copy src="sibling(TFObTInfo)" trait="width" /> <add>24</add> </width>
+<height> <copy src="sibling(TFObTInfo)" trait="height" /> <add>12</add> </height>
+<zoom> &scale; </zoom>
+<x><copy src="sibling(TFObTBG)" trait="x" /><add src="sibling(TFObTBG)" trait="width" /></x>
+<y> 0 </y>
+<alpha> 135 </alpha>
+<systemcolor> &nosystemcolor; </systemcolor>
+</image>

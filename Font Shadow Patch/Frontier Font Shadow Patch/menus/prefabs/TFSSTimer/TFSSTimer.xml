@@ -1,0 +1,42 @@
+<rect name="TFSSTimer">
+	<include src="VUI+\outline_rect.xml"/>
+	<visible>0</visible>
+	<depth> 97 </depth>
+	<x> <copy src="screen()" trait="width"/><div> 2 </div><sub><copy src="me()" trait="width"/> <div>2</div></sub> </x>
+	<y>80</y>
+	<string> <copy src="io()" trait="_TFSSTimer" /> </string>
+	<font> 8 </font>
+	<alpha> 400 </alpha>
+	<systemcolor> &true; </systemcolor>
+<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</rect>
+
+<image name="TFSSTimerBar">
+	<visible>  <copy src="sibling(TFSSTimer)" trait="visible" /> </visible>
+	<filename> interface\faders\white.dds </filename>
+	<depth> 98 </depth>
+	<_size> 110 </_size>
+	<_timer></_timer>
+	<width><copy src="me()" trait="_size" /> <mul src="me()" trait="_timer" /> </width>
+	<height> 2 </height>
+	<_bleh>40</_bleh>
+	<zoom> &scale; </zoom>
+	<x> <copy src="screen()" trait="width"/><div> 2 </div><sub><copy src="me()" trait="width"/> <div>2</div></sub> </x>
+	<y> <copy src="sibling(TFSSTimer)" trait="y" /> <add><copy src="me()" trait="_bleh" /></add> </y>
+	<alpha> <copy src="sibling(TFSSTimer)" trait="alpha" /> </alpha>
+	<systemcolor><copy src="sibling(TFSSTimer)" trait="systemcolor" /></systemcolor>
+</image>
+
+<image name="TFSSTimerBarBG">
+	<visible>  <copy src="sibling(TFSSTimer)" trait="visible" /> </visible>
+	<filename> interface\faders\Black.dds </filename>
+	<depth> 97 </depth>
+	<width> <copy src="sibling(TFSSTimerBar)" trait="_size" /> <add>2</add> </width>
+	<height> <copy src="sibling(TFSSTimerBar)" trait="height" /> <add>2</add> </height>
+	<zoom> &scale; </zoom>
+	<x><copy src="screen()" trait="width"/><div> 2 </div><sub><copy src="me()" trait="width"/> <div>2</div></sub></x>
+	<y> <copy src="sibling(TFSSTimerBar)" trait="y" /> <sub>1</sub> </y>
+	<alpha> 125 </alpha>
+	<systemcolor> &nosystemcolor; </systemcolor>
+</image>

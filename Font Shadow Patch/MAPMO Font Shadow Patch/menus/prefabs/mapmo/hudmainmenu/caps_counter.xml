@@ -1,0 +1,71 @@
+<rect name="HUDCaps">
+  <_currency>0</_currency>
+  <locus>&true;</locus>
+  <visible><copy src="io" trait="_MAPMOShowHUDCaps"/></visible>
+  <x><copy src="io" trait="_MAPMOHUDCapsXPos"/></x>
+  <y><copy src="io" trait="_MAPMOHUDCapsYPos"/></y>
+  <image name="Icon">
+    <_icon>
+      <copy src="parent" trait="_currency"/>
+      <add><copy>10</copy><onlyifnot src="io" trait="_MAPMOHUDCapsColorizedIcon"/></add>
+    </_icon>
+    <_icon_0>mapmo\caps.dds</_icon_0>
+    <_icon_1>mapmo\hudc_ncr.dds</_icon_1>
+    <_icon_2>mapmo\hudc_legion.dds</_icon_2>
+    <_icon_3>mapmo\hudc_sierra.dds</_icon_3>
+    <_icon_10>mapmo\caps_color.dds</_icon_10>
+    <_icon_11>mapmo\hudc_ncr_color.dds</_icon_11>
+    <_icon_12>mapmo\hudc_legion_color.dds</_icon_12>
+    <_icon_13>mapmo\hudc_sierra_color.dds</_icon_13>
+    <_scale>0.63</_scale>
+    <alpha>0</alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <depth>2</depth>
+    <filename>
+      <copy src="me" trait="_icon"/>
+      <copy src="me" trait="_icon_"/>
+    </filename>
+    <height><copy src="me" trait="_scale"/><mult src="io" trait="_MAPMOHUDCapsScale"/></height>
+    <rotateangle>0</rotateangle>
+    <rotateaxisx><copy src="me" trait="width"/><div>2</div></rotateaxisx>
+    <rotateaxisy><copy src="me" trait="height"/><div>2</div></rotateaxisy>
+    <systemcolor><copy src="io" trait="_MAPMOHUDCapsColorizedIcon"/></systemcolor>
+    <width><copy src="me" trait="height"/></width>
+    <y>-2.5</y>
+    <zoom>&scale;</zoom>
+  </image>
+  <text name="TotalCaps">
+    <_xpos>1</_xpos>
+    <alpha>0</alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <depth>1</depth>
+    <font><copy src="io" trait="_MAPMOHUDCapsFont"/></font>
+    <justify>&left;</justify>
+    <string>0</string>
+    <x><copy src="me" trait="_xpos"/><mult src="sibling(Icon)" trait="width"/></x>
+    <zoom><copy src="io" trait="_MAPMOHUDCapsScale"/></zoom>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  <text name="AddCaps">
+    <_ypos>1</_ypos>
+    <alpha>0</alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <depth>0</depth>
+    <font><copy src="sibling(TotalCaps)" trait="font"/></font>
+    <justify>&left;</justify>
+    <string>0</string>
+    <systemcolor>&nosystemcolor;</systemcolor>
+    <x>
+      <copy src="sibling(Icon)" trait="width"/>
+      <add src="sibling(TotalCaps)" trait="width"/>
+      <sub src="me" trait="width"/>
+    </x>
+    <y><copy src="me" trait="_ypos"/><mult src="sibling(TotalCaps)" trait="height"/></y>
+    <zoom><copy src="io" trait="_MAPMOHUDCapsScale"/></zoom>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+</rect>
