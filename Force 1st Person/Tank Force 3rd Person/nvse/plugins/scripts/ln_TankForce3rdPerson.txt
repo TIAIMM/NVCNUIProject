@@ -1,0 +1,21 @@
+;Requirements check
+if eval GetNVSEVersionFull < 6.35
+	MessageBoxEx "Tank Force 3rd Person requirement not detected!%rInstall latest xNVSE."
+	return
+endif
+if eval GetPluginVersion "JIP LN NVSE" < 57.30
+	MessageBoxEx "Tank Force 3rd Person requirement not detected!%rInstall latest JIP LN NVSE Plugin."
+	return
+endif
+if eval GetPluginVersion "JohnnyGuitarNVSE" < 511
+	MessageBoxEx "Tank Force 3rd Person requirement not detected!%rInstall latest JohnnyGuitar NVSE."
+	return
+endif
+
+SetGameMainLoopCallback (begin function {}
+	if eval (Player.AuxVarGetFlt "*_TFTankUse") && (Player.AuxVarGetFlt "*_TFVehicleUse")
+		if IsPC1stPerson
+			ToggleFirstPerson 0
+		endif
+	endif
+end) 1 1 (1+8)

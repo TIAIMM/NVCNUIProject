@@ -1,0 +1,11 @@
+int iKey
+int iKeyPressNumber
+
+begin function {iKey}
+	if eval !(Player.AuxVarGetFlt "*_TFTankUse") && !(Player.AuxVarGetFlt "*_TFVehicleUse")
+		ToggleFirstPerson 1
+		DisablePlayerControlsAlt 0 0 0 1 0 0 0
+		let iKeyPressNumber := (Player.AuxVarGetFlt "*_F1stdoonce")
+		Player.AuxVarSetFlt "*_F1stdoonce" (iKeyPressNumber + 1)
+	endif
+end

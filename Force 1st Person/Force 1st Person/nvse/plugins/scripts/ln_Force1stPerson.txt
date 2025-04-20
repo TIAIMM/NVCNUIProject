@@ -1,0 +1,38 @@
+;Requirements check
+if eval GetNVSEVersionFull < 6.35
+	MessageBoxEx "Force 1st Person requirement not detected!%rInstall latest xNVSE."
+	return
+endif
+if eval GetPluginVersion "JIP LN NVSE" < 57.30
+	MessageBoxEx "Force 1st Person requirement not detected!%rInstall latest JIP LN NVSE Plugin."
+	return
+endif
+if eval GetPluginVersion "JohnnyGuitarNVSE" < 511
+	MessageBoxEx "Force 1st Person requirement not detected!%rInstall latest JohnnyGuitar NVSE."
+	return
+endif
+
+Player.AuxVarSetFlt "*_F1stpovkey" (GetControl 13)
+Player.AuxVarSetFlt "*_F1stdoonce" 0
+
+if eval !(Player.AuxVarGetFlt "*_TFVehicleUse") && !(Player.AuxVarGetFlt "*_TFTankUse") && (Player.AuxVarGetFlt "*_F1stdoonce") == 0
+	ToggleFirstPerson 1
+	;DisablePlayerControlsAlt 0 0 0 1 0 0 0
+	;Player.AuxVarSetFlt "*_F1stdoonce" 1
+endif
+
+SetEventHandler ("OnKeyDown:" + tostring(Player.AuxVarGetFlt "*_F1stpovkey")) (CompileScript "Force1stPerson/KeyDownUDF.gek")
+
+SetEventHandler ("OnKeyUp:" + tostring(Player.AuxVarGetFlt "*_F1stpovkey")) (CompileScript "Force1stPerson/KeyUpUDF.gek")
+
+SetEventHandler ("OnKeyDown:" + tostring(258)) (CompileScript "Force1stPerson/KeyDownUDF.gek")
+
+SetEventHandler ("OnKeyUp:" + tostring(258)) (CompileScript "Force1stPerson/KeyUpUDF.gek")
+
+SetEventHandler ("OnKeyDown:" + tostring(264)) (CompileScript "Force1stPerson/KeyDownUDF.gek")
+
+SetEventHandler ("OnKeyUp:" + tostring(264)) (CompileScript "Force1stPerson/KeyUpUDF.gek")
+
+SetEventHandler ("OnKeyDown:" + tostring(265)) (CompileScript "Force1stPerson/KeyDownUDF.gek")
+
+SetEventHandler ("OnKeyUp:" + tostring(265)) (CompileScript "Force1stPerson/KeyUpUDF.gek")
