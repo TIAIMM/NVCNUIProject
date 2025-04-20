@@ -1,0 +1,30 @@
+SetEventHandlerAlt "showuiflt" (begin function {string_var sUival}
+	print (GetActiveUIComponentFullName)
+	print tostring(GetUIFloatAlt ((GetActiveUIComponentFullName) + sUival))
+end)
+
+SetEventHandlerAlt "showuistr" (begin function {string_var sUivlr}
+	print (GetActiveUIComponentFullName)
+	print tostring(GetUIString ((GetActiveUIComponentFullName) + sUivlr))
+end)
+
+SetEventHandlerAlt "setuiflt" (begin function {string_var sUivat, float fCvar}
+	print (GetActiveUIComponentFullName)
+	SetUIFloatAlt ((GetActiveUIComponentFullName) + sUivat) (fCvar)
+	print tostring(GetUIFloatAlt ((GetActiveUIComponentFullName) + sUivat))
+end)
+
+SetEventHandlerAlt "setuistr" (begin function {string_var sUivlt, string_var sCvlr}
+	print (GetActiveUIComponentFullName)
+	SetUIStringAlt ((GetActiveUIComponentFullName) + sUivlt) (sCvlr)
+	print tostring(GetUIString ((GetActiveUIComponentFullName) + sUivlt))
+end)
+
+SetEventHandlerAlt "copyuiname" (begin function {}
+	print (GetActiveUIComponentFullName)
+	StringToClipboard (GetActiveUIComponentFullName)
+end)
+
+SetEventHandlerAlt "GetLandscapeDDS" (begin function {}
+	print GetTextureSetTexture (GetLandTextureTextureSet (Player.GetLandTextureUnderFeet)) 0
+end)
