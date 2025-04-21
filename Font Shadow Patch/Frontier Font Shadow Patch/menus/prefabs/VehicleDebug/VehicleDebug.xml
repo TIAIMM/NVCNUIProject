@@ -316,6 +316,7 @@
 	<string> <copy src="io()" trait="_vehAmmo" /> </string>
 	<justify>&right;</justify>
 	<font> 7 </font>
+	<zoom> 90 </zoom>
 	<alpha> 255 </alpha>
 	<systemcolor> 1</systemcolor>
 <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
