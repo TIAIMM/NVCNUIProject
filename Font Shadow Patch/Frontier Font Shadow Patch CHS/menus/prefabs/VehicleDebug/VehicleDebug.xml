@@ -311,7 +311,7 @@
 	<include src="VUI+\outline_rect.xml"/>
 	<visible>1</visible>
 	<depth> 9 </depth>
-	<x><copy src="vehBKG" trait="X" /></x>
+	<x><copy src="vehBKG" trait="X" /> <add>20</add> </x>
 	<y><copy src="vehBKG" trait="Y" /><add src="vehBKG" trait="height" /> <sub src="me()" trait="height"/><sub>20</sub></y>
 	<string> <copy src="io()" trait="_vehAmmo" /> </string>
 	<justify>&right;</justify>
