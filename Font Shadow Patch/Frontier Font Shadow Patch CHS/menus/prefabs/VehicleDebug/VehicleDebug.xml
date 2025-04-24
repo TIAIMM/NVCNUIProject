@@ -309,10 +309,24 @@
 
 <rect name="vehAmmo">
 	<include src="VUI+\outline_rect.xml"/>
+	<justify> &center; </justify>
 	<visible>1</visible>
 	<depth> 9 </depth>
-	<x><copy src="vehBKG" trait="X" /> <add>20</add> </x>
-	<y><copy src="vehBKG" trait="Y" /><add src="vehBKG" trait="height" /> <sub src="me()" trait="height"/><sub>20</sub></y>
+	<x>
+		<copy src="screen()" trait="width"/>
+		<sub>
+			<copy src="me()" trait="width"/>
+			<div> 2 </div>
+		</sub>
+	</x>
+	<y>
+		<copy src="screen()" trait="height"/>
+		<sub>
+			<copy src="me()" trait="height"/>
+			<div> 2 </div>
+		</sub>
+		<sub src="vehBKG" trait="height"/>
+	</y>
 	<string> <copy src="io()" trait="_vehAmmo" /> </string>
 	<justify>&right;</justify>
 	<font> 7 </font>
