@@ -1165,20 +1165,24 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 				<rect name="VUI+Resistances">
 					<locus> 1 </locus>
 					<x>
-						<copy src="sibling(stats_rad_effects_bracket)" trait="x"/>
-						<add src="parent" trait="_left_edge"/>
-						<sub>300</sub>
+						<copy src="sibling(stats_rad_resist)" trait="x"/>
 					</x>
 					<y>
-						<copy src="sibling" trait="y" />
-						<add src="sibling" trait="height" />
-						<add> 370 </add>
+						<copy src="sibling(stats_rad_resist)" trait="y"/>
+						<add> 
+							<copy src="child(VUI+EnergyResistLevel)" trait="height"/>
+						</add>
 					</y>
-					<width> 300 </width>
+					<width> 
+						<copy src="sibling(stats_rad_effects_label)" trait="x"/>
+						<sub> 10 </sub>
+					</width>
 					<visible> <copy src="child(VUI+EnergyResistLevel)" trait="width" /> <gt> 15 </gt> </visible>
 
 					<text name="VUI+EnergyResistLabel">
 						<string> <copy src="globals" trait="_VUI+EnergyResistLabel" /> </string>
+						<x> 32 </x>
+						<y> 20 </y>
 						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
@@ -1188,7 +1192,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 					<text name="VUI+EnergyResistLevel">
 						<string> <copy src="io" trait="_VUI+EnergyResist" /> </string>
 						<justify> &right; </justify>
-						<x> <copy src="parent" trait="width"/> <sub>30</sub></x>
+						<x> <copy src="parent" trait="width"/> <sub>20</sub></x>
 						<y> <copy src="sibling(VUI+EnergyResistLabel)" trait="y" /> </y>
 						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
@@ -1198,10 +1202,10 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 
 					<text name="VUI+FireResistLabel">
 						<string> <copy src="globals" trait="_VUI+FireResistLabel" /> </string>
+						<x> <copy src="sibling(VUI+EnergyResistLabel)" trait="x" /> </x>
 						<y>
 							<copy src="sibling(VUI+EnergyResistLevel)" trait="y" />
 							<add src="sibling(VUI+EnergyResistLevel)" trait="height" />
-							<add> 5 </add>
 						</y>
 						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
@@ -1222,6 +1226,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 
 					<text name="VUI+PoisonResistLabel">
 						<string> <copy src="globals" trait="_VUI+PoisonResistLabel" /> </string>
+						<x> <copy src="sibling(VUI+EnergyResistLabel)" trait="x" /> </x>
 						<y>
 							<copy src="sibling(VUI+FireResistLevel)" trait="y" />
 							<add src="sibling(VUI+FireResistLevel)" trait="height" />
@@ -2459,7 +2464,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 			<height>
 				<copy src="me" trait="_VUI+Bottom" />
 				<sub src="me" trait="_VUI+Top" />
-				<add> 26.5 </add> <!--VUI+ to perfectly fit the last item -->
+				<add> 22.5 </add> <!--VUI+ to perfectly fit the last item -->
 			</height>
 			<!--VUI+ the scrollbar will resize to just touch the vertical edges (and not overlap on them) -->
 			<_VUI+ScrollbarOffsetY>
@@ -2881,7 +2886,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<mul> -1 </mul>
 						<add> 5 </add> <!--VUI+ needed to fix bugged engine metrics -->
 					</y>
-					<zoom>80</zoom>
+					<zoom>90</zoom>
 				</text>
 			</hotrect>
 		</rect>
@@ -3094,7 +3099,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 					<sub> 1 </sub> <!--VUI+ for descenders -->
 				</y>
 				<!--VUI+ bold, darker -->
-				<zoom>80</zoom>
+				<zoom>90</zoom>
 				<alpha> <mul> 2 </mul> </alpha>
 				<brightness> <mul> 0.8 </mul> </brightness>
 				<font> 3</font>
@@ -3123,7 +3128,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 				</y>
 				<!--VUI+ bold, brighter -->
 				<alpha> <mul> 2 </mul> </alpha>
-				<zoom>80</zoom>
+				<zoom>90</zoom>
 				<brightness> <mul> 1.1 </mul> </brightness>
 				<font> 3</font>
 				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
