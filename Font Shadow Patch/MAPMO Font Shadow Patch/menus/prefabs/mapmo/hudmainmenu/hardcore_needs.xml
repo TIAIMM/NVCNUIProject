@@ -40,7 +40,7 @@
   </_totalwidth>
   <alpha><copy src="parent" trait="alpha"/></alpha>
   <locus>&true;</locus>
-  <visible><copy src="io" trait="_MAPMOShowHardcoreNeeds"/></visible>
+  <visible><copy src="io" trait="_MAPMOShowHardcoreNeeds"/><mult src="parent" trait="_visible1"/></visible>
   <x><copy src="io" trait="_MAPMOHardcoreNeedsXPos"/></x>
   <y><copy src="io" trait="_MAPMOHardcoreNeedsYPos"/></y>
   <image name="WaterIcon">

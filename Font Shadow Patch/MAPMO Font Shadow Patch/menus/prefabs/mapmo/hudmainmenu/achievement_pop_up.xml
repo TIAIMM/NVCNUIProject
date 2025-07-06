@@ -3,7 +3,7 @@
   <_showhide>0</_showhide>
   <depth>1000</depth>
   <locus>&true;</locus>
-  <visible><copy src="io" trait="_MAPMOShowHUDAchievementsPopUp"/></visible>
+  <visible><copy src="io" trait="_MAPMOShowHUDAchievementsPopUp"/><mult src="parent" trait="_visible1"/></visible>
   <x><copy src="io" trait="_MAPMOHUDAchievementsPopUpXPos"/></x>
   <y><copy src="io" trait="_MAPMOHUDAchievementsPopUpYPos"/></y>
   <zoom><copy src="io" trait="_MAPMOHUDAchievementsPopUpScale"/></zoom>

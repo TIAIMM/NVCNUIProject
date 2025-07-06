@@ -1,7 +1,7 @@
 <rect name="HUDCaps">
   <_currency>0</_currency>
   <locus>&true;</locus>
-  <visible><copy src="io" trait="_MAPMOShowHUDCaps"/></visible>
+  <visible><copy src="io" trait="_MAPMOShowHUDCaps"/><mult src="parent" trait="_visible1"/></visible>
   <x><copy src="io" trait="_MAPMOHUDCapsXPos"/></x>
   <y><copy src="io" trait="_MAPMOHUDCapsYPos"/></y>
   <image name="Icon">

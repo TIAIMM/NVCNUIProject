@@ -4,7 +4,7 @@
   <brightness><copy src="me" trait="alpha"/></brightness>
   <locus>&true;</locus>
   <systemcolor>&hudalt;</systemcolor>
-  <visible><copy src="me" trait="_enabled"/></visible>
+  <visible><copy src="me" trait="_enabled"/><mult src="parent" trait="_visible1"/></visible>
   <x><copy src="io" trait="_MAPMOHUDRadsCounterXPos"/></x>
   <y><copy src="io" trait="_MAPMOHUDRadsCounterYPos"/></y>
   <zoom><copy src="io" trait="_MAPMOHUDRadsCounterScale"/></zoom>

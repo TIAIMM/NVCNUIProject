@@ -1,0 +1,30 @@
+<rect name="ObjectiveReminder">
+  <locus>&true;</locus>
+  <visible>
+    <copy>&true;</copy>
+    <onlyifnot src="io" trait="_MAPMOIsAiming"/>
+  </visible>
+  <x><copy src="screen" trait="width"/><div>2</div></x>
+  <y><copy src="io" trait="_MAPMOHUDObjectiveReminderYPos"/></y>
+  <template name="TextTemplate">
+    <text name="Text">
+      <_alpha>0</_alpha>
+      <_y>0</_y>
+      <alpha>
+        <copy src="me" trait="_alpha"/>
+        <max><copy>255</copy><onlyif src="io" trait="_MAPMOConfig"/></max>
+      </alpha>
+      <brightness><copy src="me" trait="alpha"/></brightness>
+      <font>7</font>
+      <justify>&center;</justify>
+      <string></string>
+      <systemcolor><copy src="io" trait="_MAPMOHUDObjectiveReminderHUDColor"/></systemcolor>
+      <y><copy src="me" trait="_y"/><mult><copy src="me" trait="zoom"/><div>100</div></mult></y>
+      <wrapwidth><copy src="io" trait="_MAPMOHUDObjectiveReminderWrapwidth"/></wrapwidth>
+      <zoom><copy src="io" trait="_MAPMOHUDObjectiveReminderScale"/></zoom>
+    <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  </template>
+</rect>

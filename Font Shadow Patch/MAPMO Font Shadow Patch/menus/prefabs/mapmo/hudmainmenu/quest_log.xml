@@ -3,7 +3,11 @@
     <_init>0</_init>
     <depth>-100</depth>
     <locus>&true;</locus>
-    <visible><copy src="io" trait="_MAPMOShowQuestHUD"/></visible>
+    <visible>
+      <copy>&true;</copy>
+      <onlyifnot src="io" trait="_MAPMOIsAiming"/>
+      <onlyif src="io" trait="_MAPMOShowQuestHUD"/>
+    </visible>
     <x><copy src="io" trait="_MAPMOQuestHUDXPos"/></x>
     <y><copy src="io" trait="_MAPMOQuestHUDYPos"/></y>
   </rect>
