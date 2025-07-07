@@ -66,8 +66,7 @@
 		<_icon> MAPMO\water.dds </_icon>
 	</rect>
 
-	<rect name="FOD">
-	<include src="VUI+\outline_rect.xml"/>
+	<text name="FOD">
 		<include src="Stentorious\SleepWaitHardcoreNeeds\SleepWaitMenu\SWM_Template.xml" />
 		<x>
 			<copy> 0 </copy>
@@ -103,10 +102,10 @@
 		<_icon> MAPMO\food.dds </_icon>
 	<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
 	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
-</rect>
+</text>
+<include src="VUI+\outline.xml"/>
 
-	<rect name="SLP">
-	<include src="VUI+\outline_rect.xml"/>
+	<text name="SLP">
 		<include src="Stentorious\SleepWaitHardcoreNeeds\SleepWaitMenu\SWM_Template.xml" />
 		<x>
 			<copy src="sibling(FOD)" trait="x" />
@@ -163,6 +162,7 @@
 		<_icon> MAPMO\sleep.dds </_icon>
 	<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
 	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
-</rect>
+</text>
+<include src="VUI+\outline.xml"/>
 
 </rect>

@@ -799,8 +799,7 @@
 	</hotrect>
 
 	<!-- Map Text Display -->
-	<rect name="InfoText">
-	<include src="VUI+\outline_rect.xml"/>
+	<text name="InfoText">
 		<visible> 1 </visible>
 		<alpha> 0 </alpha>
 		<depth> 504 </depth>
@@ -812,14 +811,14 @@
 		</y>
 		<zoom> <copy src="parent()" trait="_info_text_zoom" /> </zoom>
 		<systemcolor> <copy src="parent()" trait="_systemcolor" /> </systemcolor>
-		<brightness> 204 </brightness>
+		<brightness> 255 </brightness>
 		<font> 7 </font>
 		<string> 1x </string>
 	<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
 	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
-</rect>
-	<rect name="LocationText">
-	<include src="VUI+\outline_rect.xml"/>
+</text>
+<include src="VUI+\outline.xml"/>
+	<text name="LocationText">
 		<visible> 0 </visible>
 		<alpha> 255 </alpha>
 		<depth> 504 </depth>
@@ -833,7 +832,7 @@
 		</y>
 		<zoom> <copy src="parent()" trait="_info_text_zoom" /> </zoom>
 		<systemcolor> <copy src="parent()" trait="_systemcolor" /> </systemcolor>
-		<brightness> 204 </brightness>
+		<brightness> 255 </brightness>
 		<font> 7 </font>
 		<string> Location </string>
 		<wrapwidth>
@@ -842,7 +841,8 @@
 		</wrapwidth>
 	<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
 	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
-</rect>
+</text>
+<include src="VUI+\outline.xml"/>
 
 	<!-- Cardinal Directions -->
 	<text name="NorthText">
@@ -973,8 +973,7 @@
 			<filename> <copy src="parent()" trait="filename" /> </filename>
 		</image>
 	</image>
-	<rect name="RadiationLabel">
-	<include src="VUI+\outline_rect.xml"/>
+	<text name="RadiationLabel">
 		<visible> <copy src="parent()" trait="_RadIndicator" /> </visible>
 		<alpha> <copy src="radiation_text" trait="alpha" /> </alpha>
 		<depth> 504 </depth>
@@ -993,9 +992,9 @@
 		<string> /SEC </string>
 	<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
 	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
-</rect>
-	<rect name="RadiationValue">
-	<include src="VUI+\outline_rect.xml"/>
+</text>
+<include src="VUI+\outline.xml"/>
+	<text name="RadiationValue">
 		<visible> <copy src="parent()" trait="_RadIndicator" /> </visible>
 		<alpha> <copy src="radiation_text_value" trait="alpha" /> </alpha>
 		<depth> 504 </depth>
@@ -1014,7 +1013,8 @@
 		<string> <copy src="radiation_text_value" trait="string" /> </string>
 	<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
 	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
-</rect>
+</text>
+<include src="VUI+\outline.xml"/>
 
 	<rect name="CustomMarkerLocal">
 		<visible>
@@ -1175,8 +1175,7 @@
 				<filename> <copy src="parent()" trait="filename" /> </filename>
 			</image>
 
-			<rect name="LocationName">
-	<include src="VUI+\outline_rect.xml"/>
+			<text name="LocationName">
 				<visible> 1 </visible>
 				<alpha>
 					<copy src="parent()" trait="_timeline" />
@@ -1202,7 +1201,7 @@
 					<mul src="ModernMinimap" trait="_IconScaleMul" />
 				</zoom>
 				<systemcolor> <copy src="ModernMinimap" trait="_systemcolor_0" /> </systemcolor>
-				<brightness> 204 </brightness>
+				<brightness> 255 </brightness>
 				<font> 7 </font>
 				<justify> &center; </justify>
 				<wrapwidth>
@@ -1212,7 +1211,8 @@
 				<string> <copy src="parent()" trait="_location" /> </string>
 			<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
 	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
-</rect>
+</text>
+<include src="VUI+\outline.xml"/>
 		</hotrect>
 	</rect>
 </template>

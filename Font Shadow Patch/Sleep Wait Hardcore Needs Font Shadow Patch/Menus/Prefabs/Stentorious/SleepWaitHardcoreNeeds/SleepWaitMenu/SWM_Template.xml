@@ -1,14 +1,14 @@
 <locus> 1 </locus>
 
-<rect name="Label">
-	<include src="VUI+\outline_rect.xml"/>
+<text name="Label">
 	<visible> <not src="io()" trait="_SWHC+MAPMO" /> </visible>
 	<font> <copy src="grandparent()" trait="font" /> </font>
 	<justify> &left; </justify>
 	<string> <copy src="parent()" trait="_label" /> </string>
 <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
 	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
-</rect>
+</text>
+<include src="VUI+\outline.xml"/>
 
 <image name="Icon">
 	<visible> <copy src="io()" trait="_SWHC+MAPMO" /> </visible>
@@ -33,8 +33,7 @@
 	<filename> <copy src="parent()" trait="_icon" /> </filename>
 </image>
 
-<rect name="Value">
-	<include src="VUI+\outline_rect.xml"/>
+<text name="Value">
 	<alpha>
 		<copy> 255 </copy>
 		<mul>
@@ -107,7 +106,8 @@
 	<string> <copy src="parent()" trait="_value" /> </string>
 <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
 	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
-</rect>
+</text>
+<include src="VUI+\outline.xml"/>
 
 <image name="Skull">
 	<visible>
