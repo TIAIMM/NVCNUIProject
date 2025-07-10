@@ -1,0 +1,67 @@
+<template name="PlayerInfoTemplate">
+  <rect name="PlayerInfo">
+    <_type>0</_type>
+    <alpha><copy src="parent" trait="alpha"/></alpha>
+    <locus>&true;</locus>
+    <systemcolor><copy src="MAPMO" trait="systemcolor"/></systemcolor>
+    <visible>
+      <copy>0</copy>
+      <add><copy src="io" trait="_MAPMOShowRealTime"/><onlyif><copy src="me" trait="_type"/><eq>1</eq></onlyif></add>
+      <add><copy src="io" trait="_MAPMOShowCapsCountPauseMenu"/><onlyif><copy src="me" trait="_type"/><eq>2</eq></onlyif></add>
+      <add><copy src="io" trait="_MAPMOShowWeightCountPauseMenu"/><onlyif><copy src="me" trait="_type"/><eq>3</eq></onlyif></add>
+      <add><copy src="io" trait="_MAPMOShowWeightCountPauseMenu"/><onlyif><copy src="me" trait="_type"/><eq>4</eq></onlyif></add>
+      <add><copy src="io" trait="_MAPMOShowLocationPauseMenu"/><onlyif><copy src="me" trait="_type"/><eq>5</eq></onlyif></add>
+    </visible>
+    <x>
+      <copy>0</copy>
+      <add><copy src="io" trait="_MAPMOUserTimeXPos"/><onlyif><copy src="me" trait="_type"/><eq>1</eq></onlyif></add>
+      <add><copy src="io" trait="_MAPMOCapsCountXPos"/><onlyif><copy src="me" trait="_type"/><eq>2</eq></onlyif></add>
+      <add><copy src="io" trait="_MAPMOWeightCountXPos"/><onlyif><copy src="me" trait="_type"/><eq>3</eq></onlyif></add>
+      <add><copy src="io" trait="_MAPMOWeightCountXPos"/><onlyif><copy src="me" trait="_type"/><eq>4</eq></onlyif></add>
+      <add><copy src="io" trait="_MAPMOLocationXPos"/><onlyif><copy src="me" trait="_type"/><eq>5</eq></onlyif></add>
+    </x>
+    <y>
+      <copy>0</copy>
+      <add><copy src="io" trait="_MAPMOUserTimeYPos"/><onlyif><copy src="me" trait="_type"/><eq>1</eq></onlyif></add>
+      <add><copy src="io" trait="_MAPMOCapsCountYPos"/><onlyif><copy src="me" trait="_type"/><eq>2</eq></onlyif></add>
+      <add><copy src="io" trait="_MAPMOWeightCountYPos"/><onlyif><copy src="me" trait="_type"/><eq>3</eq></onlyif></add>
+      <add><copy src="io" trait="_MAPMOWeightCountYPos"/><onlyif><copy src="me" trait="_type"/><eq>4</eq></onlyif></add>
+      <add><copy src="io" trait="_MAPMOLocationYPos"/><onlyif><copy src="me" trait="_type"/><eq>5</eq></onlyif></add>
+    </y>
+    <zoom>
+      <copy>0</copy>
+      <add><copy src="io" trait="_MAPMOUserTimeScale"/><onlyif><copy src="me" trait="_type"/><eq>1</eq></onlyif></add>
+      <add><copy src="io" trait="_MAPMOCapsCountScale"/><onlyif><copy src="me" trait="_type"/><eq>2</eq></onlyif></add>
+      <add><copy src="io" trait="_MAPMOWeightCountScale"/><onlyif><copy src="me" trait="_type"/><eq>3</eq></onlyif></add>
+      <add><copy src="io" trait="_MAPMOWeightCountScale"/><onlyif><copy src="me" trait="_type"/><eq>4</eq></onlyif></add>
+      <add><copy src="io" trait="_MAPMOLocationScale"/><onlyif><copy src="me" trait="_type"/><eq>5</eq></onlyif></add>
+    </zoom>
+    <image name="Icon">
+      <_icon_2>mapmo\caps.dds</_icon_2>
+      <_icon_3>mapmo\weight.dds</_icon_3>
+      <_icon_4>mapmo\weight_over_encumbered.dds</_icon_4>
+      <_icon_5>mapmo\location.dds</_icon_5>
+      <alpha><copy src="parent" trait="alpha"/></alpha>
+      <brightness><copy src="me" trait="alpha"/></brightness>
+      <filename><copy src="parent" trait="_type"/><copy src="me" trait="_icon_"/></filename>
+      <height><copy>0.5</copy><mult src="parent" trait="zoom"/></height>
+      <visible><copy>1</copy><sub><copy>1</copy><onlyif><copy src="parent" trait="_type"/><eq>1</eq></onlyif></sub></visible>
+      <width><copy src="me" trait="height"/></width>
+      <y><copy>-0.07</copy><mult src="parent" trait="zoom"/></y>
+      <zoom>&scale;</zoom>
+    </image>
+    <text name="Text">
+      <alpha><copy src="parent" trait="alpha"/></alpha>
+      <brightness><copy src="me" trait="alpha"/></brightness>
+      <font>7</font>
+      <justify>&left;</justify>
+      <string>0</string>
+      <x><copy>0</copy><add><copy src="sibling(Icon)" trait="width"/><onlyif><copy src="parent" trait="_type"/><neq>1</neq></onlyif></add></x>
+      <y>0</y>
+      <zoom><copy src="parent" trait="zoom"/></zoom>
+    <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  </rect>
+</template>

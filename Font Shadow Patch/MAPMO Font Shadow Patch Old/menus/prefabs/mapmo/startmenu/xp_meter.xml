@@ -1,0 +1,116 @@
+<rect name="XPMeter">
+  <_currentXP>0</_currentXP>
+  <_totalwidth><copy>1.9</copy><mult src="io" trait="_MAPMOXPMeterScale"/></_totalwidth>
+  <_XP>0</_XP>
+  <alpha><copy src="parent" trait="alpha"/></alpha>
+  <locus>&true;</locus>
+  <systemcolor><copy src="MAPMO" trait="systemcolor"/></systemcolor>
+  <visible><copy src="io" trait="_MAPMOShowXPMeterPauseMenu"/></visible>
+  <x><copy src="io" trait="_MAPMOXPMeterXPos"/></x>
+  <y><copy src="io" trait="_MAPMOXPMeterYPos"/></y>
+  <text name="PlayerName">
+    <alpha>
+      <copy src="parent" trait="alpha"/>
+      <div><copy>1.5</copy><onlyif src="LevelUp" trait="visible"/></div>
+    </alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <depth>3</depth>
+    <font>7</font>
+    <justify>&right;</justify>
+    <string>&PCName;</string>
+    <systemcolor><copy src="MAPMO" trait="systemcolor"/></systemcolor>
+    <x><copy>1.15</copy><mult src="io" trait="_MAPMOXPMeterScale"/></x>
+    <zoom><copy>0.75</copy><mult src="io" trait="_MAPMOXPMeterScale"/></zoom>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  <text name="PlayerLevel">
+    <alpha><copy src="PlayerName" trait="alpha"/></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <depth><copy src="sibling(PlayerName)" trait="depth"/></depth>
+    <font><copy src="sibling(PlayerName)" trait="font"/></font>
+    <justify>&left;</justify>
+    <string>0</string>
+    <systemcolor><copy src="MAPMO" trait="systemcolor"/></systemcolor>
+    <x><copy>1.35</copy><mult src="io" trait="_MAPMOXPMeterScale"/></x>
+    <zoom><copy src="sibling(PlayerName)" trait="zoom"/></zoom>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  <image name="Gauge">
+    <alpha><copy src="PlayerName" trait="alpha"/><div>1.25</div></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <depth>1</depth>
+    <filename>interface\hud\hud_tick_mark.dds</filename>
+    <height><copy>0.15</copy><mult src="io" trait="_MAPMOXPMeterScale"/></height>
+    <systemcolor><copy src="MAPMO" trait="systemcolor"/></systemcolor>
+    <tile>&true;</tile>
+    <width>
+      <copy>0</copy>
+      <add><copy src="parent" trait="_totalwidth"/><onlyif><copy src="parent" trait="_XP"/><gte>1</gte></onlyif></add>
+      <add><copy><copy src="parent" trait="_XP"/><mult src="parent" trait="_totalwidth"/></copy><onlyif><copy src="parent" trait="_XP"/><lt>1</lt></onlyif></add>
+    </width>
+    <x><copy>0.33</copy><mult src="io" trait="_MAPMOXPMeterScale"/></x>
+    <y><copy>0.26</copy><mult src="io" trait="_MAPMOXPMeterScale"/></y>
+    <zoom><copy src="io" trait="_MAPMOXPMeterScale"/></zoom>
+  </image>
+  <image name="Bracket">
+    <alpha><copy src="PlayerName" trait="alpha"/></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <depth>2</depth>
+    <filename>mapmo\xp_bracket.dds</filename>
+    <height><copy>1.28</copy><mult src="io" trait="_MAPMOXPMeterScale"/></height>
+    <systemcolor><copy src="MAPMO" trait="systemcolor"/></systemcolor>
+    <width><copy>2.56</copy><mult src="io" trait="_MAPMOXPMeterScale"/></width>
+    <y><copy>-0.25</copy><mult src="io" trait="_MAPMOXPMeterScale"/></y>
+    <zoom>&scale;</zoom>
+  </image>
+  <text name="XPCurrent">
+    <alpha><copy src="PlayerName" trait="alpha"/></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <depth><copy src="sibling(PlayerName)" trait="depth"/></depth>
+    <font><copy src="sibling(PlayerName)" trait="font"/></font>
+    <justify><copy src="sibling(PlayerName)" trait="justify"/></justify>
+    <string><copy src="parent" trait="_currentXP"/></string>
+    <systemcolor><copy src="MAPMO" trait="systemcolor"/></systemcolor>
+    <x><copy src="sibling(PlayerName)" trait="x"/></x>
+    <y><copy>0.55</copy><mult src="io" trait="_MAPMOXPMeterScale"/></y>
+    <zoom><copy src="sibling(PlayerName)" trait="zoom"/></zoom>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  <text name="XPTotal">
+    <alpha><copy src="PlayerName" trait="alpha"/></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <depth><copy src="sibling(PlayerName)" trait="depth"/></depth>
+    <font><copy src="sibling(PlayerName)" trait="font"/></font>
+    <justify><copy src="sibling(PlayerLevel)" trait="justify"/></justify>
+    <string><copy src="parent" trait="_totalXP"/></string>
+    <systemcolor><copy src="MAPMO" trait="systemcolor"/></systemcolor>
+    <x><copy src="sibling(PlayerLevel)" trait="x"/></x>
+    <y><copy src="sibling(XPCurrent)" trait="y"/></y>
+    <zoom><copy src="sibling(PlayerName)" trait="zoom"/></zoom>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  <text name="LevelUp">
+    <alpha><copy src="parent" trait="alpha"/></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <depth>4</depth>
+    <font>8</font>
+    <justify>&center;</justify>
+    <string>&sLevelUp;</string>
+    <systemcolor><copy src="MAPMO" trait="systemcolor"/></systemcolor>
+    <visible>0</visible>
+    <x><copy src="sibling(Bracket)" trait="width"/><div>2</div></x>
+    <y><copy>0.25</copy><mult src="io" trait="_MAPMOXPMeterScale"/></y>
+    <zoom><copy src="sibling(PlayerName)" trait="zoom"/></zoom>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+</rect>

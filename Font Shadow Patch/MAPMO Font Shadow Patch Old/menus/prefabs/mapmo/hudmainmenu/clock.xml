@@ -1,0 +1,72 @@
+<rect name="Clock">
+  <_scale><copy src="io" trait="_MAPMOHUDClockScale"/></_scale>
+  <_toggle>1</_toggle>
+  <alpha>
+    <copy>0</copy>
+    <add><copy src="parent" trait="alpha"/><mult src="me" trait="_toggle"/></add>
+    <max><copy>255</copy><onlyif src="io" trait="_MAPMOConfig"/></max>
+  </alpha>
+  <depth>-10</depth>
+  <locus>&true;</locus>
+  <visible><copy src="io" trait="_MAPMOShowHUDClock"/></visible>
+  <x><copy src="io" trait="_MAPMOHUDClockXPos"/></x>
+  <y><copy src="io" trait="_MAPMOHUDClockYPos"/></y>
+  <image name="ClockA">
+    <_clock_0>mapmo\clock_0.dds</_clock_0>
+    <_clock_1>mapmo\clock_1.dds</_clock_1>
+    <alpha><copy src="parent" trait="alpha"/></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <depth>0</depth>
+    <filename><copy src="io" trait="_MAPMOInDCWasteland"/><copy src="me" trait="_clock_"/></filename>
+    <height><copy>2.56</copy><mult src="parent" trait="_scale"/></height>
+    <visible><copy src="io" trait="_MAPMOHUDClockShowDial"/></visible>
+    <width><copy src="me" trait="height"/></width>
+    <zoom>&scale;</zoom>
+  </image>
+  <rect name="SunMoon">
+    <clipwindow>&true;</clipwindow>
+    <height><copy>1.425</copy><mult src="parent" trait="_scale"/></height>
+    <visible><copy src="sibling(ClockA)" trait="visible"/></visible>
+    <width><copy>2.56</copy><mult src="parent" trait="_scale"/></width>
+    <image name="ClockB">
+      <_time>0</_time>
+      <alpha><copy src="grandparent" trait="alpha"/></alpha>
+      <brightness><copy src="me" trait="alpha"/></brightness>
+      <depth>-1</depth>
+      <clips>&true;</clips>
+      <filename>mapmo\clock_2.dds</filename>
+      <height><copy>2.56</copy><mult src="grandparent" trait="_scale"/></height>
+      <rotateangle><copy>0</copy><sub src="me" trait="_time"/></rotateangle>
+      <rotateaxisx><copy src="me" trait="width"/><div>2</div></rotateaxisx>
+      <rotateaxisy><copy src="me" trait="height"/><div>2</div></rotateaxisy>
+      <width><copy src="me" trait="height"/></width>
+      <zoom>&scale;</zoom>
+    </image>
+  </rect>
+  <image name="ClockC">
+    <_clock_0>mapmo\clock_3.dds</_clock_0>
+    <_clock_1>mapmo\clock_4.dds</_clock_1>
+    <alpha><copy src="sibling(ClockA)" trait="alpha"/></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <depth>-2</depth>
+    <filename><copy src="io" trait="_MAPMOInDCWasteland"/><copy src="me" trait="_clock_"/></filename>
+    <height><copy src="sibling(ClockA)" trait="height"/></height>
+    <visible><copy src="sibling(ClockA)" trait="visible"/></visible>
+    <width><copy src="me" trait="height"/></width>
+    <zoom><copy src="sibling(ClockA)" trait="zoom"/></zoom>
+  </image>
+  <text name="Time">
+    <alpha><copy src="io" trait="_MAPMOHUDClockTextOpacity"/><mult src="parent" trait="_toggle"/></alpha>
+    <brightness><copy src="me" trait="alpha"/></brightness>
+    <depth>-1</depth>
+    <font>7</font>
+    <justify>&left;</justify>
+    <string></string>
+    <x><copy><copy>-0.1</copy><mult src="parent" trait="_scale"/></copy><add src="sibling(ClockA)" trait="width"/><sub src="me" trait="width"/><div>2</div></x>
+    <y><copy>1.56</copy><mult src="parent" trait="_scale"/><mult src="sibling(ClockA)" trait="visible"/></y>
+    <zoom><copy>0.75</copy><mult src="parent" trait="_scale"/></zoom>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+</rect>

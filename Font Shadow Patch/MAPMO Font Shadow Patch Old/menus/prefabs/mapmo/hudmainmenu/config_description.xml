@@ -1,0 +1,21 @@
+<rect name="MAPMODescription">
+  <_type>0</_type>
+  <include src="MAPMO\prefabs\menu_box.xml"/>
+  <alpha>255</alpha>
+  <height><copy src="child(Text)" trait="height"/><add>25</add></height>
+  <locus>&true;</locus>
+  <visible><copy src="io" trait="_MAPMOConfig"/></visible>
+  <width><copy src="child(Text)" trait="width"/><add>50</add></width>
+  <x><copy src="screen" trait="width"/><sub src="me" trait="width"/><div>2</div></x>
+  <y><copy src="screen" trait="height"/><sub src="me" trait="height"/><sub>100</sub></y>
+  <text name="Text">
+    <justify>&center;</justify>
+    <string>0</string>
+    <systemcolor><copy src="MAPMO" trait="systemcolor"/></systemcolor>
+    <x><copy src="parent" trait="width"/><div>2</div></x>
+    <y><copy src="parent" trait="height"/><sub src="me" trait="height"/><div>2</div><add>5</add></y>
+  <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+</rect>

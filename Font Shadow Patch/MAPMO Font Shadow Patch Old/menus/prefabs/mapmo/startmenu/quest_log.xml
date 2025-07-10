@@ -1,0 +1,69 @@
+<rect name="QuestLog">
+  <_init>0</_init>
+  <alpha><copy src="MAPMO" trait="alpha"/></alpha>
+  <locus>&true;</locus>
+  <visible><copy src="io" trait="_MAPMOShowQuestPauseMenu"/></visible>
+  <x><copy src="io" trait="_MAPMOQuestXPos"/></x>
+  <y><copy src="io" trait="_MAPMOQuestYPos"/></y>
+</rect>
+
+<template name="QuestTitleTemplate">
+  <rect name="QuestTitle">
+    <_active>0</_active>
+    <_icon_0>mapmo\quest.dds</_icon_0>
+    <_icon_1>mapmo\quest_active.dds</_icon_1>
+    <alpha><copy src="parent" trait="alpha"/></alpha>
+    <height><copy src="child(Text)" trait="height"/></height>
+    <locus>&true;</locus>
+    <y>0</y>
+    <image name="Icon">
+      <alpha><copy src="parent" trait="alpha"/></alpha>
+      <brightness><copy src="me" trait="alpha"/></brightness>
+      <filename>
+        <copy src="parent" trait="_active"/>
+        <copy src="parent" trait="_icon_"/>
+      </filename>
+      <height><copy>0.5</copy><mult src="io" trait="_MAPMOQuestScale"/></height>
+      <systemcolor><copy src="MAPMO" trait="systemcolor"/></systemcolor>
+      <width><copy src="me" trait="height"/></width>
+      <zoom>&scale;</zoom>
+    </image>
+    <text name="Text">
+      <alpha><copy src="parent" trait="alpha"/></alpha>
+      <brightness><copy src="me" trait="alpha"/></brightness>
+      <font>8</font>
+      <justify>&left;</justify>
+      <string>QUEST TITLE</string>
+      <systemcolor><copy src="MAPMO" trait="systemcolor"/></systemcolor>
+      <x><copy src="sibling(Icon)" trait="width"/></x>
+      <y><copy src="io" trait="_MAPMOQuestScale"/><mult>0.15</mult></y>
+      <zoom><copy src="io" trait="_MAPMOQuestScale"/><mult>0.75</mult></zoom>
+    <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  </rect>
+</template>
+
+<template name="QuestObjectiveTemplate">
+  <rect name="QuestObjective">
+    <alpha><copy src="parent" trait="alpha"/></alpha>
+    <locus>&true;</locus>
+    <height><copy src="child(Text)" trait="height"/></height>
+    <y>0</y>
+    <text name="Text">
+      <alpha><copy src="parent" trait="alpha"/><div>1.25</div></alpha>
+      <brightness><copy src="me" trait="alpha"/></brightness>
+      <font>7</font>
+      <justify>&left;</justify>
+      <string>Objective text. Do some stuff.</string>
+      <systemcolor><copy src="io" trait="_MAPMOObjectiveTextColor"/></systemcolor>
+      <wrapwidth><copy>5.12</copy><mult src="me" trait="zoom"/></wrapwidth>
+      <x><copy>0.5</copy><mult src="io" trait="_MAPMOQuestScale"/></x>
+      <zoom><copy src="io" trait="_MAPMOQuestScale"/></zoom>
+    <_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+  </rect>
+</template>
