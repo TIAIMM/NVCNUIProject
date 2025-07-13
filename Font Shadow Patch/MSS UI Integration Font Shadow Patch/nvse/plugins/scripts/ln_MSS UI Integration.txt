@@ -1,0 +1,126 @@
+float fThreshold1
+float fThreshold2
+float fThreshold3
+float fThreshold4
+
+if GetGameRestarted
+	;UI settings
+	SetUIFloatAlt "StatsMenu/_MSS+effects_mode" (GetINIFloat "Other:iSanityEffects" "MentalStabilitySystem.ini")
+	;UI strings
+	SetUIStringAlt "StatsMenu/_MSS+abbrev" (GetINIString "Main:sAbbreviation" "MSS UI Integration.ini")
+	SetUIStringAlt "HUDMainMenu/_MSS+abbrev" (GetINIString "Main:sAbbreviation" "MSS UI Integration.ini")
+	SetUIStringAlt "StatsMenu/GLOW_BRANCH/stats_status_container/stats_sanity_container/stats_sanity_effects_bracket/effect_PER/abbrev/string" (ActorValueToStringC 6 2)
+	SetUIStringAlt "StatsMenu/GLOW_BRANCH/stats_status_container/stats_sanity_container/stats_sanity_effects_bracket/effect_CHR/abbrev/string" (ActorValueToStringC 8 2)
+	SetUIStringAlt "StatsMenu/GLOW_BRANCH/stats_status_container/stats_sanity_container/stats_sanity_effects_bracket/effect_DR/abbrev/string" (ActorValueToStringC 18 2)
+
+	;read thresholds
+	fThreshold1 = GetINIFloat "Thresholds:fUnstableLower" "MentalStabilitySystem.ini"
+	fThreshold2 = GetINIFloat "Thresholds:fDerangedLower" "MentalStabilitySystem.ini"
+	fThreshold3 = GetINIFloat "Thresholds:fInsaneLower" "MentalStabilitySystem.ini"
+	fThreshold4 = GetINIFloat "Thresholds:fInsaneHigher" "MentalStabilitySystem.ini"
+
+	;pass thresholds to UI
+	SetUIFloatAlt "StatsMenu/_MSS+threshold1" fThreshold1
+	SetUIFloatAlt "StatsMenu/_MSS+threshold2" fThreshold2
+	SetUIFloatAlt "StatsMenu/_MSS+threshold3" fThreshold3
+	SetUIFloatAlt "StatsMenu/_MSS+threshold4" fThreshold4
+	SetUIFloatAlt "HUDMainMenu/_MSS+threshold1" fThreshold1
+	SetUIFloatAlt "HUDMainMenu/_MSS+threshold2" fThreshold2
+	SetUIFloatAlt "HUDMainMenu/_MSS+threshold3" fThreshold3
+	SetUIFloatAlt "HUDMainMenu/_MSS+threshold4" fThreshold4
+
+	;open sanity menu when clicking on MAD button
+	SetOnMenuClickEventHandler ({int iMenuID, int iTileID, string_var sTileName} => SetUIFloatAlt "StatsMenu/GLOW_BRANCH/stats_status_container/user0" -2) 1 "StatsMenu/GLOW_BRANCH/stats_status_container/stats_MAD_button"
+
+	;antipsychotics button
+	SetOnMenuClickEventHandler (CompileScript "MSS UI Integration/OnSanityDrugButtonPressed.gek") 1 "StatsMenu/GLOW_BRANCH/stats_status_container/stats_antipsychotics_button"
+	SetOnKeyDownEventHandler ({int iKeyID} => ClickMenuButton "StatsMenu/GLOW_BRANCH/stats_status_container/stats_antipsychotics_button") 1 16
+	SetEventHandler "OnButtonDown:4096" ({int iKeyID} => ClickMenuButton "StatsMenu/GLOW_BRANCH/stats_status_container/stats_antipsychotics_button")
+
+	;update sanity menu when opening StatsMenu
+	SetOnMenuOpenEventHandler (CompileScript "MSS UI Integration/UpdateSanityMenu.gek") 1 1003
+
+	;update sanity stage
+	SetOnAddPerkEventHandler 1 (begin function {ref rPerk, int iOldRank, int iNewRank}
+		SetUIFloatAlt "StatsMenu/_MSS+stage" 0
+		SetUIFloatAlt "HUDMainMenu/_MSS+stage" 0
+	end) 0 SanityStable
+	SetOnAddPerkEventHandler 1 (begin function {ref rPerk, int iOldRank, int iNewRank}
+		SetUIFloatAlt "StatsMenu/_MSS+stage" 1
+		SetUIFloatAlt "HUDMainMenu/_MSS+stage" 1
+	end) 0 SanityUnstable
+	SetOnAddPerkEventHandler 1 (begin function {ref rPerk, int iOldRank, int iNewRank}
+		SetUIFloatAlt "StatsMenu/_MSS+stage" 2
+		SetUIFloatAlt "HUDMainMenu/_MSS+stage" 2
+	end) 0 SanityDeranged
+	SetOnAddPerkEventHandler 1 (begin function {ref rPerk, int iOldRank, int iNewRank}
+		SetUIFloatAlt "StatsMenu/_MSS+stage" 3
+		SetUIFloatAlt "HUDMainMenu/_MSS+stage" 3
+	end) 0 SanityInsane
+
+	;Pip-Boy UI Tweaks compatibility
+	if eval FileExists "UIO/Public/PipBoyUITweaks.txt"
+		if eval GetINIFloat "ySI:bButtonIcons" "Stentorious/PipBoyUITweaks.ini"
+			InjectUIXML "StatsMenu/GLOW_BRANCH/stats_status_container/stats_antipsychotics_button" "data/menus/prefabs/Stentorious/PipBoyUITweaks/ySIButtonIcon.xml"
+			SetUIStringAlt "StatsMenu/GLOW_BRANCH/stats_status_container/stats_antipsychotics_button/ySIImage/filename" "interface/icons/Aid_Drug.dds"
+		endif
+		if eval GetINIFloat "PUI:bMADMeter" "MSS UI Integration.ini"
+			SetUIFloatAlt "StatsMenu/_MSS+PUI" 1
+			InjectUIXML "StatsMenu/GLOW_BRANCH/stats_status_container/stats_MAD_button/stb_text_box" "data/menus/prefabs/MSS UI Integration/PipBoyUITweaks/stats_MAD_button.xml"
+			SetUIFloatAlt "StatsMenu/GLOW_BRANCH/stats_status_container/stats_MAD_button/stb_text_box/button_text/visible" 0
+			SetUIFloatAlt "StatsMenu/_PUI+MADC" 0
+		endif
+	endif
+
+	;MAPMO/HUDHC compatibility
+	if eval GetINIFloat "MAPMO&HUDHC:bSanityGauge" "MSS UI Integration.ini"
+		if eval FileExists "UIO/Public/Main And Pause Menus Overhaul.txt"
+			InjectUIXML "HUDMainMenu/MAPMO/HardcoreNeeds" "data/menus/prefabs/MSS UI Integration/MAPMO/hardcore_needs_sanity.xml"
+			SetUIFloatAlt "HUDMainMenu/MAPMO/HardcoreNeeds/LimbsIcon/height" 0
+			SetUIFloatAlt "HUDMainMenu/MAPMO/HardcoreNeeds/LimbsText/alpha" 0
+			if eval GetINIFloat "MAPMO&HUDHC:bGaugeFill" "MSS UI Integration.ini"
+				SetUIFloatAlt "HUDMainMenu/MAPMO/HardcoreNeeds/SanityGauge/_fill_mode" 1
+				SGMLC (begin function {}
+					SetUIFloatAlt "HUDMainMenu/_MSS+sanity" SanityVar
+					SetUIStringAlt "HUDMainMenu/MAPMO/HardcoreNeeds/SanityPercentage/string" ($(flr((clamp (SanityVar/fThreshold4) 0 1)*100))+"%%")
+				end) 60 1
+			else
+				SGMLC (begin function {}
+					SetUIFloatAlt "HUDMainMenu/_MSS+sanity" SanityVar
+					SetUIStringAlt "HUDMainMenu/MAPMO/HardcoreNeeds/SanityPercentage/string" ($(ceil(100-((clamp (SanityVar/fThreshold4) 0 1)*100)))+"%%")
+				end) 60 1
+			endif
+		elseif eval FileExists "UIO/Public/HUD Hardcore Needs.txt"
+			InjectUIXML "HUDMainMenu/HUDHC/HardcoreNeeds" "data/menus/prefabs/MSS UI Integration/HUDHC/hardcore_needs_sanity.xml"
+			SetUIFloatAlt "HUDMainMenu/HUDHC/HardcoreNeeds/LimbsIcon/height" 0
+			SetUIFloatAlt "HUDMainMenu/HUDHC/HardcoreNeeds/LimbsText/alpha" 0
+			if eval GetINIFloat "MAPMO&HUDHC:bGaugeFill" "MSS UI Integration.ini"
+				SetUIFloatAlt "HUDMainMenu/HUDHC/HardcoreNeeds/SanityGauge/_fill_mode" 1
+				SGMLC (begin function {}
+					SetUIFloatAlt "HUDMainMenu/_MSS+sanity" SanityVar
+					SetUIStringAlt "HUDMainMenu/HUDHC/HardcoreNeeds/SanityPercentage/string" ($(flr((clamp (SanityVar/fThreshold4) 0 1)*100))+"%%")
+				end) 60 1
+			else
+				SGMLC (begin function {}
+					SetUIFloatAlt "HUDMainMenu/_MSS+sanity" SanityVar
+					SetUIStringAlt "HUDMainMenu/HUDHC/HardcoreNeeds/SanityPercentage/string" ($(ceil(100-((clamp (SanityVar/fThreshold4) 0 1)*100)))+"%%")
+				end) 60 1
+			endif
+		endif
+	endif
+endif
+
+;check sanity stage on reload
+if player.HasPerk SanityStable
+	SetUIFloatAlt "StatsMenu/_MSS+stage" 0
+	SetUIFloatAlt "HUDMainMenu/_MSS+stage" 0
+elseif player.HasPerk SanityUnstable
+	SetUIFloatAlt "StatsMenu/_MSS+stage" 1
+	SetUIFloatAlt "HUDMainMenu/_MSS+stage" 1
+elseif player.HasPerk SanityDeranged
+	SetUIFloatAlt "StatsMenu/_MSS+stage" 2
+	SetUIFloatAlt "HUDMainMenu/_MSS+stage" 2
+elseif player.HasPerk SanityInsane
+	SetUIFloatAlt "StatsMenu/_MSS+stage" 3
+	SetUIFloatAlt "HUDMainMenu/_MSS+stage" 3
+endif

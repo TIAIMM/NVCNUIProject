@@ -78,7 +78,10 @@
 			<onlyif><copy src="io" trait="_MAPMOHardcoreNeedsGauge"/><neq>2</neq></onlyif>
 		</add>
 	</x>
-	<y><copy src="sibling(LimbsIcon)" trait="y"/></y>
+	<y>
+		<copy src="sibling(SleepIcon)" trait="y"/>
+		<add><copy src="sibling(WaterIcon)" trait="height"/><onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><lt>2</lt></onlyif></add>
+	</y>
 	<zoom><copy src="sibling(WaterIcon)" trait="zoom"/></zoom>
 </image>
 <text name="SanityText">
