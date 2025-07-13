@@ -1,0 +1,23 @@
+<text name="Sanity">
+			<x>
+				<copy>55</copy>
+				<onlyif src="sibling(LMBs)" trait="alpha"/>
+				<add src="sibling(LMBs)" trait="x"/>
+			</x>
+			<systemcolor>
+				<copy>1</copy>
+				<add><copy src="io" trait="_MSS+stage"/><eq>3</eq></add>
+			</systemcolor>
+			<zoom>&scale;</zoom>
+			<font><copy src="sibling(Rads)" trait="font"/></font>
+			<justify>&right;</justify>
+			<string><copy src="io" trait="_MSS+abbrev"/></string>
+			<alpha>
+				<copy>124</copy><onlyif src="io" trait="_MSS+stage"/>
+				<add><copy>255</copy><onlyif><copy src="io" trait="_MSS+stage"/><gte>2</gte></onlyif></add>
+			</alpha>
+			<visible><copy src="sibling" trait="visible"/></visible>
+<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>

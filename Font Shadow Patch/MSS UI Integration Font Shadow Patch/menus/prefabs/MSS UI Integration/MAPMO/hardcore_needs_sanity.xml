@@ -1,0 +1,242 @@
+<image name="LimbsIconShifted">
+	<alpha><copy src="sibling(LimbsIcon)" trait="alpha"/></alpha>
+	<brightness><copy src="sibling(LimbsIcon)" trait="brightness"/></brightness>
+	<filename>mapmo\limbs.dds</filename>
+	<height><copy src="sibling(WaterIcon)" trait="height"/></height>
+	<systemcolor><copy src="sibling(LimbsIcon)" trait="systemcolor"/></systemcolor>
+	<visible><copy src="sibling(LimbsIcon)" trait="visible"/></visible>
+	<width><copy src="me" trait="height"/></width>
+	<x>
+		<copy src="sibling(LimbsIcon)" trait="x"/>
+		<add><copy src="parent" trait="_totalwidth"/><onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><gte>2</gte></onlyif></add>
+	</x>
+	<y>
+		<copy src="sibling(LimbsIcon)" trait="y"/>
+		<add><copy src="sibling(WaterIcon)" trait="height"/><onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><lt>2</lt></onlyif></add>
+	</y>
+	<zoom><copy src="sibling(WaterIcon)" trait="zoom"/></zoom>
+</image>
+<text name="LimbsTextShifted">
+	<alpha><copy src="sibling(LimbsIcon)" trait="alpha"/></alpha>
+	<blue><copy src="sibling(LimbsIcon)" trait="blue"/></blue>
+	<brightness><copy src="sibling(LimbsIcon)" trait="brightness"/></brightness>
+	<font><copy src="sibling(WaterText)" trait="font"/></font>
+	<green><copy src="sibling(LimbsIcon)" trait="green"/></green>
+	<justify><copy src="sibling(WaterText)" trait="justify"/></justify>
+	<red><copy src="sibling(LimbsIcon)" trait="red"/></red>
+	<systemcolor><copy src="sibling(LimbsIcon)" trait="systemcolor"/></systemcolor>
+	<string>&sStatsLMBAbbrev;</string>
+	<visible><copy src="io" trait="_MAPMOHardcoreNeedsShowLimbs"/><sub src="sibling(LimbsIcon)" trait="visible"/></visible>
+	<x>
+		<copy src="sibling(LimbsText)" trait="x"/>
+		<add><copy src="parent" trait="_totalwidth"/><onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><gte>2</gte></onlyif></add>
+	</x>
+	<y>
+		<copy src="sibling(LimbsText)" trait="y"/>
+		<add><copy src="sibling(WaterIcon)" trait="height"/><onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><lt>2</lt></onlyif></add>
+	</y>
+	<zoom><copy src="sibling(WaterText)" trait="zoom"/></zoom>
+<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+<image name="SanityIcon">
+	<_toggle>1</_toggle>
+	<alpha>
+		<copy>0</copy>
+		<add><copy src="Sanity" trait="alpha"/><onlyifnot src="io" trait="_MAPMOHardcoreNeedsAlwaysVisible"/></add>
+		<add><copy src="parent" trait="alpha"/><mult src="me" trait="_toggle"/><onlyif src="io" trait="_MAPMOHardcoreNeedsAlwaysVisible"/></add>
+		<max><copy>255</copy><onlyif src="io" trait="_MAPMOConfig"/></max>
+	</alpha>
+	<blue>
+		<copy>63</copy>
+		<sub><copy>39</copy><onlyif><copy src="io" trait="_MSS+sanity"/><gt src="io" trait="_MSS+threshold2"/></onlyif></sub>
+		<add><copy>36</copy><onlyif><copy src="io" trait="_MSS+sanity"/><gt src="io" trait="_MSS+threshold3"/></onlyif></add>
+	</blue>
+	<brightness><copy src="me" trait="alpha"/></brightness>
+	<filename>mapmo\sanity.dds</filename>
+	<green>
+		<copy>255</copy>
+		<sub><copy>75</copy><onlyif><copy src="io" trait="_MSS+sanity"/><gt src="io" trait="_MSS+threshold2"/></onlyif></sub>
+		<sub><copy>85</copy><onlyif><copy src="io" trait="_MSS+sanity"/><gt src="io" trait="_MSS+threshold3"/></onlyif></sub>
+	</green>
+	<height><copy src="sibling(WaterIcon)" trait="height"/></height>
+	<red>255</red>
+	<systemcolor>
+		<copy>0</copy>
+		<add><copy>1</copy><onlyif><copy src="io" trait="_MSS+sanity"/><lt src="io" trait="_MSS+threshold1"/></onlyif></add>
+	</systemcolor>
+	<visible><copy src="io" trait="_MAPMOHardcoreNeedsShowIcons"/></visible>
+	<width><copy src="me" trait="height"/></width>
+	<x>
+		<copy><copy src="parent" trait="_totalwidth"/><mult><copy>3</copy><add src="io" trait="_MAPMOHardcoreNeedsShowRads"/></mult><onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><gte>2</gte></onlyif></copy>
+		<add>
+			<copy src="sibling(SanityGaugeBG)" trait="width"/>
+			<onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><neq>0</neq></onlyif>
+			<onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><neq>2</neq></onlyif>
+			<onlyif><copy src="io" trait="_MAPMOHardcoreNeedsGauge"/><neq>0</neq></onlyif>
+			<onlyif><copy src="io" trait="_MAPMOHardcoreNeedsGauge"/><neq>2</neq></onlyif>
+		</add>
+	</x>
+	<y><copy src="sibling(LimbsIcon)" trait="y"/></y>
+	<zoom><copy src="sibling(WaterIcon)" trait="zoom"/></zoom>
+</image>
+<text name="SanityText">
+	<alpha><copy src="sibling(SanityIcon)" trait="alpha"/></alpha>
+	<blue><copy src="sibling(SanityIcon)" trait="blue"/></blue>
+	<brightness><copy src="me" trait="alpha"/></brightness>
+	<font><copy src="sibling(WaterText)" trait="font"/></font>
+	<green><copy src="sibling(SanityIcon)" trait="green"/></green>
+	<justify><copy src="sibling(WaterText)" trait="justify"/></justify>
+	<red><copy src="sibling(SanityIcon)" trait="red"/></red>
+	<systemcolor><copy src="sibling(SanityIcon)" trait="systemcolor"/></systemcolor>
+	<string><copy src="io" trait="_MSS+abbrev"/></string>
+	<visible><copy src="sibling(WaterText)" trait="visible"/></visible>
+	<x>
+		<copy src="sibling(SanityIcon)" trait="x"/>
+		<sub>
+		<copy><copy src="me" trait="width"/><div>2</div></copy>
+		<onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><neq>1</neq></onlyif>
+		<onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><neq>3</neq></onlyif>
+		</sub>
+	</x>
+	<y>
+		<copy src="sibling(SanityIcon)" trait="y"/>
+		<add>
+		<add><copy src="sibling(WaterIcon)" trait="height"/><div>2</div></add>
+		<sub><copy src="sibling(WaterGaugeBG)" trait="height"/><div>2</div></sub>
+		<div>2</div>
+		</add>
+	</y>
+	<zoom><copy src="sibling(WaterText)" trait="zoom"/></zoom>
+<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+<hotrect name="SanityGaugeBG">
+	<alpha><copy src="sibling(SanityIcon)" trait="alpha"/><mult>0.75</mult></alpha>
+	<brightness><copy src="sibling(WaterGaugeBG)" trait="brightness"/></brightness>
+	<depth><copy src="sibling(WaterGaugeBG)" trait="depth"/></depth>
+	<height><copy src="sibling(WaterGaugeBG)" trait="height"/></height>
+	<visible><copy src="sibling(WaterGaugeBG)" trait="visible"/></visible>
+	<width><copy src="sibling(WaterGaugeBG)" trait="width"/></width>
+	<x>
+		<copy src="sibling(SanityIcon)" trait="x"/>
+		<add>
+			<copy src="sibling(SanityIcon)" trait="width"/>
+			<onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><neq>1</neq></onlyif>
+			<onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><neq>3</neq></onlyif>
+		</add>
+		<sub>
+			<copy src="me" trait="width"/>
+			<onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><neq>0</neq></onlyif>
+			<onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><neq>2</neq></onlyif>
+		</sub>
+	</x>
+	<y>
+		<copy src="sibling(SanityIcon)" trait="y"/>
+		<add><copy src="sibling(SanityIcon)" trait="height"/><div>2</div></add>
+		<sub><copy src="me" trait="height"/><div>2</div></sub>
+	</y>
+</hotrect>
+<hotrect name="SanityGauge">
+	<_fill_mode>0</_fill_mode>
+	<alpha><copy src="sibling(SanityGaugeBG)" trait="alpha"/></alpha>
+	<brightness><copy src="sibling(WaterGauge)" trait="brightness"/></brightness>
+	<depth><copy src="sibling(WaterGauge)" trait="depth"/></depth>
+	<blue><copy src="sibling(SanityIcon)" trait="blue"/></blue>
+	<green><copy src="sibling(SanityIcon)" trait="green"/></green>
+	<height><copy src="sibling(WaterGauge)" trait="height"/></height>
+	<width><copy src="sibling(WaterGaugeBG)" trait="width"/><mul><abs><not src="me" trait="_fill_mode"/><sub><copy src="io" trait="_MSS+sanity"/><div src="io" trait="_MSS+threshold4"/></sub></abs></mul></width>
+	<red><copy src="sibling(SanityIcon)" trait="red"/></red>
+	<systemcolor><copy src="sibling(SanityIcon)" trait="systemcolor"/></systemcolor>
+	<visible><copy src="sibling(WaterGauge)" trait="visible"/></visible>
+	<x>
+		<copy src="sibling(SanityGaugeBG)" trait="x"/>
+		<add><copy src="sibling(SanityGaugeBG)" trait="width"/><sub><copy src="me" trait="width"/></sub><onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><eq>1</eq></onlyif></add>
+		<add><copy src="sibling(SanityGaugeBG)" trait="width"/><sub><copy src="me" trait="width"/></sub><onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><eq>3</eq></onlyif></add>
+	</x>
+	<y><copy src="sibling(SanityGaugeBG)" trait="y"/></y>
+</hotrect>
+<image name="SanityThreshold">
+	<alpha><copy src="sibling(SanityGaugeBG)" trait="alpha"/></alpha>
+	<depth><copy src="sibling(WaterThreshold)" trait="depth"/></depth>
+	<filename><copy src="sibling(WaterThreshold)" trait="filename"/></filename>
+	<height><copy src="sibling(WaterThreshold)" trait="height"/></height>
+	<visible><copy src="sibling(SanityGaugeBG)" trait="visible"/><onlyif><copy src="io" trait="_MSS+sanity"/><lte src="io" trait="_MSS+threshold3"/></onlyif></visible>
+	<width><copy src="sibling(WaterThreshold)" trait="width"/></width>
+	<x>
+		<copy src="sibling(SanityGaugeBG)" trait="x"/>
+		<add>
+			<copy src="sibling(SanityGaugeBG)" trait="width"/>
+			<sub>
+				<copy src="sibling(SanityGaugeBG)" trait="width"/><mult><copy src="io" trait="_MSS+threshold1"/><div src="io" trait="_MSS+threshold4"/></mult>
+				<onlyif><copy src="io" trait="_MSS+sanity"/><lte src="io" trait="_MSS+threshold1"/></onlyif>
+			</sub>
+			<sub>
+				<copy src="sibling(SanityGaugeBG)" trait="width"/><mult><copy src="io" trait="_MSS+threshold2"/><div src="io" trait="_MSS+threshold4"/></mult>
+				<onlyif><copy src="io" trait="_MSS+sanity"/><gt src="io" trait="_MSS+threshold1"/></onlyif>
+				<onlyif><copy src="io" trait="_MSS+sanity"/><lte src="io" trait="_MSS+threshold2"/></onlyif>
+			</sub>
+			<sub>
+				<copy src="sibling(SanityGaugeBG)" trait="width"/><mult><copy src="io" trait="_MSS+threshold3"/><div src="io" trait="_MSS+threshold4"/></mult>
+				<onlyif><copy src="io" trait="_MSS+sanity"/><gt src="io" trait="_MSS+threshold2"/></onlyif>
+				<onlyif><copy src="io" trait="_MSS+sanity"/><lte src="io" trait="_MSS+threshold3"/></onlyif>
+			</sub>
+			<onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><neq>1</neq></onlyif>
+			<onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><neq>3</neq></onlyif>
+		</add>
+		<add>
+			<add>
+				<copy src="sibling(SanityGaugeBG)" trait="width"/><mult><copy src="io" trait="_MSS+threshold1"/><div src="io" trait="_MSS+threshold4"/></mult>
+				<onlyif><copy src="io" trait="_MSS+sanity"/><lte src="io" trait="_MSS+threshold1"/></onlyif>
+			</add>
+			<add>
+				<copy src="sibling(SanityGaugeBG)" trait="width"/><mult><copy src="io" trait="_MSS+threshold2"/><div src="io" trait="_MSS+threshold4"/></mult>
+				<onlyif><copy src="io" trait="_MSS+sanity"/><gt src="io" trait="_MSS+threshold1"/></onlyif>
+				<onlyif><copy src="io" trait="_MSS+sanity"/><lte src="io" trait="_MSS+threshold2"/></onlyif>
+			</add>
+			<add>
+				<copy src="sibling(SanityGaugeBG)" trait="width"/><mult><copy src="io" trait="_MSS+threshold3"/><div src="io" trait="_MSS+threshold4"/></mult>
+				<onlyif><copy src="io" trait="_MSS+sanity"/><gt src="io" trait="_MSS+threshold2"/></onlyif>
+				<onlyif><copy src="io" trait="_MSS+sanity"/><lte src="io" trait="_MSS+threshold3"/></onlyif>
+			</add>
+			<onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><neq>0</neq></onlyif>
+			<onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><neq>2</neq></onlyif>
+		</add>
+		<sub><copy>0.075</copy><mult src="io" trait="_MAPMOHardcoreNeedsScale"/></sub>
+	</x>
+	<y><copy src="sibling(SanityGaugeBG)" trait="y"/></y>
+	<zoom><copy src="sibling(WaterIcon)" trait="zoom"/></zoom>
+</image>
+<text name="SanityPercentage">
+	<alpha><copy src="sibling(SanityGaugeBG)" trait="alpha"/></alpha>
+	<blue><copy src="sibling(SanityIcon)" trait="blue"/></blue>
+	<depth><copy src="sibling(WaterPercentage)" trait="depth"/></depth>
+	<font><copy src="sibling(WaterPercentage)" trait="font"/></font>
+	<green><copy src="sibling(SanityIcon)" trait="green"/></green>
+	<string></string>
+	<red><copy src="sibling(SanityIcon)" trait="red"/></red>
+	<systemcolor><copy src="sibling(SanityIcon)" trait="systemcolor"/></systemcolor>
+	<visible><copy src="sibling(WaterPercentage)" trait="visible"/></visible>
+	<x>
+		<copy src="sibling(SanityGaugeBG)" trait="x"/>
+		<add>
+			<add><copy src="sibling(SanityGaugeBG)" trait="width"/><div>2</div></add>
+			<sub><copy src="me" trait="width"/><div>2</div></sub>
+			<onlyif><copy src="io" trait="_MAPMOHardcoreNeedsGauge"/><eq>3</eq></onlyif>
+		</add>
+		<add>
+			<copy src="sibling(SanityGaugeBG)" trait="width"/>
+			<sub src="me" trait="width"/>
+			<onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><neq>0</neq></onlyif>
+			<onlyif><copy src="io" trait="_MAPMOHardcoreNeedsAlign"/><neq>2</neq></onlyif>
+			<onlyif><copy src="io" trait="_MAPMOHardcoreNeedsGauge"/><eq>2</eq></onlyif>
+		</add>
+	</x>
+	<y><copy src="sibling(SanityIcon)" trait="y"/><add><copy src="sibling(SanityGaugeBG)" trait="height"/><div>2</div></add></y>
+	<zoom><copy src="sibling(WaterPercentage)" trait="zoom"/></zoom>
+<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>

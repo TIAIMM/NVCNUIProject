@@ -1,0 +1,459 @@
+<rect name="stats_button_nav_non_hardcore">
+	<visible><not src="sibling(stats_SLP_button)" trait="visible"/></visible>
+	<target><copy src="sibling(stats_EFF_button)" trait="_selected"/><or src="sibling(stats_MAD_button)" trait="_selected"/></target>
+	<xdefault>-1</xdefault>
+	<xdown><ref src="sibling(stats_MAD_button)" trait="clicked"/></xdown>
+	<xup><ref src="sibling(stats_EFF_button)" trait="clicked"/></xup>
+</rect>
+<rect name="stats_button_nav_hardcore">
+	<visible><copy src="sibling(stats_SLP_button)" trait="visible"/></visible>
+	<target><copy src="sibling(stats_SLP_button)" trait="_selected"/><or src="sibling(stats_MAD_button)" trait="_selected"/></target>
+	<xdefault>-1</xdefault>
+	<xdown><ref src="sibling(stats_MAD_button)" trait="clicked"/></xdown>
+	<xup><ref src="sibling(stats_SLP_button)" trait="clicked"/></xup>
+</rect>
+<hotrect name="stats_antipsychotics_button">
+				<include src="text_box.xml"/>
+				<visible> <copy src="sibling(stats_sanity_container)" trait="visible"/> </visible> <!--VUI+ compatible with hovering -->
+				<_x> <copy src="parent" trait="width" /> <sub src="globals" trait="_VUI+InsideButton" /> </_x>
+				<justify> &right; </justify>
+				<_xbox_button> &xbuttona; </_xbox_button>
+				<_PCButtonText> &-sPCMenuHintQ; </_PCButtonText>
+				<listindex> 1 </listindex>
+</hotrect>
+<hotrect name="stats_MAD_button">
+				<include src="super_text_box.xml"/>
+				<string><copy src="io" trait="_MSS+abbrev"/></string>
+				<clicksound> UIPipboySelect </clicksound>
+				<_x> <copy src="sibling(stats_SLP_button)" trait="_x"/> </_x>
+				<_y>
+					<copy src="sibling(stats_SLP_button)" trait="height"/>
+					<mul> 3 </mul>
+					<onlyif src="sibling(stats_SLP_button)" trait="visible"/>
+					<add src="sibling(stats_EFF_button)" trait="_y"/>
+					<add src="sibling(stats_SLP_button)" trait="height"/>
+				</_y>
+				<_selected>
+					<copy src="parent" trait="user0"/>
+					<eq> -2 </eq>
+				</_selected>
+				<_fixedwidth> <copy src="sibling(stats_SLP_button)" trait="_fixedwidth"/> </_fixedwidth>
+				<listindex> 7 </listindex>
+</hotrect>
+<rect name="stats_sanity_container">
+				<visible>
+					<copy src="parent" trait="user0"/>
+					<eq> -2 </eq>
+				</visible>
+				<zoom> 130 </zoom>
+				<_left_edge>
+					<copy> 83 </copy>
+					<mult src="me" trait="zoom"/>
+					<div> 100 </div>
+				</_left_edge>
+				<image name="stats_sanity_effects_bracket">
+					<locus> 1 </locus>
+					<visible>
+						<copy src="io" trait="_MSS+stage"/>
+						<or>
+							<copy src="io" trait="_MSS+effects_mode"/>
+							<eq>1</eq>
+						</or>
+						<and src="io" trait="_MSS+effects_mode"/>
+					</visible>
+					<filename> Interface\stats\rad_effects_bracket.dds </filename>
+					<zoom>
+						<copy src="parent" trait="zoom"/>
+					</zoom>
+					<x>
+						<copy src="grandparent" trait="width"/>
+						<sub src="me" trait="filewidth"/>
+					</x>
+					<y>
+						<copy> 220 </copy>
+						<add> <copy src="stats_SLP_button" trait="height"/> <mul src="stats_SLP_button" trait="visible"/> </add>
+					</y>
+					<width>
+						<copy src="me" trait="filewidth"/>
+					</width>
+					<!-- filewidth/fileheight already -->
+					<height>
+						<copy src="me" trait="fileheight"/>
+					</height>
+					<!-- adjusted for zoom. -->
+
+					<_tabstop_1>
+						<copy src="me" trait="_tabstop_2"/>
+						<sub> 120 </sub>
+					</_tabstop_1>
+					<_tabstop_2>
+						<copy src="me" trait="_tabstop_3"/>
+						<sub> 120 </sub>
+					</_tabstop_2>
+					<_tabstop_3>
+						<copy src="me" trait="width"/>
+						<sub> 70 </sub>
+					</_tabstop_3>
+
+					<!-- Effects are hardcoded unlike in vanilla menus, because why would you make them templated anyway? -->
+					
+					<rect name="effect_PER">
+						<locus> 1 </locus>
+						<x>
+							<copy src="parent" trait="_tabstop_1"/>
+						</x>
+						<y>
+							<copy> 40 </copy>
+							<onlyif>
+							<copy src="me" trait="listindex"/>
+							<gt> 2 </gt>
+							</onlyif>
+						</y>
+
+						<text name="magnitude_pos">
+							<visible><not src="io" trait="_MSS+stage"/></visible>
+							<y> 20 </y>
+							<justify> &right; </justify>
+							<string>+1</string>
+						<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+
+						<text name="magnitude_neg">
+							<visible><copy src="io" trait="_MSS+stage"/></visible>
+							<y> 20 </y>
+							<justify> &right; </justify>
+							<string>
+								<copy>-1</copy>
+								<sub><copy src="io" trait="_MSS+stage"/><eq>3</eq></sub>
+							</string>
+						<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+
+						<text name="abbrev">
+							<x> 10 </x>
+							<y> 20 </y>
+							<string></string>
+						<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+					</rect>
+					
+					<rect name="effect_CHR">
+						<visible>
+							<copy src="io" trait="_MSS+stage"/>
+							<gte>2</gte>
+						</visible>
+						<locus> 1 </locus>
+						<x>
+							<copy src="parent" trait="_tabstop_2"/>
+						</x>
+						<y>
+							<copy> 40 </copy>
+							<onlyif>
+							<copy src="me" trait="listindex"/>
+							<gt> 2 </gt>
+							</onlyif>
+						</y>
+
+						<text name="magnitude">
+							<y> 20 </y>
+							<justify> &right; </justify>
+							<string><copy>-1</copy></string>
+						<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+
+						<text name="abbrev">
+							<x> 10 </x>
+							<y> 20 </y>
+							<string></string>
+						<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+					</rect>
+					
+					<rect name="effect_DR">
+						<visible>
+							<copy src="io" trait="_MSS+stage"/>
+							<gte>2</gte>
+						</visible>
+						<locus> 1 </locus>
+						<x>
+							<copy src="parent" trait="_tabstop_3"/>
+						</x>
+						<y>
+							<copy> 40 </copy>
+							<onlyif>
+							<copy src="me" trait="listindex"/>
+							<gt> 2 </gt>
+							</onlyif>
+						</y>
+
+						<text name="magnitude1">
+							<visible><copy src="io" trait="_MSS+stage"/><eq>2</eq></visible>
+							<y> 20 </y>
+							<justify> &right; </justify>
+							<string>+5</string>
+						<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+
+						<text name="magnitude2">
+							<visible><copy src="io" trait="_MSS+stage"/><eq>3</eq></visible>
+							<y> 20 </y>
+							<justify> &right; </justify>
+							<string>+10</string>
+						<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+
+						<text name="abbrev">
+							<x> 10 </x>
+							<y> 20 </y>
+							<string></string>
+						<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+					</rect>
+				</image>
+				<text name="stats_sanity_effects_label">
+					<visible>
+						<copy src="sibling(stats_sanity_effects_bracket)" trait="visible"/>
+					</visible>
+					<string>
+						<copy src="io" trait="user10"/>
+					</string>
+					<x>
+						<copy src="sibling(stats_sanity_effects_bracket)" trait="x"/>
+						<add src="parent" trait="_left_edge"/>
+					</x>
+					<y>
+						<copy src="sibling(stats_sanity_effects_bracket)" trait="y"/>
+						<add> 20 </add>
+					</y>
+				<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+
+				<hotrect name="stats_sanity_resist">
+					<clipwindow> 1 </clipwindow>
+					<locus> 1 </locus>
+					<alpha> 0 </alpha>
+					<y>
+						<copy> 360 </copy>
+						<add> <copy src="stats_SLP_button" trait="height"/> <mul src="stats_SLP_button" trait="visible"/> </add>
+					</y>
+					<width>
+						<copy src="sibling(stats_sanity_effects_label)" trait="x"/>
+						<sub> 10 </sub>
+					</width>
+					<height>
+						<copy src="child(stats_sanity_resist_bracket)" trait="height"/>
+					</height>
+
+					<image name="stats_sanity_resist_bracket">
+						<filename> Interface\stats\rad_effects_bracket.dds </filename>
+						<clips> 1 </clips>
+						<zoom>
+							<copy src="parent" trait="zoom"/>
+						</zoom>
+						<x>
+							<copy src="parent" trait="width"/>
+							<sub src="me" trait="width"/>
+						</x>
+						<width>
+							<copy src="me" trait="filewidth"/>
+						</width>
+						<height>
+							<copy src="me" trait="fileheight"/>
+						</height>
+					</image>
+					<text name="stats_sanity_resist_label">
+						<string>BRAIN SCAN ERROR</string>
+						<y> 20 </y>
+						<visible> 0 </visible>
+					<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+					<text name="stats_sanity_resist_level">
+						<visible> 0 </visible>
+						<justify> &right; </justify>
+						<x>
+							<copy src="parent" trait="width"/>
+							<sub> 20 </sub>
+						</x>
+						<y> 20 </y>
+					<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+				</hotrect>
+
+
+				<image name="stats_sanity_meter">
+					<locus> 1 </locus>
+					<filename> Interface\Stats\sanity_meter_bracket.dds </filename>
+					<zoom>
+						<copy src="parent" trait="zoom"/>
+					</zoom>
+					<x>
+						<copy src="sibling(stats_sanity_effects_bracket)" trait="x"/>
+					</x>
+					<y>
+						<copy src="sibling(stats_sanity_resist)" trait="y"/>
+					</y>
+					<width>
+						<copy src="me" trait="filewidth"/>
+					</width>
+					<!-- filewidth/fileheight already -->
+					<height>
+						<copy src="me" trait="fileheight"/>
+					</height>
+					<!-- adjusted for zoom. -->
+
+					<_zero_pos>
+						<copy> 186 </copy>
+						<mult src="me" trait="zoom"/>
+						<div> 100 </div>
+					</_zero_pos>
+					<_full_pos>
+						<copy> 482 </copy>
+						<mult src="me" trait="zoom"/>
+						<div> 100 </div>
+					</_full_pos>
+
+					<text name="stats_sanity_label">
+						<string><copy src="io" trait="_MSS+abbrev"/></string>
+						<x>
+							<copy src="grandparent" trait="_left_edge"/>
+						</x>
+						<y> 20 </y>
+					<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+					<text name="stats_sanity_zero">
+						<string>
+							<copy src="me" trait="user0"/>
+						</string>
+						<justify> &center; </justify>
+						<x>
+							<copy src="parent" trait="_zero_pos"/>
+						</x>
+						<y> -28 </y>
+						<user0> 0 </user0>
+					<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+					<text name="stats_sanity_deranged">
+						<string>
+							<copy src="io" trait="_MSS+threshold2"/>
+						</string>
+						<justify> &center; </justify>
+						<x>
+							<copy src="parent" trait="_zero_pos"/>
+							<add>
+								<copy src="parent" trait="_full_pos"/>
+								<sub src="parent" trait="_zero_pos"/>
+								<mult src="io" trait="_MSS+threshold2"/>
+								<div src="io" trait="_MSS+threshold4"/>
+							</add>
+						</x>
+						<y>
+							<copy src="sibling(stats_sanity_zero)" trait="y"/>
+						</y>
+					<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+					<text name="stats_sanity_max">
+						<string>
+							<copy src="io" trait="_MSS+threshold4"/>
+						</string>
+						<justify> &right; </justify>
+						<x>
+							<copy src="parent" trait="width"/>
+						</x>
+						<y>
+							<copy src="sibling(stats_sanity_zero)" trait="y"/>
+						</y>
+					<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+					<image name="stats_sanity_arrow">
+						<filename> Interface\Shared\Arrow\pointer_tail.dds </filename>
+						<zoom>
+							<copy src="grandparent" trait="zoom"/>
+						</zoom>
+						<width>
+							<copy> 22 </copy>
+							<mult src="me" trait="zoom"/>
+							<div> 100 </div>
+						</width>
+						<height>
+							<copy> 40 </copy>
+							<mult src="me" trait="zoom"/>
+							<div> 100 </div>
+						</height>
+						<x>
+							<copy src="parent" trait="_zero_pos"/>
+							<sub>
+								<copy src="me" trait="width"/>
+								<div> 2 </div>
+							</sub>
+							<add>
+								<copy src="parent" trait="_full_pos"/>
+								<sub src="parent" trait="_zero_pos"/>
+								<mult src="io" trait="_MSS+sanity"/>
+								<div src="io" trait="_MSS+threshold4"/>
+								<max> 0 </max>
+							</add>
+						</x>
+						<y> 30 </y>
+						<!-- Pip-Boy UI Tweaks compatibility -->
+						<alpha> <copy> 255 </copy> <onlyifnot src="io()" trait="_MSS+PUI" /> <add src="io()" trait="_PUI+MADA" /> </alpha>
+						<systemcolor> <not src="io()" trait="_MSS+PUI" /> </systemcolor>
+						<red> <copy src="io()" trait="_PUI+MADR" /> </red>
+						<green> <copy src="io()" trait="_PUI+MADG" /> </green>
+						<blue> 0 </blue>
+					</image>
+					<text name="stats_player_sanity">
+						<string>
+							<copy src="io" trait="_MSS+sanity"/>
+							<max> 0 </max>
+						</string>
+						<justify> &right; </justify>
+						<x>
+							<copy src="sibling(stats_sanity_arrow)" trait="x"/>
+						</x>
+						<y>
+							<copy src="sibling(stats_sanity_arrow)" trait="y"/>
+							<add src="sibling(stats_sanity_arrow)" trait="height"/>
+							<sub> 24 </sub>
+						</y>
+						<!-- Pip-Boy UI Tweaks compatibility -->
+						<alpha> <copy> 255 </copy> <onlyifnot src="io()" trait="_MSS+PUI" /> <add src="io()" trait="_PUI+MADA" /> </alpha>
+						<systemcolor> <not src="io()" trait="_MSS+PUI" /> </systemcolor>
+						<red> <copy src="io()" trait="_PUI+MADR" /> </red>
+						<green> <copy src="io()" trait="_PUI+MADG" /> </green>
+						<blue> 0 </blue>
+					<_VUI+OutlineIntensity>3</_VUI+OutlineIntensity>
+	<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
+</text>
+<include src="VUI+\outline.xml"/>
+				</image>
+			</rect>
