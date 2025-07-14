@@ -1,0 +1,151 @@
+;;=============================== REQUIREMENTS CHECK ===========================================
+
+int vCheck
+
+if Eval GetNVSEVersionFull < 6.33
+	printc "Update xNVSE. Required version: 6.33 (6.3.3) or higher."
+	vCheck = 1
+endif
+
+if Eval GetPluginVersion "JIP LN NVSE" < 57.21
+	printc "Update JIP LN NVSE plugin. Required version: 57.21"
+	vCheck = 1
+endif
+
+if Eval GetPluginVersion "SUP NVSE Plugin" < 855
+	printc "Update SUP NVSE plugin. Required version: 8.55"
+	vCheck = 1
+endif
+if Eval GetPluginVersion "JohnnyGuitarNVSE" < 493
+	printc  "Update JohnnyGuitar NVSE plugin. Required version: 4.93"
+	vCheck = 1
+endif
+
+if Eval GetPluginVersion "ShowOffNVSE Plugin" < 180
+	printc  "Update ShowOff NVSE plugin. Required version: 1.80"
+	vCheck = 1
+endif
+
+if Eval GetPluginVersion "UI Organizer Plugin" < 230
+	printc  "Update UIO Plugin. Required version: 2.30"
+	vCheck = 1
+endif
+
+if vCheck
+	return
+endif
+
+
+;;========================================================= MAIN SETUP =====================================================================
+	If Eval IsComponentLoaded "HUDMainMenu\HEH_Mas" == 1
+		
+		UnloadUIComponent "HUDMainMenu\HEH_Mas"
+		InjectUIComponent "HUDMainMenu" "<rect name=%qHEH_Mas%q> <visible>1</visible> <x>0</x> <y>0</y> <width>300</width> <height>300</height> <alpha>255</alpha> <locus>0</locus> <systemcolor>2</systemcolor> <brightness>255</brightness> <depth>1</depth> </rect>"
+		
+	Else
+		
+		InjectUIComponent "HUDMainMenu" "<rect name=%qHEH_Mas%q> <visible>1</visible> <x>0</x> <y>0</y> <width>300</width> <height>300</height> <alpha>255</alpha> <locus>0</locus> <systemcolor>2</systemcolor> <brightness>255</brightness> <depth>1</depth> </rect>"
+		
+	EndIf
+	
+	If Eval SunnyREF.AuxiliaryVariableGetFloat "*HEH_Start" == 1
+		
+		Return
+
+	Else
+		
+		SunnyREF.AuxiliaryVariableSetFloat "*HEH_Start" 1
+		SunnyREF.AuxiliaryVariableSetString "*HEH_Style" (GetINIStringOrCreate_Cached "General:BarStyle" "HEHConfig.ini")
+		SunnyREF.AuxiliaryVariableSetFloat "*HEH_EnableDOT" (GetINIFloatOrCreate_Cached "General:EnableDOT" "HEHConfig.ini")
+		SunnyREF.AuxiliaryVariableSetFloat "*HEH_DOTVB" (GetINIFloatOrCreate_Cached "General:DOTVerticalBuffer" "HEHConfig.ini")
+		SunnyREF.AuxiliaryVariableSetFloat "*HEH_DOTSM" (GetINIFloatOrCreate_Cached "General:DOTSizeMult" "HEHConfig.ini")
+		SunnyREF.AuxiliaryVariableSetFloat "*HEH_BarHeight" (GetINIFloatOrCreate_Cached "General:BarHeightMult" "HEHConfig.ini")
+		SunnyREF.AuxiliaryVariableSetFloat "*HEH_BarWidth" (GetINIFloatOrCreate_Cached "General:BarWidthMult" "HEHConfig.ini")
+		SunnyREF.AuxiliaryVariableSetFloat "*HEH_BarXOff" (GetINIFloatOrCreate_Cached "General:BarXOffset" "HEHConfig.ini")
+		SunnyREF.AuxiliaryVariableSetFloat "*HEH_BarYOff" (GetINIFloatOrCreate_Cached "General:BarYOffset" "HEHConfig.ini")
+		SunnyREF.AuxiliaryVariableSetFloat "*HEH_EnableName" (GetINIFloatOrCreate_Cached "General:EnableName" "HEHConfig.ini")
+		SunnyREF.AuxiliaryVariableSetFloat "*HEH_NameVB" (GetINIFloatOrCreate_Cached "General:NameVerticalBuffer" "HEHConfig.ini")
+		SunnyREF.AuxiliaryVariableSetFloat "*HEH_NameSM" (GetINIFloatOrCreate_Cached "General:NameSizeMult" "HEHConfig.ini")
+		SunnyREF.AuxiliaryVariableSetFloat "*HEH_FatBar" (GetINIFloatOrCreate_Cached "General:EnableFatigueBars" "HEHConfig.ini")
+		SunnyREF.AuxiliaryVariableSetFloat "*HEH_Mode" (GetINIFloatOrCreate_Cached "General:HEHMode" "HEHConfig.ini")
+		SunnyREF.AuxiliaryVariableSetFloat "*HEH_Alignment" (GetINIFloatOrCreate_Cached "General:HEHAlignment" "HEHConfig.ini")
+		SunnyREF.AuxiliaryVariableSetFloat "*HEH_EnablePM" (GetINIFloatOrCreate_Cached "General:EnablePassiveMarkers" "HEHConfig.ini")
+		SunnyREF.AuxiliaryVariableSetFloat "*HEH_DisableEaseIn" (GetINIFloatOrCreate_Cached "General:DisableEaseIn" "HEHConfig.ini")
+		SunnyRef.AuxiliaryVariableSetFloat "*HEH_FatigueSysColor" (GetINIFloatOrCreate_Cached "Colors:FatigueSystemColor" "HEHConfig.ini")
+		SunnyRef.AuxiliaryVariableSetFloat "*HEH_FatigueColorR" (GetINIFloatOrCreate_Cached "Colors:FatigueColorR" "HEHConfig.ini")
+		SunnyRef.AuxiliaryVariableSetFloat "*HEH_FatigueColorG" (GetINIFloatOrCreate_Cached "Colors:FatigueColorG" "HEHConfig.ini")
+		SunnyRef.AuxiliaryVariableSetFloat "*HEH_FatigueColorB" (GetINIFloatOrCreate_Cached "Colors:FatigueColorB" "HEHConfig.ini")
+		SunnyRef.AuxiliaryVariableSetFloat "*HEH_ChaserSysColor" (GetINIFloatOrCreate_Cached "Colors:ChaserSystemColor" "HEHConfig.ini")
+		SunnyRef.AuxiliaryVariableSetFloat "*HEH_ChaserColorR" (GetINIFloatOrCreate_Cached "Colors:ChaserColorR" "HEHConfig.ini")
+		SunnyRef.AuxiliaryVariableSetFloat "*HEH_ChaserColorG" (GetINIFloatOrCreate_Cached "Colors:ChaserColorG" "HEHConfig.ini")
+		SunnyRef.AuxiliaryVariableSetFloat "*HEH_ChaserColorB" (GetINIFloatOrCreate_Cached "Colors:ChaserColorB" "HEHConfig.ini")
+		SunnyRef.AuxiliaryVariableSetFloat "*HEH_MaxDistance" (GetINIFloatOrCreate_Cached "General:HEHMaxDistance" "HEHConfig.ini")
+
+			If Eval IsModLoaded "SD_Fatigue.esp"
+			Else
+				
+				SunnyREF.AuxiliaryVariableSetFloat "*HEH_FatBar" 0
+				
+			EndIf
+
+			If Eval FileExists "menus\prefabs\VUI+" 1 > 0 && FileExists "menus\prefabs\VUIE" 1 > 0
+
+				SunnyREF.AuxiliaryVariableSetString "*HEH_EHPath" "data\menus\prefabs\Naughtilus\VUIE\HEH_Bar.xml"
+				
+			ElseIf Eval FileExists "menus\prefabs\VUI+" 1 > 0
+				
+				SunnyREF.AuxiliaryVariableSetString "*HEH_EHPath" "data\menus\prefabs\Naughtilus\VUIP\HEH_Bar.xml"
+				
+			Else
+				
+				SunnyREF.AuxiliaryVariableSetString "*HEH_EHPath" "data\menus\prefabs\Naughtilus\HEH_Bar.xml"
+				
+			EndIf
+			
+		PrintC "Habitable Enemy Health Loaded Sucessfully"
+
+		ClearFileCacheShowOff "HEHConfig.ini" 0
+
+		SetEventHandler "OnStartCombat" (CompileScript "HabitableEnemyHealth\HEHGenerateBar.gek") "second"::Player
+		SetEventHandler "OnStartCombat" (CompileScript "HabitableEnemyHealth\HEHGenerateBar.gek") "first"::Player
+		SetOnPCTargetChangeEventHandler (CompileScript "HabitableEnemyHealth\HEHGenerateBar.gek") 1
+
+	EndIf
+	
+	SetUIFloat "HudMainMenu/MUXA_NPC/visible" 0
+	
+	If IsModLoaded "M.U.X. Series - Super Lite Edition.esp"
+		
+		SetUIFloatMultiple "HUDMainMenu/MUXA_NPC" "locus" 0
+		SetUIFloatMultiple "HUDMainMenu/MUXA_NPC" "x" -8000
+		SetUIFloatMultiple "HUDMainMenu/MUXA_NPC" "visible" 0
+		SetUIFloatMultiple "HUDMainMenu/MUXA_NPC" "alpha" 0
+		SetUIFloatMultiple "HUDMainMenu/MUX_NPC" "locus" 0
+		SetUIFloatMultiple "HUDMainMenu/MUX_NPC" "x" -8000
+		SetUIFloatMultiple "HUDMainMenu/MUX_NPC" "visible" 0
+		SetUIFloatMultiple "HUDMainMenu/MUX_NPC" "alpha" 0
+		
+	EndIf	
+	
+	SetUIFloatMultiple "HUDMainMenu/EnemyHealth" "locus" 0
+	SetUIFloatMultiple "HUDMainMenu/EnemyHealth" "x" -8000
+	SetUIFloatMultiple "HUDMainMenu/EnemyHealth" "visible" 0
+	SetUIFloatMultiple "HUDMainMenu/EnemyHealth" "alpha" 0
+	SetUIFloatMultiple "HUDMainMenu/DDTIconEnemy" "locus" 0
+	SetUIFloatMultiple "HUDMainMenu/DDTIconEnemy" "x" -8000
+	SetUIFloatMultiple "HUDMainMenu/DDTIconEnemy" "visible" 0
+	SetUIFloatMultiple "HUDMainMenu/DDTIconEnemy" "alpha" 0
+	SetUIFloatMultiple "HUDMainMenu/DDTIconEnemyAP" "locus" 0
+	SetUIFloatMultiple "HUDMainMenu/DDTIconEnemyAP" "x" -8000
+	SetUIFloatMultiple "HUDMainMenu/DDTIconEnemyAP" "visible" 0
+	SetUIFloatMultiple "HUDMainMenu/DDTIconEnemyAP" "alpha" 0
+	SetUIFloatMultiple "HUDMainMenu/TheHUDEditor_DDTIconEnemy" "locus" 0
+	SetUIFloatMultiple "HUDMainMenu/TheHUDEditor_DDTIconEnemy" "x" -8000
+	SetUIFloatMultiple "HUDMainMenu/TheHUDEditor_DDTIconEnemy" "visible" 0
+	SetUIFloatMultiple "HUDMainMenu/TheHUDEditor_DDTIconEnemy" "alpha" 0
+	SetUIFloatMultiple "HUDMainMenu/TheHUDEditor_DDTIconEnemyAP" "locus" 0
+	SetUIFloatMultiple "HUDMainMenu/TheHUDEditor_DDTIconEnemyAP" "x" -8000
+	SetUIFloatMultiple "HUDMainMenu/TheHUDEditor_DDTIconEnemyAP" "visible" 0
+	SetUIFloatMultiple "HUDMainMenu/TheHUDEditor_DDTIconEnemyAP" "alpha" 0	
+
+

@@ -1,0 +1,278 @@
+Begin Function {Ref rTarget, Ref rStarter}
+	
+	Ref rEnemy
+	Ref rEHBUpdateUDF = CompileScript "HabitableEnemyHealth\HEHBarUpdateUDF.gek"
+	
+	If Eval rTarget == PlayerRef
+		
+		rEnemy = rStarter
+		
+	Else
+		
+		rEnemy = rTarget
+		
+	EndIf
+	
+	If Eval IsFormValid rEnemy
+	Else	
+		
+		Return
+		
+	EndIf
+	
+	
+	If Eval rEnemy.IsActorAlt
+	Else	
+		
+		Return
+		
+	EndIf
+	
+	If Eval rEnemy == RaulRef.AuxiliaryVariableGetRef "*BB1Ref" || rEnemy == RaulRef.AuxiliaryVariableGetRef "*BB2Ref" || rEnemy == RaulRef.AuxiliaryVariableGetRef "*BB3Ref"
+		
+		Return
+		
+	EndIf
+	
+	Int iBarFlag
+	Int EReticle = PlayerRef.GetLineOfSight rEnemy
+	String_Var sEnemy = GetFormIDString rEnemy
+	String_Var sMEHStyle = SunnyREF.AuxiliaryVariableGetString "*HEH_Style"
+	String_Var sHEHParent = ("HEH_" + $sEnemy)
+	String_Var sHEHComponent
+	Float fEnemyDZ = (rEnemy.GetObjectDimensions Z) + 25
+	Float fDOTVB = SunnyREF.AuxiliaryVariableGetFloat "*HEH_DOTVB"
+	Float fDOTSM = SunnyREF.AuxiliaryVariableGetFloat "*HEH_DOTSM"
+	Float fBarHeight = SunnyREF.AuxiliaryVariableGetFloat "*HEH_BarHeight"
+	Float fBarWidth = SunnyREF.AuxiliaryVariableGetFloat "*HEH_BarWidth"
+	Float fNameSM = SunnyREF.AuxiliaryVariableGetFloat "*HEH_NameSM"
+	Float fNameVB = SunnyREF.AuxiliaryVariableGetFloat "*HEH_NameVB"
+	Float fBarXShift = SunnyREF.AuxiliaryVariableGetFloat "*HEH_BarXOff"
+	Float fBarYShift = SunnyREF.AuxiliaryVariableGetFloat "*HEH_BarYOff"
+	Float fMode = SunnyREF.AuxiliaryVariableGetFloat "*HEH_Mode"
+	Float fAlign = SunnyREF.AuxiliaryVariableGetFloat "*HEH_Alignment"
+	Float fEnemyScreenX
+	Float fEnemyScreenY
+	Float fEnemyScreenZ
+	Float fEnemyY
+	Float fDistAdj = (SunnyREF.AuxiliaryVariableGetFloat "*HEH_MaxDistance") - (PlayerRef.GetDistance3D rEnemy)
+	
+	If Eval rEnemy.IsCompassHostile || rEnemy.GetFactionRelation PlayerRef == 1 || rEnemy.GetCombatTarget == PlayerRef
+		
+		If rEnemy.GetKnockedState != -1 && rEnemy.GetKnockedState != 1 && PlayerRef.GetDead != 1
+			
+			iBarFlag = 1
+			
+		EndIf
+		
+	EndIf
+	
+	If Eval IsComponentLoaded ("HUDMainMenu\HEH_Mas\" + $sHEHParent)
+		
+		If Eval rEnemy.AuxTimerPaused "*_HEH" == -1
+			
+			rEnemy.AuxTimerStart "*_HEH" (1/40) (1 + 2 + 4 + 8 + 16 + 64)
+			rEnemy.SetOnAuxTimerStopHandler 1 rEHBUpdateUDF "*_HEH"
+			
+		EndIf
+			
+		Sv_Destruct sEnemy, sMEHStyle, sHEHParent, sHEHComponent
+		Return
+		
+	ElseIf Eval iBarFlag == 1 && rEnemy.GetLifeState < 2 && rEnemy.IsActorInvisibleToPlayer != 1 && fDistAdj > 0
+		
+		InjectUIComponent "HUDMainMenu\HEH_Mas" "<rect name=%q%z%q> <visible>0</visible> <x>0</x> <y>0</y> <width>%0.f</width> <height>%g</height> <alpha>255</alpha> <locus>1</locus> <systemcolor>2</systemcolor> <brightness>255</brightness> <depth>1</depth> </rect>" (sHEHParent) ((GetScreenTrait 0)*fBarWidth/12) (16*fBarHeight)
+		InjectUIXML ("HUDMainMenu\HEH_Mas\" + $sHEHParent) (SunnyREF.AuxiliaryVariableGetString "*HEH_EHPath")
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_DOT/systemcolor") (SunnyREF.AuxiliaryVariableGetFloat "*HEH_ChaserSysColor")
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_DOT/red") (SunnyREF.AuxiliaryVariableGetFloat "*HEH_ChaserColorR")
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_DOT/green") (SunnyREF.AuxiliaryVariableGetFloat "*HEH_ChaserColorG")
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_DOT/blue") (SunnyREF.AuxiliaryVariableGetFloat "*HEH_ChaserColorB")
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_Chaser/systemcolor") (SunnyREF.AuxiliaryVariableGetFloat "*HEH_ChaserSysColor")
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_Chaser/red") (SunnyREF.AuxiliaryVariableGetFloat "*HEH_ChaserColorR")
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_Chaser/green") (SunnyREF.AuxiliaryVariableGetFloat "*HEH_ChaserColorG")
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_Chaser/blue") (SunnyREF.AuxiliaryVariableGetFloat "*HEH_ChaserColorB")
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_FatigueBar/systemcolor") (SunnyREF.AuxiliaryVariableGetFloat "*HEH_FatigueSysColor")
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_FatigueBar/red") (SunnyREF.AuxiliaryVariableGetFloat "*HEH_FatigueColorR")
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_FatigueBar/green") (SunnyREF.AuxiliaryVariableGetFloat "*HEH_FatigueColorG")
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_FatigueBar/blue") (SunnyREF.AuxiliaryVariableGetFloat "*HEH_FatigueColorB")	
+		
+		WorldToScreen (fEnemyScreenX) (fEnemyScreenY) (fEnemyScreenZ) 0 0 fEnemyDZ 2 rEnemy
+		
+		fEnemyScreenX *= GetScreenTrait 0
+		fEnemyScreenY *= GetScreenTrait 1
+		
+		If Eval fMode == 2
+			
+			If fAlign == 1 
+				
+				fEnemyScreenY = -2000 
+				
+			ElseIf fAlign == 2 
+				
+				fEnemyScreenY = (GetScreenTrait 1) - ((16*fBarHeight)+((GetFontTrait 3 0)*2*fNameSM) + fNameVB) - (Abs fBarYShift)
+				
+			EndIf
+			
+			If Eval PlayerRef.GetCombatTarget == rEnemy && rEnemy.IsActorInvisibleToPlayer != 1
+				
+				fEnemyScreenX = (GetScreenTrait 0)/2
+				
+			Else
+				
+				fEnemyScreenX = -2000
+				
+			EndIf
+			
+		EndIf
+		
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/x") (fEnemyScreenX + fBarXShift)
+		
+		If Eval (fEnemyScreenY + fBarYShift) < ((0.5*(16*fBarHeight)) + ((GetFontTrait 3 0)*fNameSM) + fNameVB)
+			
+			SetUIFloatAlt ("HUDMainMenu/HEH_Mas/HEH_" + $sEnemy + "/y") ((16*fBarHeight)+((GetFontTrait 3 0)*2*fNameSM) + fNameVB)
+			fEnemyY = (16*fBarHeight)+((GetFontTrait 3 0)*2*fNameSM) + fNameVB
+			
+		Else
+			
+			SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/y") (fEnemyScreenY + fBarYShift)
+			fEnemyY = (fEnemyScreenY + fBarYShift)
+			
+		EndIf
+	
+		rEnemy.AuxiliaryVariableSetFloat "*HEHPrevHP" 1
+		rEnemy.AuxiliaryVariableSetFloat "*HEHDOT" 0
+		
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/_ChaserVal") 1
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/_BarVal") 1
+		
+		If Eval SunnyREF.AuxiliaryVariableGetFloat "*HEH_FatBar" == 1
+			
+			SetUIStringAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_FatigueFrame/filename") ("HabitableEnemyHealth/" + $sMEHStyle + "/EHBFrame.dds")
+			SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/_FatChaserVal") 1
+			SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/_FatBarVal") 1	
+			
+		Else
+			
+			SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/_FatChaserVal") 0
+			SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/_FatBarVal") 0
+			SetUIStringAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_FatigueFrame/filename") ("HabitableEnemyHealth/EHBarBlank.dds")
+			SetUIStringAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_FatigueBG/filename") ("HabitableEnemyHealth/EHBarBlank.dds")
+
+		EndIf
+		
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/_DOTVB") fDOTVB
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_DOT/zoom") (70*fDOTSM)
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/_NameVB") fNameVB
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_Name/zoom") (70*fNameSM)
+		
+		If SunnyREF.AuxiliaryVariableGetFloat "*HEH_EnableName" == 1
+	
+			SetUIStringAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_Name/string") (rEnemy.LNGetName)
+			
+		Else
+			
+			SetUIStringAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_Name/string") "%e"
+			
+		EndIf
+		
+		;SetUIStringAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_Lvl/string") ($(rEnemy.GetLevel))
+		
+		If Eval sMEHStyle == "FO76" || sMEHStyle == "FO4"
+			
+			;SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_Lvl/systemcolor") 0
+			
+		ElseIf Eval sMEHStyle == "Revelation" && SunnyREF.AuxiliaryVariableGetFloat "*HEH_FatBar" == 1
+			
+			SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_Frame/systemcolor") 0
+			;SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_LvlFrame/systemcolor") 0
+			SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_FatigueFrame/systemcolor") 0
+			
+		ElseIf Eval sMEHStyle == "Revelation"
+			
+			SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_Frame/systemcolor") 0
+			;SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_LvlFrame/systemcolor") 0
+			
+		EndIf
+		
+		SetUIStringAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_Frame/filename") ("HabitableEnemyHealth/" + $sMEHStyle + "/EHBFrame.dds")
+		;SetUIStringAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_LvlFrame/filename") ("HabitableEnemyHealth/" + $sMEHStyle + "/LevelFrame.dds")
+		
+		If Eval SunnyREF.AuxiliaryVariableGetFloat "*HEH_EnablePM" == 1 && SunnyREF.AuxiliaryVariableGetFloat "*HEH_Mode" != 2
+			
+			SetUIStringAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_Marker/filename") ("HabitableEnemyHealth/" + $sMEHStyle + "/EHMarker.dds")
+		
+		ElseIf Eval SunnyREF.AuxiliaryVariableGetFloat "*HEH_EnablePM" != 1 || SunnyREF.AuxiliaryVariableGetFloat "*HEH_Mode" == 2
+			
+			SetUIStringAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/HEH_Marker/filename") ("HabitableEnemyHealth/EHBarBlank.dds")
+			
+		EndIf
+		
+		SetUIFloatAlt ("HUDMainMenu/HEH_Mas/" + $sHEHParent + "/visible") 1
+	
+		If Eval EReticle == 1 && MenuMode == 0 && rEnemy.IsActorInvisibleToPlayer != 1
+			
+			If Eval (PlayerRef.GetCombatTarget == rEnemy || ObjectUnderReticle 0 5000 == rEnemy)
+				
+				SetUIFloatAlt ("HUDMainMenu/HEH_Mas/HEH_" + $sEnemy + "/_EHMarkerVis") 0
+				SetUIFloatAlt ("HUDMainMenu/HEH_Mas/HEH_" + $sEnemy + "/_EHInfoVis") 1
+				rEnemy.AuxiliaryVariableSetFloat "*HEHInfo" 1
+				rEnemy.AuxiliaryVariableSetFloat "*HEHMarker" 0				
+				
+				If Eval SunnyREF.AuxiliaryVariableGetFloat "*HEH_DisableEaseIn" != 1
+				
+					SetUIFloatGradual ("HUDMainMenu/HEH_Mas/HEH_" + $sEnemy + "/alpha") 0 255 0.2 0
+					SetUIFloatGradual ("HUDMainMenu/HEH_Mas/HEH_" + $sEnemy + "/_InfoBH") 25 5 0.3 0
+					
+				Else
+
+					SetUIFloatAlt ("HUDMainMenu/HEH_Mas/HEH_" + $sEnemy + "/alpha") 255 
+					SetUIFloatAlt ("HUDMainMenu/HEH_Mas/HEH_" + $sEnemy + "/_InfoBH") 5 
+					SetUIFloatAlt ("HUDMainMenu/HEH_Mas/HEH_" + $sEnemy + "/HEH_Marker/alpha") 0 
+					SetUIFloatAlt ("HUDMainMenu/HEH_Mas/HEH_" + $sEnemy + "/_MarkerBH") 25					
+					
+				EndIf
+					
+				
+			ElseIf Eval (PlayerRef.GetCombatTarget != rEnemy && ObjectUnderReticle 0 5000 != rEnemy)
+			
+				SetUIFloatAlt ("HUDMainMenu/HEH_Mas/HEH_" + $sEnemy + "/_EHInfoVis") 0
+				SetUIFloatAlt ("HUDMainMenu/HEH_Mas/HEH_" + $sEnemy + "/_EHMarkerVis") 1
+				rEnemy.AuxiliaryVariableSetFloat "*HEHInfo" 0
+				rEnemy.AuxiliaryVariableSetFloat "*HEHMarker" 1
+				
+				
+				If Eval SunnyREF.AuxiliaryVariableGetFloat "*HEH_DisableEaseIn" != 1
+					
+					SetUIFloatGradual ("HUDMainMenu/HEH_Mas/HEH_" + $sEnemy + "/HEH_Marker/alpha") 0 255 0.2 0
+					SetUIFloatGradual ("HUDMainMenu/HEH_Mas/HEH_" + $sEnemy + "/_MarkerBH") 25 5 0.3 0
+					
+				Else
+				
+					SetUIFloatAlt ("HUDMainMenu/HEH_Mas/HEH_" + $sEnemy + "/alpha") 0 
+					SetUIFloatAlt ("HUDMainMenu/HEH_Mas/HEH_" + $sEnemy + "/_InfoBH") 25 
+					SetUIFloatAlt ("HUDMainMenu/HEH_Mas/HEH_" + $sEnemy + "/HEH_Marker/alpha") 255
+					SetUIFloatAlt ("HUDMainMenu/HEH_Mas/HEH_" + $sEnemy + "/_MarkerBH") 5
+					
+				EndIf
+				
+			EndIf
+			
+		Else
+			
+			SetUIFloatAlt ("HUDMainMenu/HEH_Mas/HEH_" + $sEnemy + "/_EHMarkerVis") 0 
+			SetUIFloatAlt ("HUDMainMenu/HEH_Mas/HEH_" + $sEnemy + "/_EHInfoVis") 0
+			rEnemy.AuxiliaryVariableSetFloat "*HEHMarker" 0
+			rEnemy.AuxiliaryVariableSetFloat "*HEHInfo" 0	
+			
+		EndIf
+		
+		rEnemy.AuxiliaryVariableSetFloat "*HEH_MC" 0
+		rEnemy.AuxTimerStart "*_HEH" (1/40) (1 + 2 + 4 + 8 + 16 + 64)
+		rEnemy.SetOnAuxTimerStopHandler 1 rEHBUpdateUDF "*_HEH"
+	
+	EndIf
+	
+	
+	Sv_Destruct sEnemy, sMEHStyle, sHEHParent, sHEHComponent
+	
+End

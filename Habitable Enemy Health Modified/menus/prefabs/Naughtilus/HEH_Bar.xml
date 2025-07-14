@@ -1,0 +1,322 @@
+<_BarVal>1</_BarVal> 
+<_ChaserVal>1<_ChaserVal> 
+<_EHInfoVis>0<_EHInfoVis>
+<_EHMarkerVis>0<_EHMarkerVis>
+<_FatBarVal>1<_FatBarVal>
+<_FatChaserVal>1<_FatChaserVal>
+<_DOTVB>3</_DOTVB>
+<_NameVB>4</_NameVB>
+<_InfoBH>5<_InfoBH>
+<_MarkerBH>5<_MarkerBH>
+    <!--Enemy Name-->
+    <text name="HEH_Name">
+		<visible><copy src="parent()" trait="_EHInfoVis"/></visible>									<!--Scripted-->
+		<string></string>																			<!--Scripted-->
+		<zoom>70</zoom>																			<!--Scripted-->
+        <font>3</font>
+        <x>
+			<copy src="sibling(HEH_Frame)" trait="x"/>
+			<add><copy src="sibling(HEH_Frame)" trait="width"/><div>51.2</div></add>
+		</x>
+        <y>
+			<copy src="sibling(HEH_Frame)" trait="y"/>
+			<add><copy src="parent()" trait="_NameVB"/></add>
+			<sub><copy src="me()" trait="height"/></sub>
+		</y>
+        <justify>&left;</justify>
+		<wrapwidth>500</wrapdidth>
+		<brightness><copy src="parent()" trait="brightness"/></brightness>
+		<alpha><copy src="parent()" trait="alpha"/></alpha>
+		<systemcolor><copy src="parent()" trait="systemcolor"/></systemcolor>
+		<depth>
+			<copy src="parent()" trait="depth"/>
+			<add>20</add>
+		</depth>
+    </text>
+	
+    <!--Enemy Level-->
+	
+    <!--Enemy Level Frame-->
+
+	<!---Damage Over Time--->
+    <text name="HEH_DOT">
+		<visible><copy src="parent()" trait="_EHInfoVis"/></visible>									<!--Scripted-->
+		<string></string>																			<!--Scripted-->
+		<zoom>70</zoom>																			<!--Scripted-->
+        <font>3</font>
+        <x>
+			<copy src="sibling(HEH_Frame)" trait="x"/>
+			<add><copy src="sibling(HEH_Frame)" trait="width"/></add>
+		</x>
+        <y>
+			<copy src="sibling(HEH_Frame)" trait="y"/>
+			<add>
+				<copy src="sibling(HEH_Frame)" trait="height"/>
+				<add><copy src="parent()" trait="_DOTVB"/></add>
+			</add>
+		</y>
+        <justify>&right;</justify>
+		<wrapwidth>500</wrapdidth>
+		<brightness><copy src="parent()" trait="brightness"/></brightness>
+		<alpha><copy src="parent()" trait="alpha"/></alpha>
+		<systemcolor>0</systemcolor>
+		<red>255</red>
+		<green>255</green>
+		<blue>255</blue>
+		<depth>
+			<copy src="parent()" trait="depth"/>
+			<add>20</add>
+		</depth>
+    </text>		
+	
+	<!---Bar Frame--->
+    <image name="HEH_Frame">
+		<locus>&true;</locus>
+		<visible><copy src="parent()" trait="_EHInfoVis"/></visible>													<!--Scripted-->
+		<filename>HabitableEnemyHealth\EHBarBlank.dds</filename>													<!--Scripted-->
+		<width><copy src="parent()" trait="width"/></width>
+        <height><copy src="parent()" trait="height"/></height>
+        <x>
+			<copy>0</copy>
+			<sub><copy src="me()" trait="width"/><div>2</div></sub>
+		</x>
+        <y>
+			<copy>0</copy>
+			<sub><copy src="me()" trait="height"/><div>2</div></sub>
+			<add><copy src="parent()" trait="_InfoBH"/><mul>-1</mul></add>
+		</y>
+        <brightness><copy src="parent()" trait="brightness"/></brightness>
+		<systemcolor><copy src="parent()" trait="systemcolor"/></systemcolor>
+		<alpha><copy src="parent()" trait="alpha"/></alpha>
+        <zoom>&scale;</zoom>
+		<depth>
+			<copy src="parent()" trait="depth"/>
+			<add>20</add>
+		</depth>
+    </image>
+	
+	<!---Bars--->
+    <image name="HEH_Bar">
+		<locus>&true;</locus>
+		<visible><copy src="parent()" trait="_EHInfoVis"/></visible>													<!--Scripted-->
+		<filename>HabitableEnemyHealth\EHBar.dds</filename>													<!--Scripted-->
+		<width>
+			<copy src="parent()" trait="width"/>
+			<mul><copy src="parent()" trait="_BarVal"/></mul>
+		</width>
+        <height><copy src="parent()" trait="height"/></height>
+        <x>
+			<copy src="sibling(HEH_Frame)" trait="x"/>
+			<add>
+				<copy>1</copy>
+				<sub><copy src="parent()" trait="_BarVal"/></sub>
+				<mul><copy src="parent()" trait="width"/></mul>
+				<div>51.2</div>
+			</add>
+		</x>
+        <y><copy src="sibling(HEH_Frame)" trait="y"/></y>
+        <brightness><copy src="parent()" trait="brightness"/></brightness>
+		<systemcolor><copy src="parent()" trait="systemcolor"/></systemcolor>
+		<alpha><copy src="parent()" trait="alpha"/></alpha>
+        <zoom>&scale;</zoom>
+		<depth>
+			<copy src="parent()" trait="depth"/>
+			<add>16</add>
+		</depth>
+    </image>
+	
+    <image name="HEH_Chaser">
+		<locus>&true;</locus>
+		<visible><copy src="parent()" trait="_EHInfoVis"/></visible>													<!--Scripted-->
+		<filename>HabitableEnemyHealth\EHBar.dds</filename>													<!--Scripted-->
+		<width>
+			<copy src="parent()" trait="width"/>
+			<mul><copy src="parent()" trait="_ChaserVal"/></mul>
+		</width>
+        <height><copy src="parent()" trait="height"/></height>
+        <x>
+			<copy src="sibling(HEH_Frame)" trait="x"/>
+			<add>
+				<copy>1</copy>
+				<sub><copy src="parent()" trait="_ChaserVal"/></sub>
+				<mul><copy src="parent()" trait="width"/></mul>
+				<div>51.2</div>
+			</add>
+		</x>
+        <y><copy src="sibling(HEH_Frame)" trait="y"/></y>
+        <brightness><copy src="parent()" trait="brightness"/></brightness>
+		<systemcolor>0</systemcolor>
+		<red>255</red>
+		<green>255</green>
+		<blue>255</blue>
+		<alpha><copy src="parent()" trait="alpha"/><sub>55</sub></alpha>
+        <zoom>&scale;</zoom>
+		<depth>
+			<copy src="parent()" trait="depth"/>
+			<add>12</add>
+		</depth>
+    </image>
+	
+    <image name="HEH_BG">
+		<locus>&true;</locus>
+		<visible><copy src="parent()" trait="_EHInfoVis"/></visible>													<!--Scripted-->
+		<filename>HabitableEnemyHealth\EHBar.dds</filename>													<!--Scripted-->
+		<width><copy src="parent()" trait="width"/></width>
+        <height><copy src="parent()" trait="height"/></height>
+        <x><copy src="sibling(HEH_Frame)" trait="x"/></x>
+        <y><copy src="sibling(HEH_Frame)" trait="y"/></y>
+        <brightness><copy src="parent()" trait="brightness"/></brightness>
+		<systemcolor>0</systemcolor>
+		<red>0</red>
+		<green>0</green>
+		<blue>0</blue>
+		<alpha><copy src="parent()" trait="alpha"/><sub>75</sub></alpha>
+        <zoom>&scale;</zoom>
+		<depth>
+			<copy src="parent()" trait="depth"/>
+			<add>8</add>
+		</depth>
+    </image>
+
+	<!---Bars--->
+    <image name="HEH_FatigueBar">
+		<locus>&true;</locus>
+		<visible><copy src="parent()" trait="_EHInfoVis"/></visible>													<!--Scripted-->
+		<filename>HabitableEnemyHealth\EHBar.dds</filename>													<!--Scripted-->
+		<width>
+			<copy src="parent()" trait="width"/>
+			<mul><copy src="parent()" trait="_FatBarVal"/></mul>
+			<div>2</div>
+		</width>
+        <height><copy src="parent()" trait="height"/><div>3</div></height>
+        <x>
+			<copy src="sibling(HEH_Frame)" trait="x"/>
+			<add>
+				<copy>1</copy>
+				<sub><copy src="parent()" trait="_BarVal"/></sub>
+				<mul><copy src="parent()" trait="width"/><mul>0.5</mul></mul>
+				<div>102.4</div>
+			</add>
+		</x>
+        <y>
+			<copy src="sibling(HEH_Frame)" trait="y"/>
+			<add><copy src="sibling(HEH_Frame)" trait="height"/></add>
+		</y>
+        <brightness><copy src="parent()" trait="brightness"/></brightness>
+		<systemcolor>0</systemcolor>
+		<red>255</red>
+		<green>165</green>
+		<blue>0</blue>
+		<alpha><copy src="parent()" trait="alpha"/></alpha>
+        <zoom>&scale;</zoom>
+		<depth>
+			<copy src="parent()" trait="depth"/>
+			<add>16</add>
+		</depth>
+    </image>
+	
+    <image name="HEH_FatigueChaser">
+		<locus>&true;</locus>
+		<visible><copy src="parent()" trait="_EHInfoVis"/></visible>													<!--Scripted-->
+		<filename>HabitableEnemyHealth\EHBar.dds</filename>													<!--Scripted-->
+		<width>
+			<copy src="parent()" trait="width"/>
+			<mul><copy src="parent()" trait="_FatChaserVal"/></mul>
+			<div>2</div>
+		</width>
+        <height><copy src="parent()" trait="height"/><div>3</div></height>
+        <x>
+			<copy src="sibling(HEH_Frame)" trait="x"/>
+			<add>
+				<copy>1</copy>
+				<sub><copy src="parent()" trait="_FatChaserVal"/></sub>
+				<mul><copy src="parent()" trait="width"/><div>2</div></mul>
+				<div>102.4</div>
+			</add>
+		</x>
+        <y>
+			<copy src="sibling(HEH_Frame)" trait="y"/>
+			<add><copy src="sibling(HEH_Frame)" trait="height"/></add>
+		</y>
+        <brightness><copy src="parent()" trait="brightness"/></brightness>
+		<systemcolor>0</systemcolor>
+		<alpha><copy src="parent()" trait="alpha"/><sub>55</sub></alpha>
+        <zoom>&scale;</zoom>
+		<depth>
+			<copy src="parent()" trait="depth"/>
+			<add>12</add>
+		</depth>
+    </image>
+	
+    <image name="HEH_FatigueBG">
+		<locus>&true;</locus>
+		<visible><copy src="parent()" trait="_EHInfoVis"/></visible>													<!--Scripted-->
+		<filename>HabitableEnemyHealth\EHBar.dds</filename>													<!--Scripted-->
+		<width><copy src="parent()" trait="width"/><div>2</div></width>
+        <height><copy src="parent()" trait="height"/><div>3</div></height>
+        <x><copy src="sibling(HEH_Frame)" trait="x"/></x>
+        <y>
+			<copy src="sibling(HEH_Frame)" trait="y"/>
+			<add><copy src="sibling(HEH_Frame)" trait="height"/></add>
+		</y>
+        <brightness><copy src="parent()" trait="brightness"/></brightness>
+		<systemcolor>0</systemcolor>
+		<red>0</red>
+		<green>0</green>
+		<blue>0</blue>
+		<alpha><copy src="parent()" trait="alpha"/><sub>75</sub></alpha>
+        <zoom>&scale;</zoom>
+		<depth>
+			<copy src="parent()" trait="depth"/>
+			<add>8</add>
+		</depth>
+    </image>
+	
+    <image name="HEH_FatigueFrame">
+		<locus>&true;</locus>
+		<visible><copy src="parent()" trait="_EHInfoVis"/></visible>													<!--Scripted-->
+		<filename>HabitableEnemyHealth\EHBarBlank.dds</filename>													<!--Scripted-->
+		<width><copy src="parent()" trait="width"/><div>2</div></width>
+        <height><copy src="parent()" trait="height"/><div>3</div></height>
+        <x><copy src="sibling(HEH_Frame)" trait="x"/></x>
+        <y>
+			<copy src="sibling(HEH_Frame)" trait="y"/>
+			<add><copy src="sibling(HEH_Frame)" trait="height"/></add>
+		</y>
+        <brightness><copy src="parent()" trait="brightness"/></brightness>
+		<systemcolor><copy src="parent()" trait="systemcolor"/></systemcolor>
+		<alpha><copy src="parent()" trait="alpha"/></alpha>
+        <zoom>&scale;</zoom>
+		<depth>
+			<copy src="parent()" trait="depth"/>
+			<add>20</add>
+		</depth>
+    </image>
+	
+    <image name="HEH_Marker">
+		<locus>&true;</locus>
+		<visible><copy src="parent()" trait="_EHMarkerVis"/></visible>													<!--Scripted-->
+		<filename>HabitableEnemyHealth\EHBarBlank.dds</filename>													<!--Scripted-->
+		<width><copy src="parent()" trait="width"/><div>7</div></width>
+        <height><copy src="me()" trait="width"/></height>
+        <x>
+			<copy>0</copy>
+			<sub>
+				<copy src="me()" trait="width"/>
+				<div>2</div>
+			</sub>
+		</x>
+        <y>
+			<copy>0</copy>
+			<sub><copy src="me()" trait="height"/><div>2</div></sub>
+			<add><copy src="parent()" trait="_MarkerBH"/><mul>-1</mul></add>
+		</y>
+        <brightness><copy src="parent()" trait="brightness"/></brightness>
+		<systemcolor><copy src="parent()" trait="systemcolor"/></systemcolor>
+		<alpha>255</alpha>
+        <zoom>&scale;</zoom>
+		<depth>
+			<copy src="parent()" trait="depth"/>
+			<add>20</add>
+		</depth>
+    </image>
