@@ -1,4 +1,9 @@
-需要安装JIP LN NVSE并在falloutcustom.ini加入以下内容（与NVDC.ini保持同步）：
+前置：
+Vanilla UI Plus
+JIP LN NVSE
+
+字体加载（必需）：
+在falloutcustom.ini加入以下内容（与NVDC.ini保持同步）：
 
 [Fonts]
 sFontFile_1=Textures\Fonts\Harmony_22_Font_1.fnt
