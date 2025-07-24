@@ -37,7 +37,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 	<_VUI+EnergyResist></_VUI+EnergyResist>
 	<_VUI+FireResist></_VUI+FireResist>
 	<_VUI+PoisonResist></_VUI+PoisonResist>
-	<font> 3 </font>
+	<font> 2 </font>
 	<user0> 0 </user0>	<!-- current visible tab page (0-4) -->
 	<user1></user1>		<!-- player rads -->
 	<user2></user2>		<!-- rad max -->
@@ -104,7 +104,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 				</add>
 				<add src="sibling" trait="y" />
 			</y>
-			<font> 3 </font>
+			<font> 4 </font>
 			<string> &-sStats </string>
 			<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 			<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
@@ -113,7 +113,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 
 		<image name="stats_headline_h2">
 			<include src="line.xml"/>
-			<x> <copy src="sibling(stats_title)" trait="x" /> <add src="sibling" trait="width" /> <add> 20 </add> </x>
+			<x> <copy src="sibling" trait="x" /> <add src="sibling" trait="width" /> <add> 20 </add> </x>
 			<y> <copy src="sibling(stats_headline_h1)" trait="y" /> </y>
 			<_length>
 				<copy src="io" trait="_VUI+PipX" />
@@ -133,7 +133,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 			<x> <copy src="sibling" trait="x" /> <add src="sibling" trait="width" /> </x>
 			<y> <copy src="sibling" trait="y" /> </y>
 			<width> 95 </width>
-			<font>3</font>
 			<_Title> &-sStatsLVLAbbrev; </_Title>
 			<_Value> <copy src="io" trait="user8"/> </_Value> <!-- Widest possible value: LVL 33 -->
 		</rect>
@@ -144,7 +143,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 			<x> <copy src="sibling" trait="x" /> <add src="sibling" trait="width" /> <add> 9 </add> </x>
 			<y> <copy src="sibling" trait="y" /> </y>
 			<width> 150 </width>
-			<font>3</font>
 			<_Title> &-sStatsHP; </_Title>
 			<_Value> <copy src="io" trait="user5"/> </_Value> <!-- Widest possible value: HP 333/333 -->
 		</rect>
@@ -155,7 +153,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 			<x> <copy src="sibling" trait="x" /> <add src="sibling" trait="width" /> <add> 9 </add> </x>
 			<y> <copy src="sibling" trait="y" /> </y>
 			<width> 140 </width>
-			<font>3</font>
 			<_Title> &-sStatsAP; </_Title>
 			<_Value> <copy src="io" trait="user6"/> </_Value> <!-- Widest possible value: AP 133/133 -->
 		</rect>
@@ -166,7 +163,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 			<x> <copy src="sibling" trait="x" /> <add src="sibling" trait="width" /> <add> 9 </add> </x>
 			<y> <copy src="sibling" trait="y" /> </y>
 			<width> 220 </width>
-			<font>3</font>
 			<_Title> &-sStatsXP; </_Title>
 			<_Value> <copy src="io" trait="user7"/> </_Value> <!-- Widest possible value: XP 333333/333333 -->
 			<_VUI+NoLabel> 1 </_VUI+NoLabel>
@@ -266,7 +262,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<not src="stats_effects_container" trait="visible"/> <!--VUI+ hide on effects -->
 						<and> <copy src="io" trait="_VUI+StatusInfo" /> <eq> 2 </eq> </and>
 					</visible>
-					<font> 3 </font>
+					<font> <copy src="io" trait="font" /> </font>
 					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				</text>
@@ -297,7 +293,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<not src="stats_effects_container" trait="visible"/>
 						<and> <copy src="io" trait="_VUI+StatusInfo" /> <eq> 2 </eq> </and>
 					</visible>
-					<font>3 </font>
+					<font> <copy src="io" trait="font" /> </font>
 					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				</text>
@@ -336,7 +332,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<not src="stats_effects_container" trait="visible"/>
 						<and> <copy src="io" trait="_VUI+StatusInfo" /> <eq> 2 </eq> </and>
 					</visible>
-					<font> 3 </font>
+					<font> <copy src="io" trait="font" /> </font>
 					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				</text>
@@ -367,7 +363,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<not src="stats_effects_container" trait="visible"/>
 						<and> <copy src="io" trait="_VUI+StatusInfo" /> <eq> 2 </eq> </and>
 					</visible>
-					<font> 3 </font>
+					<font> <copy src="io" trait="font" /> </font>
 					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				</text>
@@ -398,7 +394,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<not src="stats_effects_container" trait="visible"/>
 						<and> <copy src="io" trait="_VUI+StatusInfo" /> <eq> 2 </eq> </and>
 					</visible>
-					<font> 3 </font>
+					<font> <copy src="io" trait="font" /> </font>
 					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				</text>
@@ -429,7 +425,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<not src="stats_effects_container" trait="visible"/>
 						<and> <copy src="io" trait="_VUI+StatusInfo" /> <eq> 2 </eq> </and>
 					</visible>
-					<font> 3 </font>
+					<font> <copy src="io" trait="font" /> </font>
 					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				</text>
@@ -444,7 +440,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 				<_x> <copy src="parent" trait="width" /> <sub src="globals" trait="_VUI+InsideButton" /> </_x>
 				<justify> &right; </justify>
 				<_xbox_button> &xbuttona; </_xbox_button>
-				<font>3</font>
 				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				<_PCButtonText> <copy src="io" trait="_stats_stimpak_button" /> </_PCButtonText>
@@ -458,7 +453,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 				<_x> <copy src="sibling" trait="_x"/> </_x>
 				<_y> <copy src="sibling" trait="_y"/> <add src="sibling" trait="height"/> </_y>
 				<justify> &right; </justify>
-				<font>3</font>
 				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				<_xbox_button> &xbuttony; </_xbox_button>
@@ -474,7 +468,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 					<and src="globals" trait="_Has360Controller"/>
 				</visible>
 				<_x> <copy src="sibling" trait="_x"/> </_x>
-				<font>3</font>
 				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				<_y>
@@ -492,7 +485,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 				<_x> <copy src="sibling(stats_stimpak_button)" trait="_x"/> </_x>
 				<_y> <copy src="sibling(stats_stimpak_button)" trait="_y"/> </_y>
 				<justify> &right; </justify>
-				<font>3</font>
 				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				<_xbox_button> &xbuttona; </_xbox_button>
@@ -507,7 +499,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 				<_x> <copy src="sibling" trait="_x"/> </_x>
 				<_y> <copy src="sibling" trait="_y"/> <add src="sibling" trait="height"/> </_y>
 				<justify> &right; </justify>
-				<font>3</font>
 				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				<_xbox_button> &xbuttonx; </_xbox_button>
@@ -702,6 +693,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 				<text name="stats_player_head_crippled">
 					<visible> <not src="sibling(stats_player_head_pct)" trait="visible"/> </visible>
 					<string> <copy src="io" trait="user9"/> </string>
+					<font> <copy src="io" trait="font" /> </font>
 					<x>
 						<copy src="sibling" trait="_dir" />
 						<copy src="parent" trait="_dir_text_x_" />
@@ -713,7 +705,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<div> 1.7 </div>
 						<add src="sibling" trait="y" />
 					</y>
-					<font> 3</font>
 					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				</text>
@@ -770,6 +761,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 				<text name="stats_player_torso_crippled">
 					<visible> <not src="sibling(stats_player_torso_pct)" trait="visible"/> </visible>
 					<string> <copy src="io" trait="user9"/> </string>
+					<font> <copy src="io" trait="font" /> </font>
 					<x>
 						<copy src="sibling" trait="_dir" />
 						<copy src="parent" trait="_dir_text_x_" />
@@ -781,7 +773,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<div> 1.7 </div>
 						<add src="sibling" trait="y" />
 					</y>
-					<font> 3</font>
 					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				</text>
@@ -838,6 +829,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 				<text name="stats_player_leftarm_crippled">
 					<visible> <not src="sibling(stats_player_leftarm_pct)" trait="visible"/> </visible>
 					<string> <copy src="io" trait="user9"/> </string>
+					<font> <copy src="io" trait="font" /> </font>
 					<x>
 						<copy src="sibling" trait="_dir" />
 						<copy src="parent" trait="_dir_text_x_" />
@@ -849,7 +841,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<div> 1.7 </div>
 						<add src="sibling" trait="y" />
 					</y>
-					<font> 3</font>
 					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				</text>
@@ -906,6 +897,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 				<text name="stats_player_rightarm_crippled">
 					<visible> <not src="sibling(stats_player_rightarm_pct)" trait="visible"/> </visible>
 					<string> <copy src="io" trait="user9"/> </string>
+					<font> <copy src="io" trait="font" /> </font>
 					<x>
 						<copy src="sibling" trait="_dir" />
 						<copy src="parent" trait="_dir_text_x_" />
@@ -917,7 +909,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<div> 1.7 </div>
 						<add src="sibling" trait="y" />
 					</y>
-					<font> 3</font>
 					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				</text>
@@ -974,6 +965,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 				<text name="stats_player_leftleg_crippled">
 					<visible> <not src="sibling(stats_player_leftleg_pct)" trait="visible"/> </visible>
 					<string> <copy src="io" trait="user9"/> </string>
+					<font> <copy src="io" trait="font" /> </font>
 					<x>
 						<copy src="sibling" trait="_dir" />
 						<copy src="parent" trait="_dir_text_x_" />
@@ -985,7 +977,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<div> 1.7 </div>
 						<add src="sibling" trait="y" />
 					</y>
-					<font> 3</font>
 					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				</text>
@@ -1042,6 +1033,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 				<text name="stats_player_rightleg_crippled">
 					<visible> <not src="sibling(stats_player_rightleg_pct)" trait="visible"/> </visible>
 					<string> <copy src="io" trait="user9"/> </string>
+					<font> <copy src="io" trait="font" /> </font>
 					<x>
 						<copy src="sibling" trait="_dir" />
 						<copy src="parent" trait="_dir_text_x_" />
@@ -1053,7 +1045,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<div> 1.7 </div>
 						<add src="sibling" trait="y" />
 					</y>
-					<font> 3</font>
 					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				</text>
@@ -1063,7 +1054,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 			<text name="stats_player_name">
 				<id> 27 </id>
 				<visible> <copy src="sibling(stats_player_head)" trait="visible"/> </visible>
-				<font> 3 </font>
+				<font> <copy src="io" trait="font" /> </font>
 				<justify>
 					<!--VUI+ where x = _paperdoll_pipboy_name_x
 					x < 200: left alignment
@@ -1092,7 +1083,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 					<sub src="me" trait="height" />
 					<add> 5 </add>
 				</y>
-				<font> 3</font>
 				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 			</text>
@@ -1133,7 +1123,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 					</y>
 					<justify> &center; </justify>
 					<visible> <copy src="sibling(VUI+Resistances)" trait="visible" /> </visible>
-					<font> 3</font>
+					<font> <copy src="io" trait="font" /> </font>
 					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				</text>
@@ -1141,14 +1131,15 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 
 				<image name="VUI+RBCtitleUnderline">
 					<include src="line.xml"/>
-					<_length> <copy src="sibling(VUI+RBCtitle)" trait="width" /> </_length>
+					<_length> <copy src="sibling" trait="width" /> </_length>
 					<x>
-						<copy src="sibling(VUI+RBCtitle)" trait="width" />
+						<copy src="sibling" trait="width" />
 						<div> -2 </div>
 						<add src="sibling" trait="x" />
 						<sub>
-							<copy src="sibling(VUI+RBCtitle)" trait="font" />
+							<copy src="sibling" trait="font" />
 							<copy src="globals" trait="_VUI+FontX_"/>
+							<add>15</add>
 						</sub>
 					</x>
 					<y>
@@ -1164,26 +1155,18 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 				
 				<rect name="VUI+Resistances">
 					<locus> 1 </locus>
-					<x>
-						<copy src="sibling(stats_rad_resist)" trait="x"/>
-					</x>
+					<x> 40 </x>
 					<y>
-						<copy src="sibling(stats_rad_resist)" trait="y"/>
-						<add> 
-							<copy src="child(VUI+EnergyResistLevel)" trait="height"/>
-						</add>
+						<copy src="sibling" trait="y" />
+						<add src="sibling" trait="height" />
+						<add> 385 </add>
 					</y>
-					<width> 
-						<copy src="sibling(stats_rad_effects_label)" trait="x"/>
-						<sub> 10 </sub>
-					</width>
+					<width> 260 </width>
 					<visible> <copy src="child(VUI+EnergyResistLevel)" trait="width" /> <gt> 15 </gt> </visible>
 
 					<text name="VUI+EnergyResistLabel">
 						<string> <copy src="globals" trait="_VUI+EnergyResistLabel" /> </string>
-						<x> 32 </x>
-						<y> 20 </y>
-						<font> 3</font>
+						<font> <copy src="io" trait="font" /> </font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1192,9 +1175,9 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 					<text name="VUI+EnergyResistLevel">
 						<string> <copy src="io" trait="_VUI+EnergyResist" /> </string>
 						<justify> &right; </justify>
-						<x> <copy src="parent" trait="width"/> <sub>20</sub></x>
-						<y> <copy src="sibling(VUI+EnergyResistLabel)" trait="y" /> </y>
-						<font> 3</font>
+						<x> <copy src="parent" trait="width"/> </x>
+						<y> <copy src="sibling" trait="y" /> </y>
+						<font> <copy src="io" trait="font" /> </font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1202,12 +1185,12 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 
 					<text name="VUI+FireResistLabel">
 						<string> <copy src="globals" trait="_VUI+FireResistLabel" /> </string>
-						<x> <copy src="sibling(VUI+EnergyResistLabel)" trait="x" /> </x>
 						<y>
-							<copy src="sibling(VUI+EnergyResistLevel)" trait="y" />
-							<add src="sibling(VUI+EnergyResistLevel)" trait="height" />
+							<copy src="sibling" trait="y" />
+							<add src="sibling" trait="height" />
+							<add> 15 </add>
 						</y>
-						<font> 3</font>
+						<font> <copy src="io" trait="font" /> </font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1217,8 +1200,8 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<string> <copy src="io" trait="_VUI+FireResist" /> </string>
 						<justify> &right; </justify>
 						<x> <copy src="sibling(VUI+EnergyResistLevel)" trait="x"/> </x>
-						<y> <copy src="sibling(VUI+FireResistLabel)" trait="y" /> </y>
-						<font> 3</font>
+						<y> <copy src="sibling" trait="y" /> </y>
+						<font> <copy src="io" trait="font" /> </font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1226,13 +1209,12 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 
 					<text name="VUI+PoisonResistLabel">
 						<string> <copy src="globals" trait="_VUI+PoisonResistLabel" /> </string>
-						<x> <copy src="sibling(VUI+EnergyResistLabel)" trait="x" /> </x>
 						<y>
-							<copy src="sibling(VUI+FireResistLevel)" trait="y" />
-							<add src="sibling(VUI+FireResistLevel)" trait="height" />
-							<add> 5 </add>
+							<copy src="sibling" trait="y" />
+							<add src="sibling" trait="height" />
+							<add> 15 </add>
 						</y>
-						<font> 3</font>
+						<font> <copy src="io" trait="font" /> </font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1242,8 +1224,8 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<string> <copy src="io" trait="_VUI+PoisonResist" /> </string>
 						<justify> &right; </justify>
 						<x> <copy src="sibling(VUI+EnergyResistLevel)" trait="x"/> </x>
-						<y> <copy src="sibling(VUI+PoisonResistLabel)" trait="y" /> </y>
-						<font> 3</font>
+						<y> <copy src="sibling" trait="y" /> </y>
+						<font> <copy src="io" trait="font" /> </font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1291,7 +1273,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<copy src="sibling(stats_rad_effects_bracket)" trait="y"/>
 						<add> 20 </add>
 					</y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1324,7 +1305,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<id> 44 </id>
 						<string> &-sStatsRadResist; </string>
 						<y> 20 </y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1337,7 +1317,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 							<sub> 20 </sub>
 						</x>
 						<y> 20 </y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1368,7 +1347,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<string> <copy src="io" trait="_rads"/> </string> <!-- set in code -->
 						<x> <copy src="grandparent" trait="_left_edge"/> </x>
 						<y> 20 </y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1379,7 +1357,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<x> <copy src="parent" trait="_zero_pos"/> </x>
 						<y> -28 </y>
 						<user0> 0 </user0>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1399,7 +1376,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 							</add>
 						</x>
 						<y> <copy src="sibling(stats_rads_zero)" trait="y"/> </y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1409,7 +1385,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<justify> &right; </justify>
 						<x> <copy src="parent" trait="width"/> </x>
 						<y> <copy src="sibling(stats_rads_zero)" trait="y"/> </y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1453,7 +1428,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 							<add src="sibling(stats_rads_arrow)" trait="height"/>
 							<sub> 24 </sub>
 						</y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1533,7 +1507,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<copy src="sibling(stats_h20_effects_bracket)" trait="y"/>
 						<add> 20 </add>
 					</y>
-					<font> 3</font>
 					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				</text>
@@ -1574,7 +1547,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<string> <!-- no string yet --> </string>
 						<y> 20 </y>
 						<visible> 0 </visible>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1588,7 +1560,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 							<sub> 20 </sub>
 						</x>
 						<y> 20 </y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1637,7 +1608,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 							<copy src="grandparent" trait="_left_edge"/>
 						</x>
 						<y> 20 </y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1652,7 +1622,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						</x>
 						<y> -28 </y>
 						<user0> 0 </user0>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1674,7 +1643,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<y>
 							<copy src="sibling(stats_h20_zero)" trait="y"/>
 						</y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1690,7 +1658,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<y>
 							<copy src="sibling(stats_h20_zero)" trait="y"/>
 						</y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1738,7 +1705,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 							<add src="sibling(stats_h20_arrow)" trait="height"/>
 							<sub> 24 </sub>
 						</y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1819,7 +1785,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<copy src="sibling(stats_hunger_effects_bracket)" trait="y"/>
 						<add> 20 </add>
 					</y>
-					<font> 3</font>
 					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				</text>
@@ -1862,7 +1827,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						</string>
 						<y> 20 </y>
 						<visible> 0 </visible>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1876,7 +1840,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 							<sub> 20 </sub>
 						</x>
 						<y> 20 </y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1925,7 +1888,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 							<copy src="grandparent" trait="_left_edge"/>
 						</x>
 						<y> 20 </y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1940,7 +1902,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						</x>
 						<y> -28 </y>
 						<user0> 0 </user0>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1962,7 +1923,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<y>
 							<copy src="sibling(stats_hunger_zero)" trait="y"/>
 						</y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -1978,7 +1938,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<y>
 							<copy src="sibling(stats_hunger_zero)" trait="y"/>
 						</y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -2026,7 +1985,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 							<add src="sibling(stats_hunger_arrow)" trait="height"/>
 							<sub> 24 </sub>
 						</y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -2107,7 +2065,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<copy src="sibling(stats_sleep_effects_bracket)" trait="y"/>
 						<add> 20 </add>
 					</y>
-					<font> 3</font>
 					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				</text>
@@ -2150,7 +2107,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						</string>
 						<y> 20 </y>
 						<visible> 0 </visible>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -2164,7 +2120,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 							<sub> 20 </sub>
 						</x>
 						<y> 20 </y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -2213,7 +2168,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 							<copy src="grandparent" trait="_left_edge"/>
 						</x>
 						<y> 20 </y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -2228,7 +2182,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						</x>
 						<y> -28 </y>
 						<user0> 0 </user0>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -2250,7 +2203,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<y>
 							<copy src="sibling(stats_sleep_zero)" trait="y"/>
 						</y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -2266,7 +2218,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<y>
 							<copy src="sibling(stats_sleep_zero)" trait="y"/>
 						</y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -2314,7 +2265,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 							<add src="sibling(stats_sleep_arrow)" trait="height"/>
 							<sub> 24 </sub>
 						</y>
-						<font> 3</font>
 						<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 						<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 					</text>
@@ -2394,7 +2344,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 					<sub src="me" trait="height"/>
 					<div> 2 </div>
 				</y>
-				<font> 3</font>
 				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 			</text>
@@ -2464,7 +2413,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 			<height>
 				<copy src="me" trait="_VUI+Bottom" />
 				<sub src="me" trait="_VUI+Top" />
-				<add> 22.5 </add> <!--VUI+ to perfectly fit the last item -->
+				<add> 26.5 </add> <!--VUI+ to perfectly fit the last item -->
 			</height>
 			<!--VUI+ the scrollbar will resize to just touch the vertical edges (and not overlap on them) -->
 			<_VUI+ScrollbarOffsetY>
@@ -2643,7 +2592,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 				<_PCButtonText> <copy src="io" trait="_stats_genrep_button" /> </_PCButtonText>
 				<string> &-sStatsGeneral </string>
 				<listindex> 1 </listindex>
-				<font>3</font>
 				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 			</hotrect>
@@ -2663,9 +2611,10 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 				<user2></user2> <!-- Extra text -->
 				<clicksound> &nosound; </clicksound> <!-- Handled by pipboy manager -->
 				<mouseoversound> &nosound; </mouseoversound> <!-- Handled by pipboy manager -->
-				<_VerticalSpacing>3.7</_VerticalSpacing>
+				<_VerticalSpacing> 6.2 </_VerticalSpacing>
 
 				<text name="ListItemText">
+					<font> <copy src="io" trait="font" /> </font>
 					<string> <copy src="parent" trait="string"/> </string>
 					<brightness> <copy src="parent" trait="brightness" /> </brightness> <!--VUI+ target highlighting -->
 					<x> 11 </x>
@@ -2683,7 +2632,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<sub src="me" trait="x" />
 						<sub> 10 </sub>
 					</wrapwidth>
-					<font>3</font>
 					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				</text>
@@ -2707,7 +2655,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 					</y>
 					<string> <copy src="parent" trait="user1"/> </string>
 					<brightness> <copy src="parent" trait="brightness" /> </brightness> <!--VUI+ target highlighting -->
-					<font>3</font>
 					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				</text>
@@ -2719,7 +2666,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 					<justify> &right; </justify>
 					<x>
 						<!--VUI+ set the (+xx) modifier to the left of the value for better alignment -->
-						<copy src="sibling(stats_list_template_number)" trait="x" />
+						<copy src="sibling" trait="x" />
 						<sub>
 							<copy src="me" trait="font" />
 							<copy src="globals" trait="_VUI+FontW_" />
@@ -2732,7 +2679,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<copy src="parent" trait="brightness" /> <!--VUI+ target highlighting -->
 						<sub> 100 </sub> <!--VUI+ use a different tone to make modifiers easier to read -->
 					</brightness>
-					<font>3</font>
 					<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 					<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 				</text>
@@ -2769,7 +2715,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 			</height>
 
 			<image name="stats_icon">
-				<locus>1</locus>
 				<id> 25 </id>
 				<visible> 0 </visible>
 				<x>
@@ -2851,7 +2796,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 					<mul> -2 </mul>
 					<add> 10 </add> <!--VUI+ compensate the tweak at y -->
 				</_VUI+ScrollbarOffsetHeight>
-				<width> <copy src="sibling(stats_icon_separator)" trait="_length"/> <sub> 15 </sub> </width>
+				<width> <copy src="sibling(stats_icon_separator)" trait="_length"/> <sub> 11 </sub> </width>
 				<locus> 1 </locus>
 				<wheelable> 1 </wheelable>
 				<clipwindow> 1 </clipwindow>
@@ -2874,10 +2819,10 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 
 				<text name="stats_description">
 					<locus>1</locus>
-					<font>3</font>
+					<font> <copy src="io" trait="font" /> </font>
 					<wrapwidth>
 						<copy src="parent" trait="width"/>
-						<sub> 2 </sub>
+						<sub> 15 </sub>
 					</wrapwidth>
 					<clips> 1 </clips>
 					<y>
@@ -2886,7 +2831,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 						<mul> -1 </mul>
 						<add> 5 </add> <!--VUI+ needed to fix bugged engine metrics -->
 					</y>
-					<zoom>90</zoom>
 				</text>
 			</hotrect>
 		</rect>
@@ -3045,7 +2989,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 				<y> 20 </y>
 				<justify> &right; </justify>
 				<string> <copy src="parent" trait="string"/> </string>
-				<font>3</font>
 				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 			</text>
@@ -3055,7 +2998,6 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 				<x> 10 </x>
 				<y> 20 </y>
 				<string> <copy src="parent" trait="user1"/> </string>
-				<font>3</font>
 				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 			</text>
@@ -3070,12 +3012,11 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 			<x> 20 </x>
 			<height>
 				<copy src="grandparent" trait="height" />
-				<mul> 0.125</mul> <!--VUI+ fit into the configurable Pip-Boy height -->
+				<mul> 0.125 </mul> <!--VUI+ fit into the configurable Pip-Boy height -->
 			</height>
 			<user0></user0>			<!-- Effect Name -->
 			<user1></user1>			<!-- Effect String -->
 			<user2> 1 </user2>	<!-- Divider Line -->
-			<_VerticalSpacing>3</_VerticalSpacing>
 
 			<text name="stats_effect_name">
 				<string><copy src="parent" trait="user0"/> </string>
@@ -3091,18 +3032,13 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 					<add>
 						<copy src="me" trait="font" />
 						<copy src="globals" trait="_VUI+FontY_"/>
-						<add>
-							<copy src="parent" trait="_VerticalSpacing" />
-							<div> 2 </div>
-						</add>
 					</add>
 					<sub> 1 </sub> <!--VUI+ for descenders -->
 				</y>
+				<font> <copy src="io" trait="font" /> </font>
 				<!--VUI+ bold, darker -->
-				<zoom>90</zoom>
 				<alpha> <mul> 2 </mul> </alpha>
 				<brightness> <mul> 0.8 </mul> </brightness>
-				<font> 3</font>
 				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 			</text>
@@ -3110,7 +3046,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 
 			<text name="stats_effect_string">
 				<string><copy src="parent" trait="user1"/> </string>
-				<x> <copy src="sibling(stats_effect_name)" trait="wrapwidth" /> <add> 25 </add> </x>
+				<x> <copy src="sibling" trait="wrapwidth" /> <add> 25 </add> </x>
 				<!--VUI+ same for effect description -->
 				<wrapwidth>
 					<copy src="sibling(stats_effects_divider)" trait="_length" />
@@ -3126,11 +3062,10 @@ COPYRIGHT BY ZENIMAX; MODIFIED JULY 2022 BY AXONIS FOR VANILLA UI PLUS
 					</add>
 					<sub> 1 </sub> <!--VUI+ for descenders -->
 				</y>
+				<font> <copy src="io" trait="font" /> </font>
 				<!--VUI+ bold, brighter -->
 				<alpha> <mul> 2 </mul> </alpha>
-				<zoom>90</zoom>
 				<brightness> <mul> 1.1 </mul> </brightness>
-				<font> 3</font>
 				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 			</text>
