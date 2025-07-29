@@ -13,14 +13,14 @@ Sorted from smaller to bigger
 #8 - Huge font, use for uppercase titles only -->
 
 <!-- Vertical alignment of a font's midline -->
-<_VUI+FontY_1> 8 </_VUI+FontY_1>
-<_VUI+FontY_2> 8 </_VUI+FontY_2>
-<_VUI+FontY_3> 8 </_VUI+FontY_3>
-<_VUI+FontY_4> 10 </_VUI+FontY_4>
-<_VUI+FontY_5> 9 </_VUI+FontY_5>
-<_VUI+FontY_6> 10 </_VUI+FontY_6>
-<_VUI+FontY_7> -2 </_VUI+FontY_7>
-<_VUI+FontY_8> 15 </_VUI+FontY_8>
+<_VUI+FontY_1> 9 </_VUI+FontY_1>
+<_VUI+FontY_2> 9 </_VUI+FontY_2>
+<_VUI+FontY_3> 9 </_VUI+FontY_3>
+<_VUI+FontY_4> 9 </_VUI+FontY_4>
+<_VUI+FontY_5> 6 </_VUI+FontY_5>
+<_VUI+FontY_6> 8 </_VUI+FontY_6>
+<_VUI+FontY_7> 8 </_VUI+FontY_7>
+<_VUI+FontY_8> 12 </_VUI+FontY_8>
 
 <!-- Vertical spacing, depending on the font's descenders -->
 <_VUI+FontV_1> 12 </_VUI+FontV_1>
@@ -33,21 +33,21 @@ Sorted from smaller to bigger
 <_VUI+FontV_8> 6 </_VUI+FontV_8>
 
 <!-- Aligns a string to the horizontal center of its box -->
-<_VUI+FontX_1> 2 </_VUI+FontX_1>
-<_VUI+FontX_2> 2 </_VUI+FontX_2>
-<_VUI+FontX_3> 2 </_VUI+FontX_3>
-<_VUI+FontX_4> 2 </_VUI+FontX_4>
+<_VUI+FontX_1> 1 </_VUI+FontX_1>
+<_VUI+FontX_2> 1 </_VUI+FontX_2>
+<_VUI+FontX_3> 1 </_VUI+FontX_3>
+<_VUI+FontX_4> 3 </_VUI+FontX_4>
 <_VUI+FontX_5> 0 </_VUI+FontX_5>
-<_VUI+FontX_6> 2 </_VUI+FontX_6>
-<_VUI+FontX_7> 2 </_VUI+FontX_7>
-<_VUI+FontX_8> 0 </_VUI+FontX_8>
+<_VUI+FontX_6> 1 </_VUI+FontX_6>
+<_VUI+FontX_7> 1 </_VUI+FontX_7>
+<_VUI+FontX_8> 3 </_VUI+FontX_8>
 
 <!-- Font Outline weight -->
 <_VUI+FontGlow_1> 1 </_VUI+FontGlow_1>
-<_VUI+FontGlow_2> 0 </_VUI+FontGlow_2>
+<_VUI+FontGlow_2> 1 </_VUI+FontGlow_2>
 <_VUI+FontGlow_3> 1 </_VUI+FontGlow_3>
 <_VUI+FontGlow_4> 1 </_VUI+FontGlow_4>
-<_VUI+FontGlow_5> 1 </_VUI+FontGlow_5>
+<_VUI+FontGlow_5> 0 </_VUI+FontGlow_5>
 <_VUI+FontGlow_6> 1 </_VUI+FontGlow_6>
 <_VUI+FontGlow_7> 1 </_VUI+FontGlow_7>
 <_VUI+FontGlow_8> 1 </_VUI+FontGlow_8>

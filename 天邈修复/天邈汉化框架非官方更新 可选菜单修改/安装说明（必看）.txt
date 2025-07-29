@@ -1,4 +1,0 @@
-前置：
-Vanilla UI Plus
-
-MO2安装，覆盖汉化文件
