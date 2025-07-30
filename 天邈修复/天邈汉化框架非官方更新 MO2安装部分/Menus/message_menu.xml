@@ -318,7 +318,7 @@ COPYRIGHT BY ZENIMAX; MODIFIED SEPTEMBER 2022 BY AXONIS FOR VANILLA UI PLUS
 						<copy src="globals" trait="_VUI+FontY_"/>
 					</add>
 				</y>
-				<zoom>90</zoom>
+				<zoom>95</zoom>
 				<_VUI+OutlineIntensity>3 </_VUI+OutlineIntensity>
 				<_VUI+ShadowOffset>1</_VUI+ShadowOffset>
 			</text>
